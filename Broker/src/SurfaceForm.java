@@ -21,16 +21,17 @@ public class SurfaceForm {
 	static Model model;
 	static String input;
 	
+	@SuppressWarnings("deprecation")
 	public SurfaceForm(String inputAddress,String modelAddress) throws IOException {
 		this.inputAddress = inputAddress;
 		this.modelAddress = modelAddress;
-		//FileManager.get().addLocatorClassLoader(Main.class.getClassLoader());
+		FileManager.get().addLocatorClassLoader(Main.class.getClassLoader());
 		model = FileManager.get().loadModel(modelAddress); // model that query request is sent to
 		input = readFile("/home/amirhossein/Documents/GitHub/semantic-broker/Broker/input"); 
 		
 	}
 	
-	private static void sendQueryRequest(String inputQuery, Model model) throws FileNotFoundException {
+	private void sendQueryRequest(String inputQuery, Model model) throws FileNotFoundException {
 		 
 		
         Query query = QueryFactory.create(inputQuery); //inputString is the query above
@@ -191,7 +192,7 @@ public class SurfaceForm {
 		
 	}
 	
-	private static boolean hasMeaning(String word) {
+	private boolean hasMeaning(String word) {
 				
 				String queryStr = 
 						 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
@@ -225,14 +226,14 @@ public class SurfaceForm {
 				
 			} 
 
-	private static double surfaceSimilarity(String word, String morphemes) {
+	private double surfaceSimilarity(String word, String morphemes) {
 			
 			float z = ((float)morphemes.length())/((float)word.length());
 			return z;
 					
 		}
 
-	private static void generateTriples() {
+	private void generateTriples() {
 		String s = "Sensor";
 		Model m = ModelFactory.createDefaultModel();
 		Resource animal1 = m.createResource(s).addProperty(VCARD.FN, "LION");
