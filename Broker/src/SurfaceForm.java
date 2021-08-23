@@ -29,8 +29,7 @@ public class SurfaceForm {
 		model = FileManager.get().loadModel(modelAddress); // model that query request is sent to
 		input = readFile("/home/amirhossein/Documents/GitHub/semantic-broker/Broker/input"); 
 		
-	}
-	
+	}	
 	
 	private void sendQueryRequest(String inputQuery, Model model) throws FileNotFoundException {
 		 

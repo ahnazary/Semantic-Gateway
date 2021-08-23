@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 public class WriteJSON {
 	@SuppressWarnings("unchecked")
 	public void writeJSONFile() {
-		
+	
 		//First Sensor
         JSONObject sensor1Details = new JSONObject();
         sensor1Details.put("Platform", "ArduinoBase1");
