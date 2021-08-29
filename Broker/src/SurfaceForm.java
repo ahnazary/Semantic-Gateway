@@ -22,6 +22,7 @@ public class SurfaceForm {
 	String inputAddress;
 	String modelAddress;
 	static Model model;
+
 	static String input;
 	
 	@SuppressWarnings("deprecation")
@@ -31,6 +32,16 @@ public class SurfaceForm {
 		FileManager.get().addLocatorClassLoader(Main.class.getClassLoader());
 		model = FileManager.get().loadModel(modelAddress); // model that query request is sent to
 		input = readFile("/home/amirhossein/Documents/GitHub/semantic-broker/Broker/input"); 
+		
+		String fileName = "Output";
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
+      
+            out.close();
+        }
+        catch (IOException e) {
+            System.out.println("Exception Occurred" + e);
+        }
 		
 	}	
 	
@@ -42,15 +53,11 @@ public class SurfaceForm {
 	        QueryExecution qExe = QueryExecutionFactory.create( query, model);
 	        ResultSet resultsOutput = qExe.execSelect();
 	        if (!resultsOutput.hasNext())	
-	        	System.out.println("Resultset is empty \n");
+	        	System.out.println("Resultset is empty");
 	        
 	        if(resultsOutput.hasNext()) {
 		        try {
-		        	//FileOutputStream queryOutput = new FileOutputStream("Query Result.txt");
-		            ResultSetFormatter.out(System.out, resultsOutput);
-		            //System.out.println("\n");
-		   			//ResultSetFormatter.out(queryOutput, resultsOutput);  
-		            
+		            ResultSetFormatter.out(System.out, resultsOutput);		            
 		        }
 		   
 		        finally {
@@ -60,7 +67,7 @@ public class SurfaceForm {
 	        }
 	}
 	
-	private String sendQueryRequest(String inputQuery, Model model) throws FileNotFoundException {
+	private String sendQueryRequestFile(String inputQuery, Model model) throws FileNotFoundException {
 		 
 		
         Query query = QueryFactory.create(inputQuery); 
@@ -69,7 +76,9 @@ public class SurfaceForm {
         ResultSet resultsOutput = qExe.execSelect();
         String resultsOutputStr = ResultSetFormatter.asText(resultsOutput);
         //System.out.println(resultsOutputStr);
+        
         return resultsOutputStr;
+        
 	}
 	
 	private String readFile(String filePath) throws IOException {
@@ -101,7 +110,7 @@ public class SurfaceForm {
 					 for (String word : words) {
 						 if(i == 1) {
 							 System. out. println(word);
-							 String sarefQuery = 
+							 String sarefQueryConsole = 
 									 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 									+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
 									+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
@@ -123,15 +132,40 @@ public class SurfaceForm {
 							 		+"FILTER regex(?object, \""+word+"\", \"i\" ) "
 							 		+""
 							 		+ "}";
+							 
+							 String sarefQueryFile = 
+									 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+									+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+									+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+									+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+									+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+									+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+									+"PREFIX time: <http://www.w3.org/2006/time#> "
+									+"PREFIX saref: <https://w3id.org/saref#>  "
+									+"PREFIX schema: <http://schema.org/>  "
+									+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
+			
+									+"SELECT ?subject \n"
+							 		+ "WHERE\n"
+							 		+ "{\n"
+							 		+"{?subject ?predicate ?object}"
+							 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
+							 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
+							 		//+"filter (contains(str(?object), \""+word+"\"))"
+							 		+"FILTER regex(?object, \""+word+"\", \"i\" ) "
+							 		+""
+							 		+ "}";
 							 //System.out.println(word);
-			 		 
-							 appendStrToFile("Output",sendQueryRequest(sarefQuery, model));		
-							 sendQueryRequestConsole(sarefQuery, model);
+							 
+							 appendStrToFile("Output",word);
+							 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));		
+							 sendQueryRequestConsole(sarefQueryConsole, model);
 							 System.out.println("Surface Similarity Feature is : 1" + "\n\n");
 						 }
 						 i++;
 					 }
 				 }	
+				 
 			}	
 	
 	public void morphemesQuery() throws FileNotFoundException {
@@ -261,7 +295,7 @@ public class SurfaceForm {
     	    out.println(str);
     	   
     	} catch (IOException e) {
-    	    //exception handling left as an exercise for the reader
+    		System.out.println("Exception Occurred" + e);
     		}
 		}
 	
