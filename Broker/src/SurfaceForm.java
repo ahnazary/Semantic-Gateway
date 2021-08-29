@@ -1,7 +1,10 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
@@ -31,30 +34,42 @@ public class SurfaceForm {
 		
 	}	
 	
-	private void sendQueryRequest(String inputQuery, Model model) throws FileNotFoundException {
+	private void sendQueryRequestConsole (String inputQuery, Model model) throws FileNotFoundException {
+			 
+			
+	        Query query = QueryFactory.create(inputQuery); //inputString is the query above
+	
+	        QueryExecution qExe = QueryExecutionFactory.create( query, model);
+	        ResultSet resultsOutput = qExe.execSelect();
+	        if (!resultsOutput.hasNext())	
+	        	System.out.println("Resultset is empty \n");
+	        
+	        if(resultsOutput.hasNext()) {
+		        try {
+		        	//FileOutputStream queryOutput = new FileOutputStream("Query Result.txt");
+		            ResultSetFormatter.out(System.out, resultsOutput);
+		            //System.out.println("\n");
+		   			//ResultSetFormatter.out(queryOutput, resultsOutput);  
+		            
+		        }
+		   
+		        finally {
+		            qExe.close();
+		            
+		        }
+	        }
+	}
+	
+	private String sendQueryRequest(String inputQuery, Model model) throws FileNotFoundException {
 		 
 		
-        Query query = QueryFactory.create(inputQuery); //inputString is the query above
+        Query query = QueryFactory.create(inputQuery); 
 
         QueryExecution qExe = QueryExecutionFactory.create( query, model);
         ResultSet resultsOutput = qExe.execSelect();
-        if (!resultsOutput.hasNext())	
-        	System.out.println("Resultset is empty \n");
-        
-        if(resultsOutput.hasNext()) {
-	        try {
-	        	//FileOutputStream queryOutput = new FileOutputStream("Query Result.txt");
-	            ResultSetFormatter.out(System.out, resultsOutput);
-	            //System.out.println("\n");
-	   			//ResultSetFormatter.out(queryOutput, resultsOutput);  
-	            
-	        }
-	   
-	        finally {
-	            qExe.close();
-	            
-	        }
-        }
+        String resultsOutputStr = ResultSetFormatter.asText(resultsOutput);
+        //System.out.println(resultsOutputStr);
+        return resultsOutputStr;
 	}
 	
 	private String readFile(String filePath) throws IOException {
@@ -74,6 +89,8 @@ public class SurfaceForm {
 	        reader.close();
 	    }
 	}
+	
+	
 	
 	public void exactQuery() throws FileNotFoundException {
 				
@@ -108,13 +125,15 @@ public class SurfaceForm {
 							 		+ "}";
 							 //System.out.println(word);
 			 		 
-							 sendQueryRequest(sarefQuery, model);				 
+							 appendStrToFile("Output",sendQueryRequest(sarefQuery, model));		
+							 sendQueryRequestConsole(sarefQuery, model);
+							 System.out.println("Surface Similarity Feature is : 1" + "\n\n");
 						 }
 						 i++;
 					 }
 				 }	
 			}	
-
+	
 	public void morphemesQuery() throws FileNotFoundException {
 
 
@@ -140,7 +159,7 @@ public class SurfaceForm {
 							 if (j == 0 && k == word.length() -1)
 								 continue;
 							 
-							 //StringBuilder sb = new StringBuilder(); 
+							 
 							 String morphemes = "";
 							 for(int z = j; z <= k ; z++) {
 								 //sb.append(wordArr[k]);
@@ -174,7 +193,7 @@ public class SurfaceForm {
 							 
 							 if(hasMeaning(morphemes)) {
 								 System.out.println('"' + morphemes + '"' + " has meaning ");
-								 sendQueryRequest(sarefQuery, model);
+								 sendQueryRequestConsole(sarefQuery, model);
 								 System.out.println("Surface Similarity Feature is : " + surfaceSimilarity(word,morphemes) + "\n\n");
 							 }
 							 
@@ -190,8 +209,7 @@ public class SurfaceForm {
 			 }
 		 }
 		
-	}
-	
+	}	
 	private boolean hasMeaning(String word) {
 				
 				String queryStr = 
@@ -233,11 +251,25 @@ public class SurfaceForm {
 					
 		}
 
+	
+	private static void appendStrToFile(String filePath, String str)
+		{
+			try(FileWriter fw = new FileWriter("Output", true);
+    	    BufferedWriter bw = new BufferedWriter(fw);
+    	    PrintWriter out = new PrintWriter(bw))
+    	{
+    	    out.println(str);
+    	   
+    	} catch (IOException e) {
+    	    //exception handling left as an exercise for the reader
+    		}
+		}
+	
 	private void generateTriples() {
 		String s = "Sensor";
 		Model m = ModelFactory.createDefaultModel();
 		Resource animal1 = m.createResource(s).addProperty(VCARD.FN, "LION");
-		//m.write(System.out,"Turtle");
+		m.write(System.out,"Turtle");
 		
 	}
 }

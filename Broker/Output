@@ -1,0 +1,375 @@
+Output
+Output
+Output
+Output
+Output
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| subject                                    | predicate                                      | object                                                                                                                                                                                                                                                          |
+=================================================================================================================================================================================================================================================================================================================================================================
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#label>   | "has sensor type"                                                                                                                                                                                                                                               |
+| <https://w3id.org/saref#hasSensorType>     | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship identifying the sensing type of a sensor detection (i.e., Temperature, Occupancy, Humidity, Motion , Smoke, Pressure, etc.) "                                                                                                                   |
+| <https://w3id.org/saref#consistsOf>        | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship indicating a composite entity that consists of other entities (e.g., a temperature/humidity sensor that consists of a temperature sensor and a humidity sensor)"                                                                                |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#label>   | "Sensor"                                                                                                                                                                                                                                                        |
+| <https://w3id.org/saref#Sensor>            | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that detects and responds to events or changes in the physical environment such as light, motion, or temperature changes. Further, a device of category saref:Sensor that performs a saref:SensingFunction."                                          |
+| <https://w3id.org/saref#FunctionRelated>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A category that considers devices, sensors and their specification in terms of functions, states and services"                                                                                                                                                 |
+| <https://w3id.org/saref#SensingFunction>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A function that allows to transmit data from sensors, such as measurement values (e.g., temperature) or sensing data (e.g., occupancy)"                                                                                                                        |
+| <https://w3id.org/saref#hasSensingRange>   | <http://www.w3.org/2000/01/rdf-schema#comment> | "A relationship between a sensing function and a measurement identifying the range of a sensor detection"                                                                                                                                                       |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#label>   | "Smoke sensor"                                                                                                                                                                                                                                                  |
+| <https://w3id.org/saref#SmokeSensor>       | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and saref:EventFunction (which notifies that a certain threshold has been exceeded), and is used for the purpose of sensing a property of type saref:Smoke." |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#label>   | "Temperature sensor"                                                                                                                                                                                                                                            |
+| <https://w3id.org/saref#TemperatureSensor> | <http://www.w3.org/2000/01/rdf-schema#comment> | "A device that consists of a sensor, has category saref:Sensor, performs the saref:SensingFunction and is used for the purpose of sensing a property of type saref:Temperature"                                                                                 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
+--------------------------------
+| subject | predicate | object |
+================================
+--------------------------------
+
