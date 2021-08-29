@@ -8,7 +8,7 @@ public class Main {
 	
 		SurfaceForm Test = new SurfaceForm("/home/amirhossein/Documents/GitHub/semantic-broker/Broker/input","/home/amirhossein/Documents/GitHub/semantic-broker/Broker/saref.ttl");
 		Test.exactQuery();
-		Test.morphemesQuery();
+		//Test.morphemesQuery();
 		
 		
 		//WriteJSON Sensors = new WriteJSON();
