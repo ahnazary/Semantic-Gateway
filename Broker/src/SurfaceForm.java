@@ -5,15 +5,22 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.FileManager;
 import org.apache.jena.vocabulary.VCARD;
@@ -45,13 +52,33 @@ public class SurfaceForm {
 		
 	}	
 	
+	private Map<RDFNode, double[]> resultmap(String inputQuery, Model model){
+		Query query = QueryFactory.create(inputQuery); 
+		
+        QueryExecution qExe = QueryExecutionFactory.create( query, model);
+        ResultSet resultsOutput = qExe.execSelect();
+        
+        Map<RDFNode, double[]> map = new HashMap<RDFNode, double[]>();
+        
+        for ( ; resultsOutput.hasNext() ; )
+        {
+         QuerySolution soln = resultsOutput.nextSolution() ;     
+         RDFNode subject = soln.get("subject");
+         map.put(subject, new double[] {3,1,1});
+         //System.out.println(subject);
+        }
+        System.out.println(map);
+        return map;		
+	}
+	
 	private void sendQueryRequestConsole (String inputQuery, Model model) throws FileNotFoundException {
 			 
 			
-	        Query query = QueryFactory.create(inputQuery); //inputString is the query above
+	        Query query = QueryFactory.create(inputQuery); 
 	
 	        QueryExecution qExe = QueryExecutionFactory.create( query, model);
 	        ResultSet resultsOutput = qExe.execSelect();
+	        
 	        if (!resultsOutput.hasNext())	
 	        	System.out.println("Resultset is empty");
 	        
@@ -64,7 +91,7 @@ public class SurfaceForm {
 		            qExe.close();
 		            
 		        }
-	        }
+	        }       
 	}
 	
 	private String sendQueryRequestFile(String inputQuery, Model model) throws FileNotFoundException {
@@ -73,9 +100,9 @@ public class SurfaceForm {
         Query query = QueryFactory.create(inputQuery); 
 
         QueryExecution qExe = QueryExecutionFactory.create( query, model);
+        
         ResultSet resultsOutput = qExe.execSelect();
         String resultsOutputStr = ResultSetFormatter.asText(resultsOutput);
-        //System.out.println(resultsOutputStr);
         
         return resultsOutputStr;
         
@@ -98,8 +125,6 @@ public class SurfaceForm {
 	        reader.close();
 	    }
 	}
-	
-	
 	
 	public void exactQuery() throws FileNotFoundException {
 				
@@ -192,16 +217,38 @@ public class SurfaceForm {
 						 for(int k = j + 3; k < word.length();k++) {
 							 if (j == 0 && k == word.length() -1)
 								 continue;
-							 
-							 
+	 
 							 String morphemes = "";
 							 for(int z = j; z <= k ; z++) {
 								 //sb.append(wordArr[k]);
 								 morphemes += wordArr[z];
 							 }
-							 //String morphemes = sb.toString();
-							 System. out. println(morphemes);
-							 String sarefQuery = 
+							 String sarefQueryFile = 
+									 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+									+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+									+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+									+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+									+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+									+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+									+"PREFIX time: <http://www.w3.org/2006/time#> "
+									+"PREFIX saref: <https://w3id.org/saref#>  "
+									+"PREFIX schema: <http://schema.org/>  "
+									+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
+			
+									+"SELECT ?subject \n"
+							 		+ "WHERE\n"
+							 		+ "{\n"
+							 		+"{?subject ?predicate ?object}"
+							 		
+							 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
+							 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
+							 		//+"filter (contains(str(?object), '"+morphemes+"'))"
+							 		+"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
+							 		//+"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
+							 		//+"FILTER regex(?object,'"+morphemes+"') "
+							 		+ "}";
+							
+							 String sarefQueryConsole = 
 									 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 									+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
 									+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
@@ -217,33 +264,34 @@ public class SurfaceForm {
 							 		+ "WHERE\n"
 							 		+ "{\n"
 							 		+"{?subject ?predicate ?object}"
+							 		
 							 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
 							 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							 		//+"filter (contains(str(?object), \""+morphemes+"\"))"
-							 		+"FILTER regex(?object, \""+morphemes+"\", \"i\" ) "
-							 		+""
+							 		//+"filter (contains(str(?object), '"+morphemes+"'))"
+							 		+"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
+							 		//+"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
+							 		//+"FILTER regex(?object,'"+morphemes+"') "
 							 		+ "}";
-							 //System.out.println(word);
 							 
-							 if(hasMeaning(morphemes)) {
-								 System.out.println('"' + morphemes + '"' + " has meaning ");
-								 sendQueryRequestConsole(sarefQuery, model);
-								 System.out.println("Surface Similarity Feature is : " + surfaceSimilarity(word,morphemes) + "\n\n");
-							 }
+							 appendStrToFile("Output",morphemes);
+							 if(sendQueryRequestFile(sarefQueryFile, model) != "")
+								 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));					
 							 
-							 else
-								 System.out.println('"' + morphemes + '"' + " does not mean anything \n");
+							 System.out.println('"' + morphemes + '"' );
+							 sendQueryRequestConsole(sarefQueryConsole, model);
+							 System.out.println("Surface Similarity Feature is : " + surfaceSimilarity(word,morphemes) + "\n\n");
+							 
+							 
 						 }
 					 }	
-					
-							 
-						
+	
 				 }
 				 i++;
 			 }
 		 }
 		
 	}	
+	
 	private boolean hasMeaning(String word) {
 				
 				String queryStr = 
@@ -285,7 +333,6 @@ public class SurfaceForm {
 					
 		}
 
-	
 	private static void appendStrToFile(String filePath, String str)
 		{
 			try(FileWriter fw = new FileWriter("Output", true);
