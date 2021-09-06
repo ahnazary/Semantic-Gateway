@@ -40,3 +40,1263 @@ ObservationUnit
 ===========
 -----------
 
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+

@@ -5,10 +5,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.jena.query.Query;
@@ -29,6 +27,7 @@ public class SurfaceForm {
 	String inputAddress;
 	String modelAddress;
 	static Model model;
+	static ArrayList<RDFNode> URIs = new ArrayList<RDFNode>();
 
 	static String input;
 	
@@ -39,37 +38,67 @@ public class SurfaceForm {
 		FileManager.get().addLocatorClassLoader(Main.class.getClassLoader());
 		model = FileManager.get().loadModel(modelAddress); // model that query request is sent to
 		input = readFile("/home/amirhossein/Documents/GitHub/semantic-broker/Broker/input"); 
-		
-		String fileName = "Output";
-        try {
-            BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-      
-            out.close();
-        }
-        catch (IOException e) {
-            System.out.println("Exception Occurred" + e);
-        }
-		
+			
 	}	
 	
-	private Map<RDFNode, double[]> resultmap(String inputQuery, Model model){
+	private ArrayList<RDFNode> resultsArr(String inputQuery, Model model){
+		Query query = QueryFactory.create(inputQuery); 
+		
+        QueryExecution qExe = QueryExecutionFactory.create( query, model);
+        ResultSet resultsOutput = qExe.execSelect();
+              
+        for ( ; resultsOutput.hasNext() ; )
+        {
+  
+         QuerySolution soln = resultsOutput.nextSolution() ;     
+         RDFNode subject = soln.get("subject");
+         URIs.add(subject);
+         //System.out.println(URIs);
+         //System.out.println(subject);
+        }
+        //System.out.println(map);
+        return URIs;		
+	}
+	
+	
+	private float popularity(RDFNode URI, ArrayList<RDFNode> URIs) {
+		
+		int repetition = 0;
+		for(int i = 0; i < URIs.size(); i++) {
+			if(URI.equals(URIs.get(i))) {
+				repetition++;
+			}
+		}	
+		
+		float result;
+		result = ((float)repetition) / ((float)URIs.size());
+		return result;
+	}
+	
+	private Map<RDFNode , float[]> resultsMap(String inputQuery, Model model, float similarityFeature){
 		Query query = QueryFactory.create(inputQuery); 
 		
         QueryExecution qExe = QueryExecutionFactory.create( query, model);
         ResultSet resultsOutput = qExe.execSelect();
         
-        Map<RDFNode, double[]> map = new HashMap<RDFNode, double[]>();
+        Map<RDFNode, float[]> map = new HashMap<RDFNode, float[]>();
         
         for ( ; resultsOutput.hasNext() ; )
         {
+  
          QuerySolution soln = resultsOutput.nextSolution() ;     
-         RDFNode subject = soln.get("subject");
-         map.put(subject, new double[] {3,1,1});
-         //System.out.println(subject);
+         RDFNode subject = soln.get("subject");     
+         System.out.println(subject);
+         System.out.println(" surface similarity Feature is : " + similarityFeature);
+         System.out.println(" popularity is : "  + popularity(subject, resultsArr(inputQuery,model)) + " \n");
+         
+         float[] floatArray = {2.0f,1.5f,8.45f,116.77f};
+         map.put(subject, floatArray);
         }
-        System.out.println(map);
+        //System.out.println(map);
         return map;		
 	}
+	
 	
 	private void sendQueryRequestConsole (String inputQuery, Model model) throws FileNotFoundException {
 			 
@@ -184,8 +213,12 @@ public class SurfaceForm {
 							 
 							 appendStrToFile("Output",word);
 							 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));		
-							 sendQueryRequestConsole(sarefQueryConsole, model);
-							 System.out.println("Surface Similarity Feature is : 1" + "\n\n");
+							 //sendQueryRequestConsole(sarefQueryConsole, model);
+							 //System.out.println("Surface Similarity Feature is : 1" + "\n\n");
+							 
+							 //System.out.println(resultsArr(sarefQueryFile, model));
+							 System.out.println(resultsMap(sarefQueryFile, model, (float)1));
+							 
 						 }
 						 i++;
 					 }
@@ -294,37 +327,34 @@ public class SurfaceForm {
 	
 	private boolean hasMeaning(String word) {
 				
-				String queryStr = 
-						 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-						+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-						+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-						+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-						+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-						+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-						+"PREFIX time: <http://www.w3.org/2006/time#> "
-						+"PREFIX saref: <https://w3id.org/saref#>  "
-						+"PREFIX schema: <http://schema.org/>  "
-						+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
+		String queryStr = 
+				 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+				+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+				+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+				+"PREFIX time: <http://www.w3.org/2006/time#> "
+				+"PREFIX saref: <https://w3id.org/saref#>  "
+				+"PREFIX schema: <http://schema.org/>  "
+				+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
+
+				+"SELECT *\n"
+				+ "WHERE\n"
+				+ "     {\n"
+				+ "        ?subject rdfs:label \""+word+"\"@en.\n"
+				+ "     }";
 		
-						+"SELECT *\n"
-						+ "WHERE\n"
-						+ "     {\n"
-						+ "        ?subject rdfs:label \""+word+"\"@en.\n"
-						+ "     }";
-				
-						Query query = QueryFactory.create(queryStr); //inputString is the query above
-				
-				        QueryExecution qExe = QueryExecutionFactory.sparqlService( "https://dbpedia.org/sparql/" , query);
-				        ResultSet resultsOutput = qExe.execSelect();
-				        if (resultsOutput.hasNext())
-				        	return true;
-				        
-				        else 
-				        	return false;
-				        	
-				
-				
-			} 
+				Query query = QueryFactory.create(queryStr); //inputString is the query above
+		
+		        QueryExecution qExe = QueryExecutionFactory.sparqlService( "https://dbpedia.org/sparql/" , query);
+		        ResultSet resultsOutput = qExe.execSelect();
+		        if (resultsOutput.hasNext())
+		        	return true;
+		        
+		        else 
+		        	return false;				        	
+	} 
 
 	private double surfaceSimilarity(String word, String morphemes) {
 			
