@@ -1,1 +1,0 @@
-[{"Sensor 1":{"Platform":"ArduinoBase1","ObservationUnit":"Celsius","Observation":"TemperatureObservation","ObservationValue":"22","Sensor":"TMP102"}},{"Sensor 2":{"Platform":"ArduinoBase1","ObservationUnit":"Kilograms","Observation":"LightObservation","ObservationValue":"10","Sensor":"TMP1345"}}]

@@ -1,66 +1,83 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.ParseException;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
-//import java.util.Arrays;
-//import java.util.List;
-//import org.apache.spark.ml.feature.Word2Vec;
-//import org.apache.spark.ml.feature.Word2VecModel;
-//import org.apache.spark.ml.linalg.Vector;
-//import org.apache.spark.sql.Dataset;
-//import org.apache.spark.sql.Row;
-//import org.apache.spark.sql.RowFactory;
-//import org.apache.spark.sql.SparkSession;
-//import org.apache.spark.sql.types.*;
+// w1.x + b = w2.y
 
+import org.apache.commons.math3.linear.MatrixUtils;
 
 public class Main {
+	
+	static final double [][][] TRAINING_DATA = {{{1, 1} , {-1}}, 							
+												{{1, 5} , {-1}},
+												{{5, 1} , {+1}},
+												{{5, 5} , {+1}}};
+	static final double ZERO = 0.000000009;
+	static SupportVec svm = null;
 
 	public static void main(String[] args) throws IOException, ParseException {
 	
-		SurfaceForm Test = new SurfaceForm("input","saref.ttl");
-		Test.exactQuery();
-		Test.morphemesQuery();
+		
+		double [][] xArray = new double [TRAINING_DATA.length][2];
+		double [][] yArray = new double [TRAINING_DATA.length][1];
+		
+		for(int i = 0; i < TRAINING_DATA.length; i++ ) {
+		
+			xArray[i][0] = TRAINING_DATA[i][0][0];
+			xArray[i][1] = TRAINING_DATA[i][0][1];
+			yArray[i][0] = TRAINING_DATA[i][1][0];
+		}
+		
+		svm = new SupportVec(MatrixUtils.createRealMatrix(xArray),MatrixUtils.createRealMatrix(yArray));
+		displayInfoTables(xArray, yArray);
+		handleCommandLine();
 		
 		
-		WriteJSON Sensors = new WriteJSON();
-		Sensors.writeJSONFile();
-		
-		ReadJSON rs = new ReadJSON("/home/amirhossein/Documents/GitHub/semantic-broker/Broker/input_3");
-		rs.returnKeys();
-		
+//		SurfaceForm Test = new SurfaceForm("input","saref.ttl");
+//		Test.exactQuery();
+//		Test.morphemesQuery();
 //		
-//		SparkSession spark = SparkSession
-//			      .builder()
-//			      .appName("JavaWord2VecExample")
-//			      .getOrCreate();
-//
-//			    // Input data: Each row is a bag of words from a sentence or document.
-//			    List<Row> data = Arrays.asList(
-//			      RowFactory.create(Arrays.asList("Hi I heard about Spark".split(" "))),
-//			      RowFactory.create(Arrays.asList("I wish Java could use case classes".split(" "))),
-//			      RowFactory.create(Arrays.asList("Logistic regression models are neat".split(" ")))
-//			    );
-//			    StructType schema = new StructType(new StructField[]{
-//			      new StructField("text", new ArrayType(DataTypes.StringType, true), false, Metadata.empty())
-//			    });
-//			    
-//			    Dataset<Row> documentDF = spark.createDataFrame(data, schema);
-//			    
-//			    // Learn a mapping from words to Vectors.
-//			    Word2Vec word2Vec = new Word2Vec()
-//			      .setInputCol("text")
-//			      .setOutputCol("result")
-//			      .setVectorSize(3)
-//			      .setMinCount(0);
-//			    Word2VecModel model = word2Vec.fit(documentDF);
-//			    Dataset<Row> result = model.transform(documentDF);
-//			    for (Row row : result.collectAsList()) {
-//			      List<String> text = row.getList(0);
-//			      Vector vector = (Vector) row.get(1);
-//			      System.out.println("Text: " + text + " => \nVector: " + vector + "\n");
-//			    }
-//
-//			    spark.stop();
+//		
+//		WriteJSON Sensors = new WriteJSON();
+//		Sensors.writeJSONFile();
+//		
+//		ReadJSON rs = new ReadJSON("/home/amirhossein/Documents/GitHub/semantic-broker/Broker/input_3");
+//		rs.returnKeys();
 		
-	}		
+	}			
+	
+	static void handleCommandLine() throws IOException{
+		BufferedReader bufferedReader = new BufferedReader (new InputStreamReader(System.in));
+		while(true) {
+			System.out.println("\n> to classify new candidate enter scores for intervies 1 & 2 (or exit)");
+			String[] values = (bufferedReader.readLine()).split(" ");
+			if (values[0].equals("exit"))  
+				System.exit(0);
+			
+			else {
+				try {System.out.println(svm.classify(
+						MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])}})));}
+				catch(Exception e) {System.out.println("invalid input"); }
+			}
+		}
+	}
+	
+	static void displayInfoTables(double[][] xArray, double[][] yArray) {
+		System.out.println("    Support vector    | label  | alpha");
+		IntStream.range(0, 50).forEach(i -> System.out.print("-"));System.out.println();
+		for(int i = 0 ; i < xArray.length ; i++) {
+			if(svm.getAlpha().getData()[i][0] > ZERO && svm.getAlpha().getData()[i][0] != SupportVec.C) {
+				StringBuffer ySB = new StringBuffer(String.valueOf(yArray[i][0]));
+				ySB.setLength(5);
+				System.out.println(Arrays.toString(xArray[i])+ " | " + ySB+ " | " + new String(String.format("%.10f", svm.getAlpha().getData()[i][0])));
+			}
+		}
+		System.out.println(" \n            wT            |   b  ");
+		IntStream.range(0, 50).forEach(i -> System.out.print("-"));System.out.println();
+		System.out.println("<" + (new String(String.format("%.9f", svm.getW().getData()[0][0])) + ", " +
+								  new String(String.format("%.9f", svm.getW().getData()[1][0]))) + ">   | " + svm.getB());
+	}
 }

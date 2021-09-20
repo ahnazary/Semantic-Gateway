@@ -1,12 +1,10 @@
-package javafx11;
-
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 
-public class SupportVectorMachines {
+public class SupportVec {
 
 	private RealMatrix x, y;
 	static final double MIN_ALPHA_OPTIMIZATION = 0.00001;
@@ -16,7 +14,8 @@ public class SupportVectorMachines {
 	static final double C = 1.0;
 	private RealMatrix w;
 	private double b = 0;
-	public SupportVectorMachines (RealMatrix x, RealMatrix y){
+	
+	public SupportVec (RealMatrix x, RealMatrix y){
 		this.x = x; 
 		this.y = y;
 		double[] alphaArray = new double[x.getData().length];
@@ -37,15 +36,15 @@ public class SupportVectorMachines {
 		
 		for	(int i = 0 ; i < x.getData().length ; i++) {
 			RealMatrix Ei = mult(y,alpha).transpose()
-					.multiply(x.multiply(x.getRowMatrix(i).transpose()))
-					.scalarAdd(b)
-					.subtract(y.getRowMatrix(i));
+										.multiply(x.multiply(x.getRowMatrix(i).transpose()))
+										.scalarAdd(b)
+										.subtract(y.getRowMatrix(i));
 			if(checkIfAlphaViolatesKKT(alpha.getEntry(i, 0), Ei.getEntry(0, 0))) {
-				int j = selectIndexOf2ndAlphaToOptimize(i,x.getData().length);
+				int j = selectIndexOf2ndAlphaToOptimize(i, x.getData().length);
 				RealMatrix Ej = mult(y,alpha).transpose()
-						.multiply(x.multiply(x.getRowMatrix(j).transpose()))
-						.scalarAdd(b)
-						.subtract(y.getRowMatrix(j));
+											.multiply(x.multiply(x.getRowMatrix(j).transpose()))
+											.scalarAdd(b)
+											.subtract(y.getRowMatrix(j));
 				
 				double alphaIold = alpha.getRowMatrix(i).getEntry(0, 0);
 				double alphaJold = alpha.getRowMatrix(j).getEntry(0, 0);
@@ -78,7 +77,7 @@ public class SupportVectorMachines {
 	
 	private void optimizeAlphaISameAsAlphaJOppositeDirection(int i, int j, double alphaJold) {
 		
-		alpha.setEntry(i, 0, alpha.getEntry(1, 0) + y.getEntry(j, 0)*y.getEntry(i, 0)*(alphaJold - alpha.getEntry(j, 0)));
+		alpha.setEntry(i, 0, alpha.getEntry(i, 0) + y.getEntry(j, 0)*y.getEntry(i, 0)*(alphaJold - alpha.getEntry(j, 0)));
 	}
 	
 	private void optimizeB(double Ei, double Ej, double alphaIold, double alphaJold, int i, int j) {
@@ -101,10 +100,8 @@ public class SupportVectorMachines {
 	}
 	
 	private void clipAlphaJ(int j, double highBound, double lowBound) {
-		if(alpha.getEntry(j, 0) < lowBound)
-			alpha.setEntry(j, 0, lowBound);
-		if(alpha.getEntry(j, 0) > highBound)
-			alpha.setEntry(j, 0, highBound);
+		if(alpha.getEntry(j, 0) < lowBound) alpha.setEntry(j, 0, lowBound);
+		if(alpha.getEntry(j, 0) > highBound) alpha.setEntry(j, 0, highBound);
 	}
 	
 	private boolean checkIfAlphaViolatesKKT(double alpha, double e) {
@@ -115,11 +112,11 @@ public class SupportVectorMachines {
 		
 		double[] bounds = new double[2];
 		if(yI == yJ) {
-			bounds[0] = Math.max(0 , alphaJ + alphaI - C);
+			bounds[0] = Math.max(0, alphaJ + alphaI - C);
 			bounds[1] = Math.min(C, alphaJ + alphaI);
 		}
 		else {
-			bounds[0] = Math.max(0 , alphaJ - alphaI );
+			bounds[0] = Math.max(0, alphaJ - alphaI );
 			bounds[1] = Math.min(C, alphaJ - alphaI + C);
 			
 		}
@@ -130,7 +127,7 @@ public class SupportVectorMachines {
 		
 		int indexOf2ndAlpha = indexOf1stAlpha;
 		while(indexOf1stAlpha == indexOf2ndAlpha )
-			indexOf2ndAlpha = ThreadLocalRandom.current().nextInt(0,numbOfRows -1);
+			indexOf2ndAlpha = ThreadLocalRandom.current().nextInt(0,numbOfRows-1);
 		return indexOf2ndAlpha;
 	}
 	
@@ -139,9 +136,10 @@ public class SupportVectorMachines {
 		double[][] wArray = new double [x.getData()[0].length][1];
 		IntStream.range(0, wArray.length).forEach(i ->wArray[i][0] = 0.0);
 		RealMatrix w = MatrixUtils.createRealMatrix(wArray);
-		for(int i = 0; i < x.getData().length ; i++) {		
-			w = w.add(x.getRowMatrix(i).transpose()).scalarMultiply(y.getRowMatrix(i).multiply(alpha.getRowMatrix(i)).getEntry(0, 0));	
-		}
+		for(int i = 0; i < x.getData().length ; i++) 		
+			w = w.add(x.getRowMatrix(i).transpose()
+					.scalarMultiply(y.getRowMatrix(i).multiply(alpha.getRowMatrix(i)).getEntry(0, 0)));	
+		
 		return w;
 	}
 	
@@ -156,7 +154,7 @@ public class SupportVectorMachines {
 	
 	
 	static RealMatrix mult(RealMatrix matrix1, RealMatrix matrix2) {
-		double[][] returnData = new double [matrix1.getData().length][matrix2.getData().length];
+		double[][] returnData = new double [matrix1.getData().length][matrix1.getData()[0].length];
 		IntStream.range(0, matrix1.getData().length).forEach(r ->
 			IntStream.range(0, matrix1.getData()[0].length).forEach(c ->
 					returnData[r][c] = matrix1.getEntry(r, c)*matrix2.getEntry(r, c)));

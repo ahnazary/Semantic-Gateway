@@ -1,5 +1,3 @@
-package test;
-
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
@@ -7,7 +5,6 @@ import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 
 public class SupportVec {
-
 	private RealMatrix x, y;
 	static final double MIN_ALPHA_OPTIMIZATION = 0.00001;
 	static final int MAX_NUMB_OF_ITERATION = 50;
@@ -79,7 +76,7 @@ public class SupportVec {
 	
 	private void optimizeAlphaISameAsAlphaJOppositeDirection(int i, int j, double alphaJold) {
 		
-		alpha.setEntry(i, 0, alpha.getEntry(1, 0) + y.getEntry(j, 0)*y.getEntry(i, 0)*(alphaJold - alpha.getEntry(j, 0)));
+		alpha.setEntry(i, 0, alpha.getEntry(i, 0) + y.getEntry(j, 0)*y.getEntry(i, 0)*(alphaJold - alpha.getEntry(j, 0)));
 	}
 	
 	private void optimizeB(double Ei, double Ej, double alphaIold, double alphaJold, int i, int j) {
