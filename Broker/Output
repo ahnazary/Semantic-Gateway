@@ -50942,3 +50942,5179 @@ vation
 -----------
 
 atio
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Plat
+-----------
+| subject |
+===========
+-----------
+
+Platf
+-----------
+| subject |
+===========
+-----------
+
+Platfo
+-----------
+| subject |
+===========
+-----------
+
+Platfor
+-----------
+| subject |
+===========
+-----------
+
+latf
+-----------
+| subject |
+===========
+-----------
+
+latfo
+-----------
+| subject |
+===========
+-----------
+
+latfor
+-----------
+| subject |
+===========
+-----------
+
+latform
+-----------
+| subject |
+===========
+-----------
+
+atfo
+-----------
+| subject |
+===========
+-----------
+
+atfor
+-----------
+| subject |
+===========
+-----------
+
+atform
+-----------
+| subject |
+===========
+-----------
+
+tfor
+-----------
+| subject |
+===========
+-----------
+
+tform
+-----------
+| subject |
+===========
+-----------
+
+form
+----------------------------------
+| subject                        |
+==================================
+| <https://w3id.org/saref#Meter> |
+----------------------------------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+Sens
+-----------
+| subject |
+===========
+-----------
+
+Senso
+-----------
+| subject |
+===========
+-----------
+
+enso
+-----------
+| subject |
+===========
+-----------
+
+ensor
+-----------
+| subject |
+===========
+-----------
+
+nsor
+-----------
+| subject |
+===========
+-----------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+ObservationV
+-----------
+| subject |
+===========
+-----------
+
+ObservationVa
+-----------
+| subject |
+===========
+-----------
+
+ObservationVal
+-----------
+| subject |
+===========
+-----------
+
+ObservationValu
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+bservationV
+-----------
+| subject |
+===========
+-----------
+
+bservationVa
+-----------
+| subject |
+===========
+-----------
+
+bservationVal
+-----------
+| subject |
+===========
+-----------
+
+bservationValu
+-----------
+| subject |
+===========
+-----------
+
+bservationValue
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+servationV
+-----------
+| subject |
+===========
+-----------
+
+servationVa
+-----------
+| subject |
+===========
+-----------
+
+servationVal
+-----------
+| subject |
+===========
+-----------
+
+servationValu
+-----------
+| subject |
+===========
+-----------
+
+servationValue
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+ervationV
+-----------
+| subject |
+===========
+-----------
+
+ervationVa
+-----------
+| subject |
+===========
+-----------
+
+ervationVal
+-----------
+| subject |
+===========
+-----------
+
+ervationValu
+-----------
+| subject |
+===========
+-----------
+
+ervationValue
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+rvationV
+-----------
+| subject |
+===========
+-----------
+
+rvationVa
+-----------
+| subject |
+===========
+-----------
+
+rvationVal
+-----------
+| subject |
+===========
+-----------
+
+rvationValu
+-----------
+| subject |
+===========
+-----------
+
+rvationValue
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+vationV
+-----------
+| subject |
+===========
+-----------
+
+vationVa
+-----------
+| subject |
+===========
+-----------
+
+vationVal
+-----------
+| subject |
+===========
+-----------
+
+vationValu
+-----------
+| subject |
+===========
+-----------
+
+vationValue
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+ationV
+-----------
+| subject |
+===========
+-----------
+
+ationVa
+-----------
+| subject |
+===========
+-----------
+
+ationVal
+-----------
+| subject |
+===========
+-----------
+
+ationValu
+-----------
+| subject |
+===========
+-----------
+
+ationValue
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+tionV
+-----------
+| subject |
+===========
+-----------
+
+tionVa
+-----------
+| subject |
+===========
+-----------
+
+tionVal
+-----------
+| subject |
+===========
+-----------
+
+tionValu
+-----------
+| subject |
+===========
+-----------
+
+tionValue
+-----------
+| subject |
+===========
+-----------
+
+ionV
+-----------
+| subject |
+===========
+-----------
+
+ionVa
+-----------
+| subject |
+===========
+-----------
+
+ionVal
+-----------
+| subject |
+===========
+-----------
+
+ionValu
+-----------
+| subject |
+===========
+-----------
+
+ionValue
+-----------
+| subject |
+===========
+-----------
+
+onVa
+-----------
+| subject |
+===========
+-----------
+
+onVal
+-----------
+| subject |
+===========
+-----------
+
+onValu
+-----------
+| subject |
+===========
+-----------
+
+onValue
+-----------
+| subject |
+===========
+-----------
+
+nVal
+-----------
+| subject |
+===========
+-----------
+
+nValu
+-----------
+| subject |
+===========
+-----------
+
+nValue
+-----------
+| subject |
+===========
+-----------
+
+Valu
+-----------
+| subject |
+===========
+-----------
+
+Value
+--------------------------------------------------------
+| subject                                              |
+========================================================
+| <https://w3id.org/saref#Close>                       |
+| <https://w3id.org/saref#Pause>                       |
+| <https://w3id.org/saref#Stop>                        |
+| <https://w3id.org/saref#StepDown>                    |
+| <https://w3id.org/saref#Energy>                      |
+| <https://w3id.org/saref#Measurement>                 |
+| <https://w3id.org/saref#On>                          |
+| <https://w3id.org/saref#hasValue>                    |
+| <https://w3id.org/saref#Motion>                      |
+| <https://w3id.org/saref#makesMeasurement>            |
+| <https://w3id.org/saref#Smoke>                       |
+| <https://w3id.org/saref#Occupancy>                   |
+| <https://w3id.org/saref#Power>                       |
+| <https://w3id.org/saref#GetCurrentMeterValueCommand> |
+| <https://w3id.org/saref#Start>                       |
+| <https://w3id.org/saref#Toggle>                      |
+| <https://w3id.org/saref#Humidity>                    |
+| <https://w3id.org/saref#Price>                       |
+| <https://w3id.org/saref#Pressure>                    |
+| <https://w3id.org/saref#Temperature>                 |
+| <https://w3id.org/saref#Open>                        |
+| <https://w3id.org/saref>                             |
+| <https://w3id.org/saref#Off>                         |
+| <https://w3id.org/saref#Notify>                      |
+| <https://w3id.org/saref#SetAbsoluteLevel>            |
+| <https://w3id.org/saref#Light>                       |
+| <https://w3id.org/saref#StepUp>                      |
+| <https://w3id.org/saref#EventFunction>               |
+| <https://w3id.org/saref#SetRelativeLevel>            |
+--------------------------------------------------------
+
+alue
+-----------
+| subject |
+===========
+-----------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+ObservationU
+-----------
+| subject |
+===========
+-----------
+
+ObservationUn
+-----------
+| subject |
+===========
+-----------
+
+ObservationUni
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+bservationU
+-----------
+| subject |
+===========
+-----------
+
+bservationUn
+-----------
+| subject |
+===========
+-----------
+
+bservationUni
+-----------
+| subject |
+===========
+-----------
+
+bservationUnit
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+servationU
+-----------
+| subject |
+===========
+-----------
+
+servationUn
+-----------
+| subject |
+===========
+-----------
+
+servationUni
+-----------
+| subject |
+===========
+-----------
+
+servationUnit
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+ervationU
+-----------
+| subject |
+===========
+-----------
+
+ervationUn
+-----------
+| subject |
+===========
+-----------
+
+ervationUni
+-----------
+| subject |
+===========
+-----------
+
+ervationUnit
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+rvationU
+-----------
+| subject |
+===========
+-----------
+
+rvationUn
+-----------
+| subject |
+===========
+-----------
+
+rvationUni
+-----------
+| subject |
+===========
+-----------
+
+rvationUnit
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+vationU
+-----------
+| subject |
+===========
+-----------
+
+vationUn
+-----------
+| subject |
+===========
+-----------
+
+vationUni
+-----------
+| subject |
+===========
+-----------
+
+vationUnit
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+ationU
+-----------
+| subject |
+===========
+-----------
+
+ationUn
+-----------
+| subject |
+===========
+-----------
+
+ationUni
+-----------
+| subject |
+===========
+-----------
+
+ationUnit
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+tionU
+-----------
+| subject |
+===========
+-----------
+
+tionUn
+-----------
+| subject |
+===========
+-----------
+
+tionUni
+-----------
+| subject |
+===========
+-----------
+
+tionUnit
+-----------
+| subject |
+===========
+-----------
+
+ionU
+-----------
+| subject |
+===========
+-----------
+
+ionUn
+-----------
+| subject |
+===========
+-----------
+
+ionUni
+-----------
+| subject |
+===========
+-----------
+
+ionUnit
+-----------
+| subject |
+===========
+-----------
+
+onUn
+-----------
+| subject |
+===========
+-----------
+
+onUni
+-----------
+| subject |
+===========
+-----------
+
+onUnit
+-----------
+| subject |
+===========
+-----------
+
+nUni
+-----------
+| subject |
+===========
+-----------
+
+nUnit
+-----------
+| subject |
+===========
+-----------
+
+Unit
+-----------------------------------------------------------------
+| subject                                                       |
+=================================================================
+| <http://www.wurvoc.org/vocabularies/om-1.8/lux>               |
+| <https://w3id.org/saref#Energy>                               |
+| <https://w3id.org/saref#Measurement>                          |
+| <https://w3id.org/saref#Motion>                               |
+| <https://w3id.org/saref#makesMeasurement>                     |
+| <https://w3id.org/saref#isMeasuredIn>                         |
+| <https://w3id.org/saref#TemperatureUnit>                      |
+| <https://w3id.org/saref#Smoke>                                |
+| <https://w3id.org/saref#EnergyUnit>                           |
+| <https://w3id.org/saref#UnitOfMeasure>                        |
+| <https://w3id.org/saref#Occupancy>                            |
+| <https://w3id.org/saref#Power>                                |
+| <https://w3id.org/saref#watt_hour>                            |
+| <https://w3id.org/saref#PowerUnit>                            |
+| <http://www.wurvoc.org/vocabularies/om-1.8/bar>               |
+| <https://w3id.org/saref#IlluminanceUnit>                      |
+| <https://w3id.org/saref#Currency>                             |
+| <https://w3id.org/saref#Pressure>                             |
+| <https://w3id.org/saref#Temperature>                          |
+| <http://www.wurvoc.org/vocabularies/om-1.8/kelvin>            |
+| <http://www.w3.org/2006/time#TemporalUnit>                    |
+| <https://w3id.org/saref>                                      |
+| <http://www.wurvoc.org/vocabularies/om-1.8/kilowatt_hour>     |
+| <https://w3id.org/saref#Light>                                |
+| <http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius>    |
+| <http://www.wurvoc.org/vocabularies/om-1.8/degree_Fahrenheit> |
+| <https://w3id.org/saref#PressureUnit>                         |
+| <http://www.wurvoc.org/vocabularies/om-1.8/pascal>            |
+| <http://www.wurvoc.org/vocabularies/om-1.8/watt>              |
+-----------------------------------------------------------------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Plat
+-----------
+| subject |
+===========
+-----------
+
+Platf
+-----------
+| subject |
+===========
+-----------
+
+Platfo
+-----------
+| subject |
+===========
+-----------
+
+Platfor
+-----------
+| subject |
+===========
+-----------
+
+latf
+-----------
+| subject |
+===========
+-----------
+
+latfo
+-----------
+| subject |
+===========
+-----------
+
+latfor
+-----------
+| subject |
+===========
+-----------
+
+latform
+-----------
+| subject |
+===========
+-----------
+
+atfo
+-----------
+| subject |
+===========
+-----------
+
+atfor
+-----------
+| subject |
+===========
+-----------
+
+atform
+-----------
+| subject |
+===========
+-----------
+
+tfor
+-----------
+| subject |
+===========
+-----------
+
+tform
+-----------
+| subject |
+===========
+-----------
+
+form
+----------------------------------
+| subject                        |
+==================================
+| <https://w3id.org/saref#Meter> |
+----------------------------------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+Sens
+-----------
+| subject |
+===========
+-----------
+
+Senso
+-----------
+| subject |
+===========
+-----------
+
+enso
+-----------
+| subject |
+===========
+-----------
+
+ensor
+-----------
+| subject |
+===========
+-----------
+
+nsor
+-----------
+| subject |
+===========
+-----------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+ObservationV
+-----------
+| subject |
+===========
+-----------
+
+ObservationVa
+-----------
+| subject |
+===========
+-----------
+
+ObservationVal
+-----------
+| subject |
+===========
+-----------
+
+ObservationValu
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+bservationV
+-----------
+| subject |
+===========
+-----------
+
+bservationVa
+-----------
+| subject |
+===========
+-----------
+
+bservationVal
+-----------
+| subject |
+===========
+-----------
+
+bservationValu
+-----------
+| subject |
+===========
+-----------
+
+bservationValue
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+servationV
+-----------
+| subject |
+===========
+-----------
+
+servationVa
+-----------
+| subject |
+===========
+-----------
+
+servationVal
+-----------
+| subject |
+===========
+-----------
+
+servationValu
+-----------
+| subject |
+===========
+-----------
+
+servationValue
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+ervationV
+-----------
+| subject |
+===========
+-----------
+
+ervationVa
+-----------
+| subject |
+===========
+-----------
+
+ervationVal
+-----------
+| subject |
+===========
+-----------
+
+ervationValu
+-----------
+| subject |
+===========
+-----------
+
+ervationValue
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+rvationV
+-----------
+| subject |
+===========
+-----------
+
+rvationVa
+-----------
+| subject |
+===========
+-----------
+
+rvationVal
+-----------
+| subject |
+===========
+-----------
+
+rvationValu
+-----------
+| subject |
+===========
+-----------
+
+rvationValue
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+vationV
+-----------
+| subject |
+===========
+-----------
+
+vationVa
+-----------
+| subject |
+===========
+-----------
+
+vationVal
+-----------
+| subject |
+===========
+-----------
+
+vationValu
+-----------
+| subject |
+===========
+-----------
+
+vationValue
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+ationV
+-----------
+| subject |
+===========
+-----------
+
+ationVa
+-----------
+| subject |
+===========
+-----------
+
+ationVal
+-----------
+| subject |
+===========
+-----------
+
+ationValu
+-----------
+| subject |
+===========
+-----------
+
+ationValue
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+tionV
+-----------
+| subject |
+===========
+-----------
+
+tionVa
+-----------
+| subject |
+===========
+-----------
+
+tionVal
+-----------
+| subject |
+===========
+-----------
+
+tionValu
+-----------
+| subject |
+===========
+-----------
+
+tionValue
+-----------
+| subject |
+===========
+-----------
+
+ionV
+-----------
+| subject |
+===========
+-----------
+
+ionVa
+-----------
+| subject |
+===========
+-----------
+
+ionVal
+-----------
+| subject |
+===========
+-----------
+
+ionValu
+-----------
+| subject |
+===========
+-----------
+
+ionValue
+-----------
+| subject |
+===========
+-----------
+
+onVa
+-----------
+| subject |
+===========
+-----------
+
+onVal
+-----------
+| subject |
+===========
+-----------
+
+onValu
+-----------
+| subject |
+===========
+-----------
+
+onValue
+-----------
+| subject |
+===========
+-----------
+
+nVal
+-----------
+| subject |
+===========
+-----------
+
+nValu
+-----------
+| subject |
+===========
+-----------
+
+nValue
+-----------
+| subject |
+===========
+-----------
+
+Valu
+-----------
+| subject |
+===========
+-----------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Plat
+-----------
+| subject |
+===========
+-----------
+
+Platf
+-----------
+| subject |
+===========
+-----------
+
+Platfo
+-----------
+| subject |
+===========
+-----------
+
+Platfor
+-----------
+| subject |
+===========
+-----------
+
+latf
+-----------
+| subject |
+===========
+-----------
+
+latfo
+-----------
+| subject |
+===========
+-----------
+
+latfor
+-----------
+| subject |
+===========
+-----------
+
+latform
+-----------
+| subject |
+===========
+-----------
+
+atfo
+-----------
+| subject |
+===========
+-----------
+
+atfor
+-----------
+| subject |
+===========
+-----------
+
+atform
+-----------
+| subject |
+===========
+-----------
+
+tfor
+-----------
+| subject |
+===========
+-----------
+
+tform
+-----------
+| subject |
+===========
+-----------
+
+form
+----------------------------------
+| subject                        |
+==================================
+| <https://w3id.org/saref#Meter> |
+----------------------------------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+Sens
+-----------
+| subject |
+===========
+-----------
+
+Senso
+-----------
+| subject |
+===========
+-----------
+
+enso
+-----------
+| subject |
+===========
+-----------
+
+ensor
+-----------
+| subject |
+===========
+-----------
+
+nsor
+-----------
+| subject |
+===========
+-----------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+ObservationV
+-----------
+| subject |
+===========
+-----------
+
+ObservationVa
+-----------
+| subject |
+===========
+-----------
+
+ObservationVal
+-----------
+| subject |
+===========
+-----------
+
+ObservationValu
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+bservationV
+-----------
+| subject |
+===========
+-----------
+
+bservationVa
+-----------
+| subject |
+===========
+-----------
+
+bservationVal
+-----------
+| subject |
+===========
+-----------
+
+bservationValu
+-----------
+| subject |
+===========
+-----------
+
+bservationValue
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+servationV
+-----------
+| subject |
+===========
+-----------
+
+servationVa
+-----------
+| subject |
+===========
+-----------
+
+servationVal
+-----------
+| subject |
+===========
+-----------
+
+servationValu
+-----------
+| subject |
+===========
+-----------
+
+servationValue
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+ervationV
+-----------
+| subject |
+===========
+-----------
+
+ervationVa
+-----------
+| subject |
+===========
+-----------
+
+ervationVal
+-----------
+| subject |
+===========
+-----------
+
+ervationValu
+-----------
+| subject |
+===========
+-----------
+
+ervationValue
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+rvationV
+-----------
+| subject |
+===========
+-----------
+
+rvationVa
+-----------
+| subject |
+===========
+-----------
+
+rvationVal
+-----------
+| subject |
+===========
+-----------
+
+rvationValu
+-----------
+| subject |
+===========
+-----------
+
+rvationValue
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+vationV
+-----------
+| subject |
+===========
+-----------
+
+vationVa
+-----------
+| subject |
+===========
+-----------
+
+vationVal
+-----------
+| subject |
+===========
+-----------
+
+vationValu
+-----------
+| subject |
+===========
+-----------
+
+vationValue
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+ationV
+-----------
+| subject |
+===========
+-----------
+
+ationVa
+-----------
+| subject |
+===========
+-----------
+
+ationVal
+-----------
+| subject |
+===========
+-----------
+
+ationValu
+-----------
+| subject |
+===========
+-----------
+
+ationValue
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+tionV
+-----------
+| subject |
+===========
+-----------
+
+tionVa
+-----------
+| subject |
+===========
+-----------
+
+tionVal
+-----------
+| subject |
+===========
+-----------
+
+tionValu
+-----------
+| subject |
+===========
+-----------
+
+tionValue
+-----------
+| subject |
+===========
+-----------
+
+ionV
+-----------
+| subject |
+===========
+-----------
+
+ionVa
+-----------
+| subject |
+===========
+-----------
+
+ionVal
+-----------
+| subject |
+===========
+-----------
+
+ionValu
+-----------
+| subject |
+===========
+-----------
+
+ionValue
+-----------
+| subject |
+===========
+-----------
+
+onVa
+-----------
+| subject |
+===========
+-----------
+
+onVal
+-----------
+| subject |
+===========
+-----------
+
+onValu
+-----------
+| subject |
+===========
+-----------
+
+onValue
+-----------
+| subject |
+===========
+-----------
+
+nVal
+-----------
+| subject |
+===========
+-----------
+
+nValu
+-----------
+| subject |
+===========
+-----------
+
+nValue
+-----------
+| subject |
+===========
+-----------
+
+Valu
+-----------
+| subject |
+===========
+-----------
+
+Value
+--------------------------------------------------------
+| subject                                              |
+========================================================
+| <https://w3id.org/saref#SetRelativeLevel>            |
+| <https://w3id.org/saref#Close>                       |
+| <https://w3id.org/saref#Pause>                       |
+| <https://w3id.org/saref#Stop>                        |
+| <https://w3id.org/saref#StepDown>                    |
+| <https://w3id.org/saref#Energy>                      |
+| <https://w3id.org/saref#Measurement>                 |
+| <https://w3id.org/saref#On>                          |
+| <https://w3id.org/saref#hasValue>                    |
+| <https://w3id.org/saref#Motion>                      |
+| <https://w3id.org/saref#makesMeasurement>            |
+| <https://w3id.org/saref#Smoke>                       |
+| <https://w3id.org/saref#Occupancy>                   |
+| <https://w3id.org/saref#Power>                       |
+| <https://w3id.org/saref#GetCurrentMeterValueCommand> |
+| <https://w3id.org/saref#Start>                       |
+| <https://w3id.org/saref#Toggle>                      |
+| <https://w3id.org/saref#Humidity>                    |
+| <https://w3id.org/saref#Price>                       |
+| <https://w3id.org/saref#Pressure>                    |
+| <https://w3id.org/saref#Temperature>                 |
+| <https://w3id.org/saref#Open>                        |
+| <https://w3id.org/saref>                             |
+| <https://w3id.org/saref#Off>                         |
+| <https://w3id.org/saref#Notify>                      |
+| <https://w3id.org/saref#SetAbsoluteLevel>            |
+| <https://w3id.org/saref#Light>                       |
+| <https://w3id.org/saref#StepUp>                      |
+| <https://w3id.org/saref#EventFunction>               |
+--------------------------------------------------------
+
+alue
+-----------
+| subject |
+===========
+-----------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+ObservationU
+-----------
+| subject |
+===========
+-----------
+
+ObservationUn
+-----------
+| subject |
+===========
+-----------
+
+ObservationUni
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+bservationU
+-----------
+| subject |
+===========
+-----------
+
+bservationUn
+-----------
+| subject |
+===========
+-----------
+
+bservationUni
+-----------
+| subject |
+===========
+-----------
+
+bservationUnit
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+servationU
+-----------
+| subject |
+===========
+-----------
+
+servationUn
+-----------
+| subject |
+===========
+-----------
+
+servationUni
+-----------
+| subject |
+===========
+-----------
+
+servationUnit
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+ervationU
+-----------
+| subject |
+===========
+-----------
+
+ervationUn
+-----------
+| subject |
+===========
+-----------
+
+ervationUni
+-----------
+| subject |
+===========
+-----------
+
+ervationUnit
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+rvationU
+-----------
+| subject |
+===========
+-----------
+
+rvationUn
+-----------
+| subject |
+===========
+-----------
+
+rvationUni
+-----------
+| subject |
+===========
+-----------
+
+rvationUnit
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+vationU
+-----------
+| subject |
+===========
+-----------
+
+vationUn
+-----------
+| subject |
+===========
+-----------
+
+vationUni
+-----------
+| subject |
+===========
+-----------
+
+vationUnit
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+ationU
+-----------
+| subject |
+===========
+-----------
+
+ationUn
+-----------
+| subject |
+===========
+-----------
+
+ationUni
+-----------
+| subject |
+===========
+-----------
+
+ationUnit
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+tionU
+-----------
+| subject |
+===========
+-----------
+
+tionUn
+-----------
+| subject |
+===========
+-----------
+
+tionUni
+-----------
+| subject |
+===========
+-----------
+
+tionUnit
+-----------
+| subject |
+===========
+-----------
+
+ionU
+-----------
+| subject |
+===========
+-----------
+
+ionUn
+-----------
+| subject |
+===========
+-----------
+
+ionUni
+-----------
+| subject |
+===========
+-----------
+
+ionUnit
+-----------
+| subject |
+===========
+-----------
+
+onUn
+-----------
+| subject |
+===========
+-----------
+
+onUni
+-----------
+| subject |
+===========
+-----------
+
+onUnit
+-----------
+| subject |
+===========
+-----------
+
+nUni
+-----------
+| subject |
+===========
+-----------
+
+nUnit
+-----------
+| subject |
+===========
+-----------
+
+Unit
+-----------------------------------------------------------------
+| subject                                                       |
+=================================================================
+| <http://www.wurvoc.org/vocabularies/om-1.8/lux>               |
+| <https://w3id.org/saref#Energy>                               |
+| <https://w3id.org/saref#Measurement>                          |
+| <https://w3id.org/saref#Motion>                               |
+| <https://w3id.org/saref#makesMeasurement>                     |
+| <https://w3id.org/saref#isMeasuredIn>                         |
+| <https://w3id.org/saref#TemperatureUnit>                      |
+| <https://w3id.org/saref#Smoke>                                |
+| <https://w3id.org/saref#EnergyUnit>                           |
+| <https://w3id.org/saref#UnitOfMeasure>                        |
+| <https://w3id.org/saref#Occupancy>                            |
+| <https://w3id.org/saref#Power>                                |
+| <https://w3id.org/saref#watt_hour>                            |
+| <https://w3id.org/saref#PowerUnit>                            |
+| <http://www.wurvoc.org/vocabularies/om-1.8/bar>               |
+| <https://w3id.org/saref#IlluminanceUnit>                      |
+| <https://w3id.org/saref#Currency>                             |
+| <https://w3id.org/saref#Pressure>                             |
+| <https://w3id.org/saref#Temperature>                          |
+| <http://www.wurvoc.org/vocabularies/om-1.8/kelvin>            |
+| <http://www.w3.org/2006/time#TemporalUnit>                    |
+| <https://w3id.org/saref>                                      |
+| <http://www.wurvoc.org/vocabularies/om-1.8/kilowatt_hour>     |
+| <https://w3id.org/saref#Light>                                |
+| <http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius>    |
+| <http://www.wurvoc.org/vocabularies/om-1.8/degree_Fahrenheit> |
+| <https://w3id.org/saref#PressureUnit>                         |
+| <http://www.wurvoc.org/vocabularies/om-1.8/pascal>            |
+| <http://www.wurvoc.org/vocabularies/om-1.8/watt>              |
+-----------------------------------------------------------------
+
+Platform
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+Sensor
+----------------------------------------------
+| subject                                    |
+==============================================
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#hasSensorType>     |
+| <https://w3id.org/saref#consistsOf>        |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#Sensor>            |
+| <https://w3id.org/saref#FunctionRelated>   |
+| <https://w3id.org/saref#SensingFunction>   |
+| <https://w3id.org/saref#hasSensingRange>   |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#SmokeSensor>       |
+| <https://w3id.org/saref#TemperatureSensor> |
+| <https://w3id.org/saref#TemperatureSensor> |
+----------------------------------------------
+
+ObservationValue
+-----------
+| subject |
+===========
+-----------
+
+ObservationUnit
+-----------
+| subject |
+===========
+-----------
+
+Plat
+-----------
+| subject |
+===========
+-----------
+
+Platf
+-----------
+| subject |
+===========
+-----------
+
+Platfo
+-----------
+| subject |
+===========
+-----------
+
+Platfor
+-----------
+| subject |
+===========
+-----------
+
+latf
+-----------
+| subject |
+===========
+-----------
+
+latfo
+-----------
+| subject |
+===========
+-----------
+
+latfor
+-----------
+| subject |
+===========
+-----------
+
+latform
+-----------
+| subject |
+===========
+-----------
+
+atfo
+-----------
+| subject |
+===========
+-----------
+
+atfor
+-----------
+| subject |
+===========
+-----------
+
+atform
+-----------
+| subject |
+===========
+-----------
+
+tfor
+-----------
+| subject |
+===========
+-----------
+
+tform
+-----------
+| subject |
+===========
+-----------
+
+form
+----------------------------------
+| subject                        |
+==================================
+| <https://w3id.org/saref#Meter> |
+----------------------------------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+Sens
+-----------
+| subject |
+===========
+-----------
+
+Senso
+-----------
+| subject |
+===========
+-----------
+
+enso
+-----------
+| subject |
+===========
+-----------
+
+ensor
+-----------
+| subject |
+===========
+-----------
+
+nsor
+-----------
+| subject |
+===========
+-----------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+ObservationV
+-----------
+| subject |
+===========
+-----------
+
+ObservationVa
+-----------
+| subject |
+===========
+-----------
+
+ObservationVal
+-----------
+| subject |
+===========
+-----------
+
+ObservationValu
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+bservationV
+-----------
+| subject |
+===========
+-----------
+
+bservationVa
+-----------
+| subject |
+===========
+-----------
+
+bservationVal
+-----------
+| subject |
+===========
+-----------
+
+bservationValu
+-----------
+| subject |
+===========
+-----------
+
+bservationValue
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+servationV
+-----------
+| subject |
+===========
+-----------
+
+servationVa
+-----------
+| subject |
+===========
+-----------
+
+servationVal
+-----------
+| subject |
+===========
+-----------
+
+servationValu
+-----------
+| subject |
+===========
+-----------
+
+servationValue
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+ervationV
+-----------
+| subject |
+===========
+-----------
+
+ervationVa
+-----------
+| subject |
+===========
+-----------
+
+ervationVal
+-----------
+| subject |
+===========
+-----------
+
+ervationValu
+-----------
+| subject |
+===========
+-----------
+
+ervationValue
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+rvationV
+-----------
+| subject |
+===========
+-----------
+
+rvationVa
+-----------
+| subject |
+===========
+-----------
+
+rvationVal
+-----------
+| subject |
+===========
+-----------
+
+rvationValu
+-----------
+| subject |
+===========
+-----------
+
+rvationValue
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+vationV
+-----------
+| subject |
+===========
+-----------
+
+vationVa
+-----------
+| subject |
+===========
+-----------
+
+vationVal
+-----------
+| subject |
+===========
+-----------
+
+vationValu
+-----------
+| subject |
+===========
+-----------
+
+vationValue
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+ationV
+-----------
+| subject |
+===========
+-----------
+
+ationVa
+-----------
+| subject |
+===========
+-----------
+
+ationVal
+-----------
+| subject |
+===========
+-----------
+
+ationValu
+-----------
+| subject |
+===========
+-----------
+
+ationValue
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+tionV
+-----------
+| subject |
+===========
+-----------
+
+tionVa
+-----------
+| subject |
+===========
+-----------
+
+tionVal
+-----------
+| subject |
+===========
+-----------
+
+tionValu
+-----------
+| subject |
+===========
+-----------
+
+tionValue
+-----------
+| subject |
+===========
+-----------
+
+ionV
+-----------
+| subject |
+===========
+-----------
+
+ionVa
+-----------
+| subject |
+===========
+-----------
+
+ionVal
+-----------
+| subject |
+===========
+-----------
+
+ionValu
+-----------
+| subject |
+===========
+-----------
+
+ionValue
+-----------
+| subject |
+===========
+-----------
+
+onVa
+-----------
+| subject |
+===========
+-----------
+
+onVal
+-----------
+| subject |
+===========
+-----------
+
+onValu
+-----------
+| subject |
+===========
+-----------
+
+onValue
+-----------
+| subject |
+===========
+-----------
+
+nVal
+-----------
+| subject |
+===========
+-----------
+
+nValu
+-----------
+| subject |
+===========
+-----------
+
+nValue
+-----------
+| subject |
+===========
+-----------
+
+Valu
+-----------
+| subject |
+===========
+-----------
+
+Value
+--------------------------------------------------------
+| subject                                              |
+========================================================
+| <https://w3id.org/saref#SetRelativeLevel>            |
+| <https://w3id.org/saref#Close>                       |
+| <https://w3id.org/saref#Pause>                       |
+| <https://w3id.org/saref#Stop>                        |
+| <https://w3id.org/saref#StepDown>                    |
+| <https://w3id.org/saref#Energy>                      |
+| <https://w3id.org/saref#Measurement>                 |
+| <https://w3id.org/saref#On>                          |
+| <https://w3id.org/saref#hasValue>                    |
+| <https://w3id.org/saref#Motion>                      |
+| <https://w3id.org/saref#makesMeasurement>            |
+| <https://w3id.org/saref#Smoke>                       |
+| <https://w3id.org/saref#Occupancy>                   |
+| <https://w3id.org/saref#Power>                       |
+| <https://w3id.org/saref#GetCurrentMeterValueCommand> |
+| <https://w3id.org/saref#Start>                       |
+| <https://w3id.org/saref#Toggle>                      |
+| <https://w3id.org/saref#Humidity>                    |
+| <https://w3id.org/saref#Price>                       |
+| <https://w3id.org/saref#Temperature>                 |
+| <https://w3id.org/saref#Pressure>                    |
+| <https://w3id.org/saref#Open>                        |
+| <https://w3id.org/saref>                             |
+| <https://w3id.org/saref#Off>                         |
+| <https://w3id.org/saref#Notify>                      |
+| <https://w3id.org/saref#SetAbsoluteLevel>            |
+| <https://w3id.org/saref#Light>                       |
+| <https://w3id.org/saref#StepUp>                      |
+| <https://w3id.org/saref#EventFunction>               |
+--------------------------------------------------------
+
+alue
+-----------
+| subject |
+===========
+-----------
+
+Obse
+-----------
+| subject |
+===========
+-----------
+
+Obser
+-----------
+| subject |
+===========
+-----------
+
+Observ
+-----------
+| subject |
+===========
+-----------
+
+Observa
+-----------
+| subject |
+===========
+-----------
+
+Observat
+-----------
+| subject |
+===========
+-----------
+
+Observati
+-----------
+| subject |
+===========
+-----------
+
+Observatio
+-----------
+| subject |
+===========
+-----------
+
+Observation
+-----------
+| subject |
+===========
+-----------
+
+ObservationU
+-----------
+| subject |
+===========
+-----------
+
+ObservationUn
+-----------
+| subject |
+===========
+-----------
+
+ObservationUni
+-----------
+| subject |
+===========
+-----------
+
+bser
+-----------
+| subject |
+===========
+-----------
+
+bserv
+-----------
+| subject |
+===========
+-----------
+
+bserva
+-----------
+| subject |
+===========
+-----------
+
+bservat
+-----------
+| subject |
+===========
+-----------
+
+bservati
+-----------
+| subject |
+===========
+-----------
+
+bservatio
+-----------
+| subject |
+===========
+-----------
+
+bservation
+-----------
+| subject |
+===========
+-----------
+
+bservationU
+-----------
+| subject |
+===========
+-----------
+
+bservationUn
+-----------
+| subject |
+===========
+-----------
+
+bservationUni
+-----------
+| subject |
+===========
+-----------
+
+bservationUnit
+-----------
+| subject |
+===========
+-----------
+
+serv
+-----------
+| subject |
+===========
+-----------
+
+serva
+-----------
+| subject |
+===========
+-----------
+
+servat
+-----------
+| subject |
+===========
+-----------
+
+servati
+-----------
+| subject |
+===========
+-----------
+
+servatio
+-----------
+| subject |
+===========
+-----------
+
+servation
+-----------
+| subject |
+===========
+-----------
+
+servationU
+-----------
+| subject |
+===========
+-----------
+
+servationUn
+-----------
+| subject |
+===========
+-----------
+
+servationUni
+-----------
+| subject |
+===========
+-----------
+
+servationUnit
+-----------
+| subject |
+===========
+-----------
+
+erva
+-----------
+| subject |
+===========
+-----------
+
+ervat
+-----------
+| subject |
+===========
+-----------
+
+ervati
+-----------
+| subject |
+===========
+-----------
+
+ervatio
+-----------
+| subject |
+===========
+-----------
+
+ervation
+-----------
+| subject |
+===========
+-----------
+
+ervationU
+-----------
+| subject |
+===========
+-----------
+
+ervationUn
+-----------
+| subject |
+===========
+-----------
+
+ervationUni
+-----------
+| subject |
+===========
+-----------
+
+ervationUnit
+-----------
+| subject |
+===========
+-----------
+
+rvat
+-----------
+| subject |
+===========
+-----------
+
+rvati
+-----------
+| subject |
+===========
+-----------
+
+rvatio
+-----------
+| subject |
+===========
+-----------
+
+rvation
+-----------
+| subject |
+===========
+-----------
+
+rvationU
+-----------
+| subject |
+===========
+-----------
+
+rvationUn
+-----------
+| subject |
+===========
+-----------
+
+rvationUni
+-----------
+| subject |
+===========
+-----------
+
+rvationUnit
+-----------
+| subject |
+===========
+-----------
+
+vati
+-----------
+| subject |
+===========
+-----------
+
+vatio
+-----------
+| subject |
+===========
+-----------
+
+vation
+-----------
+| subject |
+===========
+-----------
+
+vationU
+-----------
+| subject |
+===========
+-----------
+
+vationUn
+-----------
+| subject |
+===========
+-----------
+
+vationUni
+-----------
+| subject |
+===========
+-----------
+
+vationUnit
+-----------
+| subject |
+===========
+-----------
+
+atio
+-----------
+| subject |
+===========
+-----------
+
+ation
+-----------
+| subject |
+===========
+-----------
+
+ationU
+-----------
+| subject |
+===========
+-----------
+
+ationUn
+-----------
+| subject |
+===========
+-----------
+
+ationUni
+-----------
+| subject |
+===========
+-----------
+
+ationUnit
+-----------
+| subject |
+===========
+-----------
+
+tion
+-----------
+| subject |
+===========
+-----------
+
+tionU
+-----------
+| subject |
+===========
+-----------
+
+tionUn
+-----------
+| subject |
+===========
+-----------
+
+tionUni
+-----------
+| subject |
+===========
+-----------
+
+tionUnit
+-----------
+| subject |
+===========
+-----------
+
+ionU
+-----------
+| subject |
+===========
+-----------
+
+ionUn
+-----------
+| subject |
+===========
+-----------
+
+ionUni
+-----------
+| subject |
+===========
+-----------
+
+ionUnit
+-----------
+| subject |
+===========
+-----------
+
+onUn
+-----------
+| subject |
+===========
+-----------
+
+onUni
+-----------
+| subject |
+===========
+-----------
+
+onUnit
+-----------
+| subject |
+===========
+-----------
+
+nUni
+-----------
+| subject |
+===========
+-----------
+
+nUnit
+-----------
+| subject |
+===========
+-----------
+
+Unit
+-----------------------------------------------------------------
+| subject                                                       |
+=================================================================
+| <http://www.wurvoc.org/vocabularies/om-1.8/lux>               |
+| <https://w3id.org/saref#Energy>                               |
+| <https://w3id.org/saref#Measurement>                          |
+| <https://w3id.org/saref#Motion>                               |
+| <https://w3id.org/saref#makesMeasurement>                     |
+| <https://w3id.org/saref#isMeasuredIn>                         |
+| <https://w3id.org/saref#TemperatureUnit>                      |
+| <https://w3id.org/saref#Smoke>                                |
+| <https://w3id.org/saref#EnergyUnit>                           |
+| <https://w3id.org/saref#UnitOfMeasure>                        |
+| <https://w3id.org/saref#Occupancy>                            |
+| <https://w3id.org/saref#Power>                                |
+| <https://w3id.org/saref#watt_hour>                            |
+| <https://w3id.org/saref#PowerUnit>                            |
+| <http://www.wurvoc.org/vocabularies/om-1.8/bar>               |
+| <https://w3id.org/saref#IlluminanceUnit>                      |
+| <https://w3id.org/saref#Currency>                             |
+| <https://w3id.org/saref#Temperature>                          |
+| <https://w3id.org/saref#Pressure>                             |
+| <http://www.wurvoc.org/vocabularies/om-1.8/kelvin>            |
+| <http://www.w3.org/2006/time#TemporalUnit>                    |
+| <https://w3id.org/saref>                                      |
+| <http://www.wurvoc.org/vocabularies/om-1.8/kilowatt_hour>     |
+| <https://w3id.org/saref#Light>                                |
+| <http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius>    |
+| <http://www.wurvoc.org/vocabularies/om-1.8/degree_Fahrenheit> |
+| <https://w3id.org/saref#PressureUnit>                         |
+| <http://www.wurvoc.org/vocabularies/om-1.8/pascal>            |
+| <http://www.wurvoc.org/vocabularies/om-1.8/watt>              |
+-----------------------------------------------------------------
+

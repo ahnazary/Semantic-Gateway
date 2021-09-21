@@ -3,6 +3,7 @@ package application;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
+import org.apache.commons.math3.exception.OutOfRangeException;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 
@@ -148,9 +149,9 @@ public class SupportVec {
 	}
 	
 	public String classify(RealMatrix entry) {
-		String classification = "classified as -1 (will not be hired prediction)";
+		String classification = "classified as -1 ";
 		if(Math.signum(entry.multiply(w).getEntry(0, 0)+b) == 1)
-			classification = "classified as 1 (will be hired prediction)";
+			classification = "classified as 1 ";
 		
 		return classification;
 		
@@ -166,6 +167,7 @@ public class SupportVec {
 		return MatrixUtils.createRealMatrix(returnData);
 		
 	}
+	
 	public RealMatrix getAlpha() {
 		return alpha;
 	}

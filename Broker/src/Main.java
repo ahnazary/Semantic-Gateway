@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-// w1.x + b = w2.y
 
 import org.apache.commons.math3.linear.MatrixUtils;
 

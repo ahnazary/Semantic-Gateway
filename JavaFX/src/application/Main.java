@@ -46,6 +46,7 @@ public class Main extends Application {
 //			{{5, 5} , {-1}}};
 	static final double ZERO = 0.000000009;
 	static SupportVec svm = null;
+	static double x , y;
 	
 	public void start(Stage stage) throws IOException {
 		Platform.setImplicitExit(false);
@@ -112,7 +113,11 @@ public class Main extends Application {
 			
 			else {
 				try {System.out.println(svm.classify(
-						MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])}})));}
+						MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])}})));
+						x = Double.valueOf(values[0]);
+						y = Double.valueOf(values[1]);
+						System.out.println(" Distance to Decision Line is : " + distanceToLine(x , y));
+				}
 				catch(Exception e) {System.out.println("invalid input"); }
 			}
 		}
@@ -132,7 +137,19 @@ public class Main extends Application {
 		IntStream.range(0, 50).forEach(i -> System.out.print("-"));System.out.println();
 		System.out.println("<" + (new String(String.format("%.9f", svm.getW().getData()[0][0])) + ", " +
 								  new String(String.format("%.9f", svm.getW().getData()[1][0]))) + ">   | " + svm.getB());
+		
+		
 	}
-	
+	public static double distanceToLine(double x, double y) {
+		double result = 0.0;
+		
+		double a = -(svm.getW().getData()[0][0]);
+		double b = svm.getW().getData()[1][0];
+		double c = -(svm.getB());
+		
+		result = (Math.abs(a*x + b*y + c)) / (Math.sqrt(a*a+b*b));
+		
+		return result;
+	}
 	
 }
