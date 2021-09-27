@@ -14,7 +14,7 @@ public class ReadJSON {
 
 	String fileAddress;
 	String input;
-	public static ArrayList<String> keylist = new ArrayList<String>();
+	private static ArrayList<String> keylist = new ArrayList<String>();
 	
 	public ReadJSON(String fileAddress) throws IOException {
 		
@@ -54,12 +54,19 @@ public class ReadJSON {
         }
     }
 
-	public void returnKeys() throws IOException, ParseException {
+	public void printOutKeys() throws IOException, ParseException {
 		
 		JSONObject jsonObject = new JSONObject(input);
 		myfunction(jsonObject);
 		System.out.println(keylist);
         
+	}
+	
+	public ArrayList<String> getKeys(){
+		
+		JSONObject jsonObject = new JSONObject(input);
+		myfunction(jsonObject);
+		return keylist;		
 	}
 	
 	private String readFile(String filePath) throws IOException {

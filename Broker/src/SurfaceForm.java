@@ -30,6 +30,7 @@ public class SurfaceForm {
 	String modelAddress;
 	static Model model;
 	static ArrayList<RDFNode> URIs = new ArrayList<RDFNode>();
+	private static ArrayList<String> keyList = new ArrayList<String>();
 
 	static String input;
 	
@@ -39,7 +40,9 @@ public class SurfaceForm {
 		this.modelAddress = modelAddress;
 		FileManager.get().addLocatorClassLoader(Main.class.getClassLoader());
 		model = FileManager.get().loadModel(modelAddress); // model that query request is sent to
-		input = readFile("/home/amirhossein/Documents/GitHub/semantic-broker/Broker/input"); 
+		input = readFile(inputAddress);
+		ReadJSON rs = new ReadJSON(inputAddress);
+		keyList = rs.getKeys();
 			
 	}	
 	
@@ -158,172 +161,107 @@ public class SurfaceForm {
 	
 	public void exactQuery() throws FileNotFoundException {
 				
-				String[] lines = input.split("\\r?\\n");
-				 for (String line: lines) {
-					 int i = 0;
-					 String[] words = line.split("\\W+");
-					 for (String word : words) {
-						 if(i == 1) {
-							 System. out. println(word);
-							 String sarefQueryConsole = 
-									 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-									+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-									+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-									+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-									+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-									+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-									+"PREFIX time: <http://www.w3.org/2006/time#> "
-									+"PREFIX saref: <https://w3id.org/saref#>  "
-									+"PREFIX schema: <http://schema.org/>  "
-									+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
-			
-									+"SELECT ?subject ?predicate ?object\n"
-							 		+ "WHERE\n"
-							 		+ "{\n"
-							 		+"{?subject ?predicate ?object}"
-							 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-							 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							 		//+"filter (contains(str(?object), \""+word+"\"))"
-							 		+"FILTER regex(?object, \""+word+"\", \"i\" ) "
-							 		+""
-							 		+ "}";
-							 
-							 String sarefQueryFile = 
-									 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-									+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-									+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-									+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-									+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-									+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-									+"PREFIX time: <http://www.w3.org/2006/time#> "
-									+"PREFIX saref: <https://w3id.org/saref#>  "
-									+"PREFIX schema: <http://schema.org/>  "
-									+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
-			
-									+"SELECT ?subject \n"
-							 		+ "WHERE\n"
-							 		+ "{\n"
-							 		+"{?subject ?predicate ?object}"
-							 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-							 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							 		//+"filter (contains(str(?object), \""+word+"\"))"
-							 		+"FILTER regex(?object, \""+word+"\", \"i\" ) "
-							 		+""
-							 		+ "}";
-							 //System.out.println(word);
-							 
-							 appendStrToFile("Output",word);
-							 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));		
-							 //sendQueryRequestConsole(sarefQueryConsole, model);
-							 //System.out.println("Surface Similarity Feature is : 1" + "\n\n");
-							 
-							 //System.out.println(resultsArr(sarefQueryFile, model));
-							 System.out.println(resultsMap(sarefQueryFile, model, (float)1));
-						
-						 }
-						 i++;
-					 }
-				 }					 
-			}	
+		for(int i = 0; i < keyList.size() ; i++) {
+			 String word = keyList.get(i);
+			 System. out. println(word);
+			 
+			 String sarefQueryFile = 
+					 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+					+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+					+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+					+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+					+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+					+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+					+"PREFIX time: <http://www.w3.org/2006/time#> "
+					+"PREFIX saref: <https://w3id.org/saref#>  "
+					+"PREFIX schema: <http://schema.org/>  "
+					+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
+
+					+"SELECT ?subject \n"
+			 		+ "WHERE\n"
+			 		+ "{\n"
+			 		+"{?subject ?predicate ?object}"
+			 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
+			 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
+			 		//+"filter (contains(str(?object), \""+word+"\"))"
+			 		+"FILTER regex(?object, \""+word+"\", \"i\" ) "
+			 		+""
+			 		+ "}";
+			 
+			 
+			 appendStrToFile("Output",word);
+			 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));		
+			 //sendQueryRequestConsole(sarefQueryConsole, model);
+			 //System.out.println("Surface Similarity Feature is : 1" + "\n\n");
+			 
+			 //System.out.println(resultsArr(sarefQueryFile, model));
+			 System.out.println(resultsMap(sarefQueryFile, model, (float)1));
+		
+		 }
+		 
+	 }
+				 					 
+				
 	
 	public void morphemesQuery() throws FileNotFoundException {
 
-
-		
-		String[] lines = input.split("\\r?\\n");
-		 for (String line: lines) {
-			 int i = 0;
-			 String[] words = line.split("\\W+");
-			 for (String word : words) {
-				 if(i == 1) {
-					 System. out. println(word);
-					 char wordArr[] = new char[word.length()];
-			
-					 for(int j = 0; j < word.length(); j++) {
-						 
-						 wordArr[j] = word.charAt(j);
-						 //System. out. println(wordArr[j]);
-						 
-					 }
-					 
-					 for(int j = 0; j < word.length(); j++) {
-						 for(int k = j + 3; k < word.length();k++) {
-							 if (j == 0 && k == word.length() -1)
-								 continue;
-	 
-							 String morphemes = "";
-							 for(int z = j; z <= k ; z++) {
-								 //sb.append(wordArr[k]);
-								 morphemes += wordArr[z];
-							 }
-							 String sarefQueryFile = 
-									 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-									+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-									+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-									+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-									+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-									+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-									+"PREFIX time: <http://www.w3.org/2006/time#> "
-									+"PREFIX saref: <https://w3id.org/saref#>  "
-									+"PREFIX schema: <http://schema.org/>  "
-									+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
-			
-									+"SELECT ?subject \n"
-							 		+ "WHERE\n"
-							 		+ "{\n"
-							 		+"{?subject ?predicate ?object}"
-							 		
-							 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-							 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							 		//+"filter (contains(str(?object), '"+morphemes+"'))"
-							 		+"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
-							 		//+"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
-							 		//+"FILTER regex(?object,'"+morphemes+"') "
-							 		+ "}";
-							
-							 String sarefQueryConsole = 
-									 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-									+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-									+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-									+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-									+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-									+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-									+"PREFIX time: <http://www.w3.org/2006/time#> "
-									+"PREFIX saref: <https://w3id.org/saref#>  "
-									+"PREFIX schema: <http://schema.org/>  "
-									+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
-			
-									+"SELECT ?subject ?predicate ?object\n"
-							 		+ "WHERE\n"
-							 		+ "{\n"
-							 		+"{?subject ?predicate ?object}"
-							 		
-							 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-							 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							 		//+"filter (contains(str(?object), '"+morphemes+"'))"
-							 		+"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
-							 		//+"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
-							 		//+"FILTER regex(?object,'"+morphemes+"') "
-							 		+ "}";
-							 
-							 appendStrToFile("Output",morphemes);
-							 if(sendQueryRequestFile(sarefQueryFile, model) != "")
-								 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));					
-							 
-							 System.out.println('"' + morphemes + '"' );
-							 //sendQueryRequestConsole(sarefQueryConsole, model);
-							 //System.out.println("Surface Similarity Feature is : " + surfaceSimilarity(word,morphemes) + "\n\n");
-							 
-							 System.out.println(resultsMap(sarefQueryFile, model, (float)surfaceSimilarity(word,morphemes)) + "\n");
-						 }
-					 }	
+		for(int i = 0; i < keyList.size() ; i++) {
+			 String word = keyList.get(i);
+			 System. out. println(word);
+			 char wordArr[] = new char[word.length()];
 	
+			 for(int j = 0; j < word.length(); j++) {			 
+				 wordArr[j] = word.charAt(j);				 
 				 }
-				 i++;
-			 }
-		 }
+				 
+				 for(int j = 0; j < word.length(); j++) {
+					 for(int k = j + 3; k < word.length();k++) {
+					 String morphemes = "";
+					 
+					 for(int z = j; z <= k ; z++) {
+						 morphemes += wordArr[z];
+					 }
+					 String sarefQueryFile = 
+							 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+							+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+							+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+							+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+							+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+							+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+							+"PREFIX time: <http://www.w3.org/2006/time#> "
+							+"PREFIX saref: <https://w3id.org/saref#>  "
+							+"PREFIX schema: <http://schema.org/>  "
+							+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
+	
+							+"SELECT ?subject \n"
+					 		+ "WHERE\n"
+					 		+ "{\n"
+					 		+"{?subject ?predicate ?object}"
+					 		
+					 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
+					 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
+					 		//+"filter (contains(str(?object), '"+morphemes+"'))"
+					 		+"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
+					 		//+"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
+					 		//+"FILTER regex(?object,'"+morphemes+"') "
+					 		+ "}";
+					
+					 
+					 appendStrToFile("Output",morphemes);
+					 if(sendQueryRequestFile(sarefQueryFile, model) != "")
+						 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));					
+					 
+					 System.out.println('"' + morphemes + '"' );
+					 //sendQueryRequestConsole(sarefQueryConsole, model);
+					 //System.out.println("Surface Similarity Feature is : " + surfaceSimilarity(word,morphemes) + "\n\n");
+					 
+					 System.out.println(resultsMap(sarefQueryFile, model, (float)surfaceSimilarity(word,morphemes)) + "\n");
+				 }
+			 }	
+		 }			
+	 }
 		
-	}	
+	
 	
 	private boolean hasMeaning(String word) {
 				

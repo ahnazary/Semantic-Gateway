@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
@@ -8,15 +12,28 @@ public class SupportVec {
 	private RealMatrix x, y;
 	static final double MIN_ALPHA_OPTIMIZATION = 0.00001;
 	static final int MAX_NUMB_OF_ITERATION = 50;
-	private RealMatrix alpha;
+	private static RealMatrix alpha;
 	static final double EPSILON = 0.001;
 	static final double C = 1.0;
-	private RealMatrix w;
-	private double b = 0;
+	private static RealMatrix w;
+	private static double b = 0;
+	static final double ZERO = 0.000000009;
+	static SupportVec svm = null;
 	
-	public SupportVec (RealMatrix x, RealMatrix y){
-		this.x = x; 
-		this.y = y;
+	public SupportVec (double [][][] TRAINING_DATA){
+		
+		double [][] xArray = new double [TRAINING_DATA.length][2];
+		double [][] yArray = new double [TRAINING_DATA.length][1];
+		
+		for(int i = 0; i < TRAINING_DATA.length; i++ ) {
+		
+			xArray[i][0] = TRAINING_DATA[i][0][0];
+			xArray[i][1] = TRAINING_DATA[i][0][1];
+			yArray[i][0] = TRAINING_DATA[i][1][0];
+		}
+		
+		x = MatrixUtils.createRealMatrix(xArray); 
+		y = MatrixUtils.createRealMatrix(yArray);
 		double[] alphaArray = new double[x.getData().length];
 		IntStream.range(0, alphaArray.length).forEach(i -> alphaArray[i] = 0);
 		alpha = MatrixUtils.createColumnRealMatrix(alphaArray);
@@ -144,10 +161,10 @@ public class SupportVec {
 		return w;
 	}
 	
-	public String classify(RealMatrix entry) {
-		String classification = "classified as -1 (will not be hired prediction)";
+	public static String classify(RealMatrix entry) {
+		String classification = "classified as -1 ";
 		if(Math.signum(entry.multiply(w).getEntry(0, 0)+b) == 1)
-			classification = "classified as 1 (will be hired prediction)";
+			classification = "classified as 1 ";
 		
 		return classification;
 		
@@ -163,6 +180,40 @@ public class SupportVec {
 		return MatrixUtils.createRealMatrix(returnData);
 		
 	}
+	
+	public void displayInfoTables() {
+		
+		System.out.println("    Support vector    | label  | alpha");
+		IntStream.range(0, 50).forEach(i -> System.out.print("-"));System.out.println();
+		for(int i = 0 ; i < x.getData().length ; i++) {
+			if(alpha.getData()[i][0] > ZERO && alpha.getData()[i][0] != SupportVec.C) {
+				StringBuffer ySB = new StringBuffer(String.valueOf(y.getData()[i][0]));
+				ySB.setLength(5);
+				System.out.println(Arrays.toString(x.getData()[i])+ " | " + ySB+ " | " + new String(String.format("%.10f", alpha.getData()[i][0])));
+			}
+		}
+		System.out.println(" \n            wT            |   b  ");
+		IntStream.range(0, 50).forEach(i -> System.out.print("-"));System.out.println();
+		System.out.println("<" + (new String(String.format("%.9f", w.getData()[0][0])) + ", " +
+								  new String(String.format("%.9f", w.getData()[1][0]))) + ">   | " + b);
+	}
+	
+	public void handleCommandLine() throws IOException{
+		BufferedReader bufferedReader = new BufferedReader (new InputStreamReader(System.in));
+		while(true) {
+			System.out.println("\n> to classify new candidate enter scores for intervies 1 & 2 (or exit)");
+			String[] values = (bufferedReader.readLine()).split(" ");
+			if (values[0].equals("exit"))  
+				System.exit(0);
+			
+			else {
+				try {System.out.println(classify(
+						MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])}})));}
+				catch(Exception e) {System.out.println("invalid input"); }
+			}
+		}
+	}
+	
 	public RealMatrix getAlpha() {
 		return alpha;
 	}
