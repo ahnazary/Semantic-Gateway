@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 
-public class SupportVec {
+public class SVM {
 	private RealMatrix x, y;
 	static final double MIN_ALPHA_OPTIMIZATION = 0.00001;
 	static final int MAX_NUMB_OF_ITERATION = 50;
@@ -18,9 +18,9 @@ public class SupportVec {
 	private static RealMatrix w;
 	private static double b = 0;
 	static final double ZERO = 0.000000009;
-	static SupportVec svm = null;
+	static SVM svm = null;
 	
-	public SupportVec (double [][][] TRAINING_DATA){
+	public SVM (double [][][] TRAINING_DATA){
 		
 		double [][] xArray = new double [TRAINING_DATA.length][2];
 		double [][] yArray = new double [TRAINING_DATA.length][1];
@@ -186,7 +186,7 @@ public class SupportVec {
 		System.out.println("    Support vector    | label  | alpha");
 		IntStream.range(0, 50).forEach(i -> System.out.print("-"));System.out.println();
 		for(int i = 0 ; i < x.getData().length ; i++) {
-			if(alpha.getData()[i][0] > ZERO && alpha.getData()[i][0] != SupportVec.C) {
+			if(alpha.getData()[i][0] > ZERO && alpha.getData()[i][0] != SVM.C) {
 				StringBuffer ySB = new StringBuffer(String.valueOf(y.getData()[i][0]));
 				ySB.setLength(5);
 				System.out.println(Arrays.toString(x.getData()[i])+ " | " + ySB+ " | " + new String(String.format("%.10f", alpha.getData()[i][0])));
@@ -201,7 +201,7 @@ public class SupportVec {
 	public void handleCommandLine() throws IOException{
 		BufferedReader bufferedReader = new BufferedReader (new InputStreamReader(System.in));
 		while(true) {
-			System.out.println("\n> to classify new candidate enter scores for intervies 1 & 2 (or exit)");
+			System.out.println("\n> to classify new candidate enter new scores (or exit)");
 			String[] values = (bufferedReader.readLine()).split(" ");
 			if (values[0].equals("exit"))  
 				System.exit(0);

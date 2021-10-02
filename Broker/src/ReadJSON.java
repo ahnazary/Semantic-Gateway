@@ -22,12 +22,13 @@ public class ReadJSON {
 		input = readFile(fileAddress);
 	}
 	
-	public static void myfunction(JSONObject x) throws JSONException
+	private static void myfunction(JSONObject x) throws JSONException
     {
   
 		
 		JSONArray keys =  x.names();
-        //System.out.println(keys.length());
+		//System.out.println(keys);
+		
         for(int i=0;i<keys.length();i++)
         {
             String current_key = keys.get(i).toString();   
@@ -35,6 +36,7 @@ public class ReadJSON {
             {
                 keylist.add(current_key);
                 myfunction((JSONObject) x.get(current_key));
+               
             } 
             else if( x.get(current_key).getClass().getName().equals("org.json.JSONArray"))
             {
@@ -44,12 +46,29 @@ public class ReadJSON {
                     {
                         keylist.add(current_key);
                         myfunction((JSONObject)((JSONArray) x.get(current_key)).get(j));
+                        
                     }
                 }
             }
             else 
-            {
+            {     
+//            	
+//            	try {
+//            		if(x.get(current_key) instanceof Boolean)
+//            			System.out.println(x.getBoolean(current_key));
+//            		
+//            		if(x.get(current_key) instanceof String)
+//            			System.out.println(x.getString(current_key));
+//            		
+//            		if(x.get(current_key) instanceof Integer)
+//            			System.out.println(x.getInt(current_key));
+//            		
+//            	}
+//            	catch (Exception e) {
+//            		System.out.println( e );
+//            	}
                 keylist.add(current_key);
+                
             }
         }
     }

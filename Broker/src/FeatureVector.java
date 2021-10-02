@@ -8,8 +8,10 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
@@ -25,7 +27,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.FileManager;
 import org.apache.jena.vocabulary.VCARD;
 
-public class SurfaceForm {
+public class FeatureVector {
 	String inputAddress;
 	String modelAddress;
 	static Model model;
@@ -35,7 +37,7 @@ public class SurfaceForm {
 	static String input;
 	
 	@SuppressWarnings("deprecation")
-	public SurfaceForm(String inputAddress,String modelAddress) throws IOException {
+	public FeatureVector(String inputAddress,String modelAddress) throws IOException {
 		this.inputAddress = inputAddress;
 		this.modelAddress = modelAddress;
 		FileManager.get().addLocatorClassLoader(Main.class.getClassLoader());
@@ -65,19 +67,7 @@ public class SurfaceForm {
         return URIs;		
 	}
 	
-	private float popularity(RDFNode URI, ArrayList<RDFNode> URIs) {
-		
-		int repetition = 0;
-		for(int i = 0; i < URIs.size(); i++) {
-			if(URI.equals(URIs.get(i))) {
-				repetition++;
-			}
-		}	
-		
-		float result;
-		result = ((float)repetition) / ((float)URIs.size());
-		return result;
-	}
+	
 	
 	private Map<RDFNode , float[]> resultsMap(String inputQuery, Model model, float similarityFeature){
 		Query query = QueryFactory.create(inputQuery); 
@@ -92,40 +82,29 @@ public class SurfaceForm {
   
          QuerySolution soln = resultsOutput.nextSolution() ;     
          RDFNode subject = soln.get("subject");     
-         System.out.println(subject);
-         System.out.println(" surface similarity Feature is : " + similarityFeature);
-         System.out.println(" popularity is : "  + popularity(subject, resultsArr(inputQuery,model)) + " \n");
          
-         float[] floatArray = {2.0f,1.5f,8.45f,116.77f};
+         float popularity = popularity(subject, resultsArr(inputQuery,model));
+         
+         float[] floatArray = {similarityFeature, popularity};
          map.put(subject, floatArray);
         }
         //System.out.println(map);
         return map;		
 	}
 	
-	
-	private void sendQueryRequestConsole (String inputQuery, Model model) throws FileNotFoundException {
-			 
+	private float popularity(RDFNode URI, ArrayList<RDFNode> URIs) {
 			
-	        Query query = QueryFactory.create(inputQuery); 
-	
-	        QueryExecution qExe = QueryExecutionFactory.create( query, model);
-	        ResultSet resultsOutput = qExe.execSelect();
-	        
-	        if (!resultsOutput.hasNext())	
-	        	System.out.println("Resultset is empty");
-	        
-	        if(resultsOutput.hasNext()) {
-		        try {
-		            ResultSetFormatter.out(System.out, resultsOutput);		            
-		        }
-		   
-		        finally {
-		            qExe.close();
-		            
-		        }
-	        }       
-	}
+			int repetition = 0;
+			for(int i = 0; i < URIs.size(); i++) {
+				if(URI.equals(URIs.get(i))) {
+					repetition++;
+				}
+			}	
+			
+			float result;
+			result = ((float)repetition) / ((float)URIs.size());
+			return result;
+		}
 	
 	private String sendQueryRequestFile(String inputQuery, Model model) throws FileNotFoundException {
 		 
@@ -185,24 +164,21 @@ public class SurfaceForm {
 			 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
 			 		//+"filter (contains(str(?object), \""+word+"\"))"
 			 		+"FILTER regex(?object, \""+word+"\", \"i\" ) "
-			 		+""
 			 		+ "}";
 			 
-			 
-			 appendStrToFile("Output",word);
-			 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));		
-			 //sendQueryRequestConsole(sarefQueryConsole, model);
-			 //System.out.println("Surface Similarity Feature is : 1" + "\n\n");
-			 
-			 //System.out.println(resultsArr(sarefQueryFile, model));
-			 System.out.println(resultsMap(sarefQueryFile, model, (float)1));
+			 if(resultsArr(sarefQueryFile,model).size() > 0) {
+				 appendStrToFile("Output",word);
+				 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));	
+			 }			 
+			 Map<RDFNode, float[]> map = new HashMap<RDFNode, float[]>();
+			 map = resultsMap(sarefQueryFile, model, 1f);
 		
-		 }
-		 
+			 for (Entry<RDFNode, float[]> pair : map.entrySet()) {
+				    System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s", pair.getKey() + "\n" , Arrays.toString(pair.getValue()) + "\n"));   
+				}
+		 }		 
 	 }
-				 					 
-				
-	
+				 					 	
 	public void morphemesQuery() throws FileNotFoundException {
 
 		for(int i = 0; i < keyList.size() ; i++) {
@@ -214,13 +190,35 @@ public class SurfaceForm {
 				 wordArr[j] = word.charAt(j);				 
 				 }
 				 
-				 for(int j = 0; j < word.length(); j++) {
-					 for(int k = j + 3; k < word.length();k++) {
-					 String morphemes = "";
-					 
+			 for(int j = 0; j < word.length(); j++) {
+				 for(int k = j + 3; k < word.length();k++) {
+				 String morphemes = "";
+				 
 					 for(int z = j; z <= k ; z++) {
 						 morphemes += wordArr[z];
 					 }
+					 
+					 String sarefQueryFileExact = 
+							 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+							+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+							+"PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+							+"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+							+"PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+							+"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+							+"PREFIX time: <http://www.w3.org/2006/time#> "
+							+"PREFIX saref: <https://w3id.org/saref#>  "
+							+"PREFIX schema: <http://schema.org/>  "
+							+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
+
+							+"SELECT ?subject \n"
+					 		+ "WHERE\n"
+					 		+ "{\n"
+					 		+"{?subject ?predicate ?object}"
+					 		//+"filter (contains(str(?object), \""+word+"\") || contains(str(?subject), \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
+					 		//+"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate, \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
+					 		//+"filter (contains(str(?object), \""+word+"\"))"
+					 		+"FILTER regex(?object, \""+morphemes+"\", \"i\" ) "
+					 		+ "}";
 					 String sarefQueryFile = 
 							 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 							+"PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
@@ -232,6 +230,7 @@ public class SurfaceForm {
 							+"PREFIX saref: <https://w3id.org/saref#>  "
 							+"PREFIX schema: <http://schema.org/>  "
 							+"PREFIX dcterms: <http://purl.org/dc/terms/>  "
+							
 	
 							+"SELECT ?subject \n"
 					 		+ "WHERE\n"
@@ -246,16 +245,33 @@ public class SurfaceForm {
 					 		//+"FILTER regex(?object,'"+morphemes+"') "
 					 		+ "}";
 					
-					 
-					 appendStrToFile("Output",morphemes);
-					 if(sendQueryRequestFile(sarefQueryFile, model) != "")
-						 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));					
-					 
-					 System.out.println('"' + morphemes + '"' );
-					 //sendQueryRequestConsole(sarefQueryConsole, model);
-					 //System.out.println("Surface Similarity Feature is : " + surfaceSimilarity(word,morphemes) + "\n\n");
-					 
-					 System.out.println(resultsMap(sarefQueryFile, model, (float)surfaceSimilarity(word,morphemes)) + "\n");
+					 Map<RDFNode, float[]> map = new HashMap<RDFNode, float[]>();
+					 if(j == 0 && k == word.length()-1) {
+						 if(resultsArr(sarefQueryFileExact,model).size() > 0) {
+							 appendStrToFile("Output",word);
+							 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFileExact, model));
+						 }
+						 
+						 map = resultsMap(sarefQueryFileExact, model, 1f);
+						 System. out. println(morphemes);
+						 
+						 
+						 for (Entry<RDFNode, float[]> pair : map.entrySet()) {
+							    System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s", pair.getKey() + "\n" , Arrays.toString(pair.getValue()) + "\n"));   
+							}
+					 }
+					 else {
+						 if(resultsArr(sarefQueryFile,model).size() > 0) {
+							 appendStrToFile("Output",morphemes);
+							 appendStrToFile("Output",sendQueryRequestFile(sarefQueryFile, model));			
+						 }					 
+
+						 map = resultsMap(sarefQueryFile, model, 1f);
+						 System. out. println(morphemes);
+						 for (Entry<RDFNode, float[]> pair : map.entrySet()) {
+							    System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s", pair.getKey() + "\n" , Arrays.toString(pair.getValue()) + "\n"));   
+							}
+					 }
 				 }
 			 }	
 		 }			
@@ -283,18 +299,18 @@ public class SurfaceForm {
 				+ "        ?subject rdfs:label \""+word+"\"@en.\n"
 				+ "     }";
 		
-				Query query = QueryFactory.create(queryStr); //inputString is the query above
-		
-		        QueryExecution qExe = QueryExecutionFactory.sparqlService( "https://dbpedia.org/sparql/" , query);
-		        ResultSet resultsOutput = qExe.execSelect();
-		        if (resultsOutput.hasNext())
-		        	return true;
-		        
-		        else 
-		        	return false;				        	
+		Query query = QueryFactory.create(queryStr); //inputString is the query above
+
+        QueryExecution qExe = QueryExecutionFactory.sparqlService( "https://dbpedia.org/sparql/" , query);
+        ResultSet resultsOutput = qExe.execSelect();
+        if (resultsOutput.hasNext())
+        	return true;
+        
+        else 
+        	return false;				        	
 	} 
 
-	private double surfaceSimilarity(String word, String morphemes) {
+	private float surfaceSimilarity(String word, String morphemes) {
 			
 			float z = ((float)morphemes.length())/((float)word.length());
 			return z;

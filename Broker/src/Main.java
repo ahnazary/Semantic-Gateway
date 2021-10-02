@@ -1,9 +1,6 @@
-
+import java.io.File;
 import java.io.IOException;
-
 import java.text.ParseException;
-
-
 
 public class Main {
 	
@@ -15,21 +12,22 @@ public class Main {
 	public static void main(String[] args) throws IOException, ParseException {
 	
 		
-//		final SupportVec svm = new SupportVec(TRAINING_DATA);
+//		final SVM svm = new SVM(TRAINING_DATA);
 //		svm.displayInfoTables();
 //		svm.handleCommandLine();
 		
 		
-		SurfaceForm Test = new SurfaceForm("input","saref.ttl");
-		//Test.exactQuery();
+		FeatureVector Test = new FeatureVector("input","saref.ttl");
+		File file = new File("Output");
+		file.delete();
+		Test.exactQuery();
 		Test.morphemesQuery();
-//		
+		
+//		ReadJSON rs = new ReadJSON("input_3");
+//		rs.printOutKeys();
 //		
 //		WriteJSON Sensors = new WriteJSON();
 //		Sensors.writeJSONFile();
-//		
-//		ReadJSON rs = new ReadJSON("input_3");
-//		rs.printOutKeys();
 		
 	}			
 }
