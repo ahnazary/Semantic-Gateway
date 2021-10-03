@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+
 import org.apache.jena.riot.writer.WriterDatasetRIOTBase;
 
 
@@ -20,10 +21,8 @@ public class Main {
 		
 		
 		FeatureVector Test = new FeatureVector("input","saref.ttl");
-		File file = new File("Output");
-		file.delete();
-		Test.exactQuery();
 		Test.morphemesQuery();
+		
 		
 //		ReadJSON rs = new ReadJSON("input_3");
 //		rs.printOutKeys();

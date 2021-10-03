@@ -3,5 +3,6 @@
     "Observation":"TemperatureObservation",
     "Sensor":"TMP102",
     "ObservationValue":"22",
-    "ObservationUnit":"Celsius"
+    "ObservationUnit":"Celsius",
+    "energy":"eer"
 }
