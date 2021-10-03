@@ -1375,8 +1375,8 @@ Value
 | <https://w3id.org/saref#GetCurrentMeterValueCommand> |
 | <https://w3id.org/saref#Start>                       |
 | <https://w3id.org/saref#Toggle>                      |
-| <https://w3id.org/saref#Humidity>                    |
 | <https://w3id.org/saref#Price>                       |
+| <https://w3id.org/saref#Humidity>                    |
 | <https://w3id.org/saref#Pressure>                    |
 | <https://w3id.org/saref#Temperature>                 |
 | <https://w3id.org/saref#Open>                        |
