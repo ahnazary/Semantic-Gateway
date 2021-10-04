@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 
-public class SVM {
+public class WeightedSVM {
 	private RealMatrix x, y;
 	static final double MIN_ALPHA_OPTIMIZATION = 0.00001;
 	static final int MAX_NUMB_OF_ITERATION = 50;
@@ -18,18 +18,20 @@ public class SVM {
 	private static RealMatrix w;
 	private static double b = 0;
 	static final double ZERO = 0.000000009;
-	static SVM svm = null;
+	static WeightedSVM svm = null;
+	double [][][] TRAINING_DATA;
 	
-	public SVM (double [][][] TRAINING_DATA){
+	public WeightedSVM (double [][][] TRAINING_DATA){
 		
-		double [][] xArray = new double [TRAINING_DATA.length][2];
-		double [][] yArray = new double [TRAINING_DATA.length][1];
+		this.TRAINING_DATA = TRAINING_DATA;
+		double [][] xArray = new double [weightedTrainingData(TRAINING_DATA).length][2];
+		double [][] yArray = new double [weightedTrainingData(TRAINING_DATA).length][1];
 		
-		for(int i = 0; i < TRAINING_DATA.length; i++ ) {
+		for(int i = 0; i < weightedTrainingData(TRAINING_DATA).length; i++ ) {
 		
-			xArray[i][0] = TRAINING_DATA[i][0][0];
-			xArray[i][1] = TRAINING_DATA[i][0][1];
-			yArray[i][0] = TRAINING_DATA[i][1][0];
+			xArray[i][0] = weightedTrainingData(TRAINING_DATA)[i][0][0];
+			xArray[i][1] = weightedTrainingData(TRAINING_DATA)[i][0][1];
+			yArray[i][0] = weightedTrainingData(TRAINING_DATA)[i][1][0];
 		}
 		
 		x = MatrixUtils.createRealMatrix(xArray); 
@@ -195,7 +197,7 @@ public class SVM {
 		System.out.println("    Support vector    | label  | alpha");
 		IntStream.range(0, 50).forEach(i -> System.out.print("-"));System.out.println();
 		for(int i = 0 ; i < x.getData().length ; i++) {
-			if(alpha.getData()[i][0] > ZERO && alpha.getData()[i][0] != SVM.C) {
+			if(alpha.getData()[i][0] > ZERO && alpha.getData()[i][0] != WeightedSVM.C) {
 				StringBuffer ySB = new StringBuffer(String.valueOf(y.getData()[i][0]));
 				ySB.setLength(5);
 				System.out.println(Arrays.toString(x.getData()[i])+ " | " + ySB+ " | " + new String(String.format("%.10f", alpha.getData()[i][0])));
@@ -217,10 +219,58 @@ public class SVM {
 			
 			else {
 				try {System.out.println(classify(
-						MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])}})));}
+						MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])*multiplier(TRAINING_DATA)}})));}
 				catch(Exception e) {System.out.println("invalid input"); }
 			}
 		}
+	}
+	
+	private static double [][][] weightedTrainingData(double [][][] input){
+		double maxx = 0;
+		double maxy = 0;
+		double[][][] result = new double[input.length][2][2];
+		
+		for(int i = 0; i < input.length; i++) {
+				if(input[i][0][1] > maxy) {
+					maxy = input[i][0][1];
+				}
+		}
+		for(int i = 0; i < input.length; i++) {
+			if(input[i][0][0] > maxx) {
+				maxx = input[i][0][0];
+			}	
+		}
+		double mult = maxx/maxy;
+		
+		for(int i = 0; i < input.length; i++) {
+			result[i][0][0] = input[i][0][0];	
+		}
+		for(int i = 0; i < input.length; i++) {
+			result[i][1][0] = input[i][1][0];	
+		}
+		for(int i = 0; i < input.length; i++) {
+			result[i][0][1] = input[i][0][1] * mult;	
+		}
+		
+		return result;
+	}
+	
+	public static double multiplier(double [][][] input){
+		double maxx = 0;
+		double maxy = 0;
+		
+		for(int i = 0; i < input.length; i++) {
+				if(input[i][0][1] > maxy) {
+					maxy = input[i][0][1];
+				}
+		}
+		for(int i = 0; i < input.length; i++) {
+			if(input[i][0][0] > maxx) {
+				maxx = input[i][0][0];
+			}	
+		}
+		double mult = maxx/maxy;
+		return mult;
 	}
 	
 	public RealMatrix getAlpha() {

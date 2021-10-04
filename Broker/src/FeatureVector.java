@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.Console;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,13 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
-import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.util.FileManager;
@@ -30,6 +31,36 @@ public class FeatureVector {
 	static Model model;
 	static ArrayList<RDFNode> URIs = new ArrayList<RDFNode>();
 	private static ArrayList<String> keyList = new ArrayList<String>();
+	
+	static final double [][][] TRAINING_DATA = {{{0.5555, 0.04175} , {+1}}, 							
+			{{0.4165, 0.06217} , {+1}},
+			{{0.4154, 0.05565} , {+1}},
+			{{0.5239, 0.06456} , {+1}},
+			{{0.4894, 0.04456} , {+1}},
+			{{0.3495, 0.04456} , {+1}},
+			{{0.4136, 0.03411} , {+1}},
+			{{0.7794, 0.05411} , {+1}},
+			{{0.4469, 0.07411} , {+1}},
+			{{0.2269, 0.09411} , {+1}},
+			{{0.2269, 0.05411} , {+1}},
+			
+			{{0.2269, 0.05411} , {+1}},
+			{{0.2269, 0.05411} , {+1}},
+			{{0.2269, 0.05411} , {+1}},
+
+			
+			
+			{{0.1465, 0.01789} , {-1}},
+			{{0.1469, 0.00568} , {-1}},
+			{{0.0462, 0.01567} , {-1}},
+			{{0.0465, 0.00176} , {-1}},
+			{{0.2654, 0.03519} , {-1}},
+			{{0.2465, 0.02299} , {-1}},
+			{{0.2796, 0.02274} , {-1}},
+			{{0.3945, 0.01274} , {-1}},
+			{{0.1954, 0.03238} , {-1}},
+			//{{0.6954, 0.00828} , {-1}},
+			};
 
 	static String input;
 
@@ -42,7 +73,8 @@ public class FeatureVector {
 		input = readFile(inputAddress);
 		ReadJSON rs = new ReadJSON(inputAddress);
 		keyList = rs.getKeys();
-
+		final SVM svm = new SVM(TRAINING_DATA);
+		final WeightedSVM wsvm = new WeightedSVM(TRAINING_DATA);
 	}
 
 	// all of the URIs generated are stored in this ArrayList
@@ -83,37 +115,10 @@ public class FeatureVector {
 		return map;
 	}
 
-	private String sendQueryRequestFile(String inputQuery, Model model) throws FileNotFoundException {
 
-		Query query = QueryFactory.create(inputQuery);
 
-		QueryExecution qExe = QueryExecutionFactory.create(query, model);
 
-		ResultSet resultsOutput = qExe.execSelect();
-		String resultsOutputStr = ResultSetFormatter.asText(resultsOutput);
-
-		return resultsOutputStr;
-
-	}
-
-	private String readFile(String filePath) throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(filePath));
-		String line = null;
-		StringBuilder stringBuilder = new StringBuilder();
-		String ls = System.getProperty("line.separator");
-
-		try {
-			while ((line = reader.readLine()) != null) {
-				stringBuilder.append(line);
-				stringBuilder.append(ls);
-			}
-
-			return stringBuilder.toString();
-		} finally {
-			reader.close();
-		}
-	}
-
+	//this method queries over the model and generates the result array which stores all the URIs and is used to calculate popularity feature
 	private void generateResultsArr() throws FileNotFoundException {
 
 		for (int i = 0; i < keyList.size(); i++) {
@@ -181,10 +186,11 @@ public class FeatureVector {
 		}
 	}
 
-	public void morphemesQuery() throws FileNotFoundException {
+	public void morphemesQuery(String method) throws FileNotFoundException {
 
 		generateResultsArr();
-		System.out.println("Total numebr of all results is : " + URIs.size());
+		System.out.println("Total numebr of results is : " + URIs.size() + "\n");
+		
 		for (int i = 0; i < keyList.size(); i++) {
 			String word = keyList.get(i);
 			System.out.println(word);
@@ -249,18 +255,58 @@ public class FeatureVector {
 						System.out.println(morphemes);
 
 						for (Entry<RDFNode, float[]> pair : map.entrySet()) {
-							System.out
-									.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
-											pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
+							
+							if(method == "SVM" && SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1) {
+							System.out.println("    Approved by SVM");
+							System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
+											pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));					
+							}
+							
+							else if (method == "SVM"){
+								System.out.println("    Not Approved by SVM");
+								System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
+												pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
+							}
+							else if(method == "WSVM" && WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1) {
+								System.out.println("    Approved by Weighted SVM");
+								System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
+												pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));					
+							}
+							
+							else if (method == "WSVM"){
+								System.out.println("    Not Approved by Weighted SVM");
+								System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
+												pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
+							}
 						}
-					} else {
+						
+					} 
+					else {
 
 						map = resultsMap(sarefQueryFile, model, surfaceSimilarity(word, morphemes));
 						System.out.println(morphemes);
 						for (Entry<RDFNode, float[]> pair : map.entrySet()) {
-							System.out
-									.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
+							
+							if(method == "SVM" && SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1) {
+							System.out.println("    Approved by SVM");
+							System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
 											pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
+							}
+							else if(method == "SVM"){
+								System.out.println("    Not Approved by SVM");
+								System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
+												pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
+							}
+							else if(method == "WSVM" && WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1) {
+								System.out.println("    Approved by Weighted SVM" );
+								System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
+												pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
+							}
+							else if(method == "WSVM"){
+								System.out.println("    Not Approved by weighted SVM");
+								System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
+												pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
+							}
 						}
 					}
 				}
@@ -328,5 +374,23 @@ public class FeatureVector {
 			break;
 		}
 		return result;
+	}
+	
+	private String readFile(String filePath) throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(filePath));
+		String line = null;
+		StringBuilder stringBuilder = new StringBuilder();
+		String ls = System.getProperty("line.separator");
+
+		try {
+			while ((line = reader.readLine()) != null) {
+				stringBuilder.append(line);
+				stringBuilder.append(ls);
+			}
+
+			return stringBuilder.toString();
+		} finally {
+			reader.close();
+		}
 	}
 }
