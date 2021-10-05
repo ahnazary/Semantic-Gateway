@@ -23,24 +23,6 @@ import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 	
-//	static final double [][][] TRAINING_DATA = {{{9.123456, 3.123456} , {+1}}, 
-//												{{9.123456, 5.123456} , {+1}},
-//												{{5.123456, 5.123456} , {-1}},
-//												{{8.123456, 6.123456} , {+1}},
-//												{{4.123456, 4.123456} , {-1}},
-//												{{2.123456, 4.123456} , {-1}},
-//												{{9.123456, 7.123456} , {+1}},
-//												{{4.123456, 4.123456} , {-1}},
-//												{{8.123456, 2.123456} , {+1}},
-//												{{2.123456, 2.123456} , {-1}},
-//												{{3.123456, 3.123456} , {-1}},
-//												{{8.123456, 4.123456} , {+1}},
-//												{{7.123456, 6.123456} , {+1}},
-//												{{4.123456, 7.123456} , {-1}},
-//												{{6.123456, 4.123456} , {-1}},
-//												{{8.123456, 5.123456} , {+1}},
-//												{{3.123456, 4.123456} , {-1}}};
-	
 
 	
 	static final double [][][] TRAINING_DATA = {{{0.5555, 0.04175} , {+1}}, 							
@@ -54,12 +36,7 @@ public class Main extends Application {
 												{{0.4469, 0.07411} , {+1}},
 												{{0.2269, 0.09411} , {+1}},
 												{{0.2269, 0.05411} , {+1}},
-												
-												{{0.2269, 0.05411} , {+1}},
-												{{0.2269, 0.05411} , {+1}},
-												{{0.2269, 0.05411} , {+1}},
 
-												
 												
 												{{0.1465, 0.01789} , {-1}},
 												{{0.1469, 0.00568} , {-1}},
@@ -70,7 +47,7 @@ public class Main extends Application {
 												{{0.2796, 0.02274} , {-1}},
 												{{0.3945, 0.01274} , {-1}},
 												{{0.1954, 0.03238} , {-1}},
-												//{{0.6954, 0.00828} , {-1}},
+												{{0.6954, 0.00828} , {-1}},
 												};
 	static final double ZERO = 0.000000009;
 	static SupportVec svm = null;
@@ -165,13 +142,13 @@ public class Main extends Application {
 		stage.setTitle("Support Vector Machines ");
 		stage.show();
 		
-//		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-//		    @Override
-//		    public void handle(WindowEvent e) {
-//		     Platform.exit();
-//		     System.exit(0);
-//		    }
-//		  });
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		    @Override
+		    public void handle(WindowEvent e) {
+		     Platform.exit();
+		     System.exit(0);
+		    }
+		  });
 	}
 	
 	public static void main(String[] args) throws IOException {
