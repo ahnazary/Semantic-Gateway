@@ -2,10 +2,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,8 +81,10 @@ public class ReadJSON {
         }
     }
 
-	public ArrayList<HashMap<String, Object>>getJSONPairs() {		
-			return JSONPairs;        
+	public ArrayList<HashMap<String, Object>> getJSONPairs() {		
+		JSONObject jsonObject = new JSONObject(input);
+		myfunction(jsonObject);	
+		return JSONPairs;        
 	}
 	
 	public void printOutKeys() throws IOException, ParseException {
