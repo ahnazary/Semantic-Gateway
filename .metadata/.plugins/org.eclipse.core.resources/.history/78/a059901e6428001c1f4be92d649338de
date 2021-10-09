@@ -1,0 +1,15 @@
+import java.io.IOException;
+import java.text.ParseException;
+
+public class Main {
+	
+	public static void main(String[] args) throws IOException, ParseException {
+	
+		FeatureVector Test = new FeatureVector("input","SARGON.ttl", "WSVM"); // 3rd field should be either "WSVM" or "SVM"
+		Test.start();
+			
+//		WriteJSON Sensors = new WriteJSON();
+//		Sensors.writeJSONFile();
+		
+	}			
+}

@@ -217,19 +217,34 @@ public class SVM {
 			
 			else {
 				try {System.out.println(classify(
-						MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])}})));}
+					MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])}})));
+					System.out.println("distance to line is : " + distanceToLine(Double.valueOf(values[0]), Double.valueOf(values[1])));
+				}
 				catch(Exception e) {System.out.println("invalid input"); }
 			}
 		}
 	}
 	
+	public static double distanceToLine(double x, double y) {
+		double result;
+		
+		double a = (getW().getData()[0][0]);
+		double b = (getW().getData()[1][0]);
+		double c = (getB());
+		
+		System.out.println(b);
+		result = (Math.abs(a*x + b*y + c)) / (Math.sqrt(a*a+b*b));
+		
+		return result;
+	}
+	
 	public RealMatrix getAlpha() {
 		return alpha;
 	}
-	public RealMatrix getW(){
+	public static RealMatrix getW(){
 		return w;
 	}
-	public double getB() {
+	public static double getB() {
 		return b;
 	}
 }

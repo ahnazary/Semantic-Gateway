@@ -180,8 +180,7 @@ public class WeightedSVM {
 		return classification;
 		
 	}
-	
-	
+		
 	static RealMatrix mult(RealMatrix matrix1, RealMatrix matrix2) {
 		double[][] returnData = new double [matrix1.getData().length][matrix1.getData()[0].length];
 		IntStream.range(0, matrix1.getData().length).forEach(r ->
@@ -214,12 +213,15 @@ public class WeightedSVM {
 		while(true) {
 			System.out.println("\n> to classify new candidate enter new scores (or exit)");
 			String[] values = (bufferedReader.readLine()).split(" ");
+			
 			if (values[0].equals("exit"))  
 				return;
 			
 			else {
 				try {System.out.println(classify(
-						MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])*multiplier(TRAINING_DATA)}})));}
+						MatrixUtils.createRealMatrix(new double[][] {{Double.valueOf(values[0]) , Double.valueOf(values[1])*multiplier(TRAINING_DATA)}})));
+						System.out.println("distance to line is : " + distanceToLine(Double.valueOf(values[0]), Double.valueOf(values[1])*multiplier(TRAINING_DATA)));
+				}
 				catch(Exception e) {System.out.println("invalid input"); }
 			}
 		}
@@ -273,13 +275,25 @@ public class WeightedSVM {
 		return mult;
 	}
 	
+	public static double distanceToLine(double x, double y) {
+		double result = 0.0;
+		
+		double a = (getW().getData()[0][0]);
+		double b = getW().getData()[1][0];
+		double c = (getB());
+		
+		result = (Math.abs(a*x + b*y + c)) / (Math.sqrt(a*a+b*b));
+		
+		return result;
+	}
+	
 	public RealMatrix getAlpha() {
 		return alpha;
 	}
-	public RealMatrix getW(){
+	public static RealMatrix getW(){
 		return w;
 	}
-	public double getB() {
+	public static double getB() {
 		return b;
 	}
 }
