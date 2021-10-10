@@ -11,7 +11,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException, ParseException {
 	
-		FeatureVector Test = new FeatureVector("input","saref.ttl", "SVM"); // 3rd field should be either "WSVM" or "SVM"
+		FeatureVector Test = new FeatureVector("input","saref.ttl", "WSVM"); // 3rd field should be either "WSVM" or "SVM"
 		Test.start();
 		
 		System.out.println(Test.getURIs().size());

@@ -45,39 +45,39 @@ public class MorphemesQuery extends FeatureVector{
 
 				}
 			}
-			
-			for ( Map.Entry<String, Object> pair : ((Map<String, Object>) JSONPairs.get(i)).entrySet()) {
-				
-				if(pair.getValue() instanceof String) {
-				
-					word = (String) pair.getValue();
-					System.out.println(pair.getValue());
-					
-					char valueWordArr[] = new char[word.length()];
-			
-					for (int j = 0; j < word.length(); j++) {
-						valueWordArr[j] = word.charAt(j);
-					}
-			
-					for (int j = 0; j < word.length(); j++) {
-						for (int k = j + 3; k < word.length(); k++) {
-							String morphemes = "";
-			
-							for (int z = j; z <= k; z++) {
-								morphemes += valueWordArr[z];
-							}
-							
-							if (j == 0 && k == word.length() - 1)
-								doQuery(method, word ,morphemes, true);
-							else
-								doQuery(method, word ,morphemes, false);
-			
-			
-						}
-					}
-				}
-			}
-		}	
+		}
+		
+//		for ( Map.Entry<String, Object> pair : ((Map<String, Object>) JSONPairs).entrySet()) {
+//			
+//			if(pair.getValue() instanceof String) {
+//			
+//				String word = (String) pair.getValue();
+//				System.out.println(pair.getValue());
+//				
+//				char valueWordArr[] = new char[word.length()];
+//		
+//				for (int j = 0; j < word.length(); j++) {
+//					valueWordArr[j] = word.charAt(j);
+//				}
+//		
+//				for (int j = 0; j < word.length(); j++) {
+//					for (int k = j + 3; k < word.length(); k++) {
+//						String morphemes = "";
+//		
+//						for (int z = j; z <= k; z++) {
+//							morphemes += valueWordArr[z];
+//						}
+//						
+//						if (j == 0 && k == word.length() - 1)
+//							doQuery(method, word ,morphemes, true);
+//						else
+//							doQuery(method, word ,morphemes, false);
+//		
+//		
+//					}
+//				}
+//			}
+//		}
 		//System.out.println("\n total number of Approved URIs is : " + approvedURIs.size());
 	}
 	
