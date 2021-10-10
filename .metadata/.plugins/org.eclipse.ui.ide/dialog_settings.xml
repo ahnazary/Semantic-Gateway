@@ -9,4 +9,8 @@
 			<item value="/home/amirhossein/Documents/GitHub/semantic-broker"/>
 		</list>
 	</section>
+	<section name="ResourceNavigator">
+		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
+		<item key="ResourceWorkingSetFilter.STORE_WORKING_SET" value="Aggregate for window 1631451217977"/>
+	</section>
 </section>
