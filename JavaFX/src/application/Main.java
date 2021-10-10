@@ -154,37 +154,7 @@ public class Main extends Application {
 	public static void main(String[] args) throws IOException {
 		double [][] xArray = new double [weightedTrainingData(TRAINING_DATA).length][2];
 		double [][] yArray = new double [weightedTrainingData(TRAINING_DATA).length][1];
-		
-
-//		for(int i = 0; i <  TRAINING_DATA.length; i++) {
-//			System.out.print(TRAINING_DATA[i][0][0] + " ");
-//		}
-//		System.out.println();
-//		for(int i = 0; i < TRAINING_DATA.length; i++) {
-//			System.out.print(TRAINING_DATA[i][1][0] + " ");
-//		}
-//		System.out.println();
-//		for(int i = 0; i < TRAINING_DATA.length; i++) {
-//			System.out.print(TRAINING_DATA[i][0][1] + " ");
-//		}
-//		System.out.println();
-//		System.out.println();
-//		System.out.println();
-//		
-//		for(int i = 0; i <  weightedTrainingData(TRAINING_DATA).length; i++) {
-//			System.out.print(weightedTrainingData(TRAINING_DATA)[i][0][0] + " ");
-//		}
-//		System.out.println();
-//		for(int i = 0; i < weightedTrainingData(TRAINING_DATA).length; i++) {
-//			System.out.print(weightedTrainingData(TRAINING_DATA)[i][1][0] + " ");
-//		}
-//		System.out.println();
-//		for(int i = 0; i < weightedTrainingData(TRAINING_DATA).length; i++) {
-//			System.out.print(weightedTrainingData(TRAINING_DATA)[i][0][1] + " ");
-//		}
-//		System.out.println();
-		
-		
+				
 		for(int i = 0; i < TRAINING_DATA.length; i++ ) {
 		
 			xArray[i][0] = weightedTrainingData(TRAINING_DATA)[i][0][0];
@@ -242,9 +212,9 @@ public class Main extends Application {
 	public static double distanceToLine(double x, double y) {
 		double result = 0.0;
 		
-		double a = -(svm.getW().getData()[0][0]);
-		double b = svm.getW().getData()[1][0];
-		double c = -(svm.getB());
+		double a = (svm.getW().getData()[0][0]);
+		double b = (svm.getW().getData()[1][0]);
+		double c = (svm.getB());
 		
 		result = (Math.abs(a*x + b*y + c)) / (Math.sqrt(a*a+b*b));
 		

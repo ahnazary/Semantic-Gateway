@@ -18,6 +18,7 @@ public class MorphemesQuery extends FeatureVector{
 	protected void morphemesQuery(String method) throws FileNotFoundException {
 			
 		for (int i = 0; i < JSONPairs.size(); i++) {
+			
 			String word = (String) JSONPairs.get(i).keySet().toArray()[0];
 			//String word = keyList.get(i);
 			//System.out.println(word);
@@ -75,14 +76,14 @@ public class MorphemesQuery extends FeatureVector{
 							// +"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
 							// +"FILTER regex(?object,'"+morphemes+"') "
 							+ "}";
-
-					Map<RDFNode, float[]> map = new HashMap<RDFNode, float[]>();
+					
+					Map<RDFNode, float[]> singleWordMap = new HashMap<RDFNode, float[]>();
 					if (j == 0 && k == word.length() - 1) {
 
-						map = resultsMap(sarefQueryFileExact, model, 1f);
+						singleWordMap = resultsMap(sarefQueryFileExact, model, 1f);
 						System.out.println(morphemes);
 
-						for (Entry<RDFNode, float[]> pair : map.entrySet()) {
+						for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
 							
 							if(method == "SVM" && SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1) {
 							System.out.println("    Approved by SVM");
@@ -106,14 +107,17 @@ public class MorphemesQuery extends FeatureVector{
 								System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
 												pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
 							}
+							else if (method != "WSVM" && method != "SVM") {
+								System.out.println(" Please choose a valid method for Support Vector Machine. ");
+							}
 						}
 						
 					} 
 					else {
 
-						map = resultsMap(sarefQueryFile, model, surfaceSimilarity(word, morphemes));
+						singleWordMap = resultsMap(sarefQueryFile, model, surfaceSimilarity(word, morphemes));
 						System.out.println(morphemes);
-						for (Entry<RDFNode, float[]> pair : map.entrySet()) {
+						for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
 							
 							if(method == "SVM" && SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1) {
 							System.out.println("    Approved by SVM");
@@ -135,11 +139,52 @@ public class MorphemesQuery extends FeatureVector{
 								System.out.println(String.format("     Key (URI) is: %s     Value (features Vector) is : %s",
 												pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
 							}
+							else if (method != "WSVM" && method != "SVM") {
+								System.out.println(" Please choose a valid method for Support Vector Machine. ");
+							}
 						}
+					}
+					
+					double highestDistance = 0.0;
+					Map<RDFNode, float[]> tempApprovedURIs = new HashMap<RDFNode, float[]>();
+					
+					for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
+						if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) > highestDistance && 
+								WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
+						{
+							highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+							tempApprovedURIs.clear();
+							tempApprovedURIs.put(pair.getKey(), pair.getValue());
+						}	
+						else if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
+								WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
+						{
+							highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+							tempApprovedURIs.put(pair.getKey(), pair.getValue());
+						}	
+						else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]) > highestDistance && 
+								SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
+						{
+							highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+							tempApprovedURIs.clear();
+							tempApprovedURIs.put(pair.getKey(), pair.getValue());
+						}	
+						else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
+								SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
+						{
+							highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+							tempApprovedURIs.put(pair.getKey(), pair.getValue());
+						}	
+					}
+					
+					for (Entry<RDFNode, float[]> pair : tempApprovedURIs.entrySet()) {
+						approvedURIs.put(pair.getKey(), pair.getValue());
+						
 					}
 				}
 			}
 		}
+		System.out.println(" qqqqqqqqqqqqqqqqqqqqqqq " + approvedURIs.size());
 	}
 	
 	//this method queries over the model and generates the result array which stores all the URIs and is used to calculate popularity feature

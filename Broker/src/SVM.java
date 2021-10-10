@@ -231,8 +231,7 @@ public class SVM {
 		double a = (getW().getData()[0][0]);
 		double b = (getW().getData()[1][0]);
 		double c = (getB());
-		
-		System.out.println(b);
+
 		result = (Math.abs(a*x + b*y + c)) / (Math.sqrt(a*a+b*b));
 		
 		return result;

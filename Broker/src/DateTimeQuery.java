@@ -42,10 +42,10 @@ public class DateTimeQuery extends FeatureVector{
 							// +"filter (contains(str(?object), \""+word+"\"))"
 							+ "FILTER regex(?object, \"" + words[j] + "\", \"i\" ) " + "}";
 						
-						Map<RDFNode, float[]> map = new HashMap<RDFNode, float[]>();
-						map = resultsMap(sarefQueryFileExact, model, 1f);
+						Map<RDFNode, float[]> singleWordMap = new HashMap<RDFNode, float[]>();
+						singleWordMap = resultsMap(sarefQueryFileExact, model, 1f);
 						
-						for (Entry<RDFNode, float[]> pair : map.entrySet()) {
+						for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
 							
 							if(method == "SVM" && SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1) {
 							System.out.println("    Approved by SVM");
@@ -70,6 +70,43 @@ public class DateTimeQuery extends FeatureVector{
 												pair.getKey() + "\n", Arrays.toString(pair.getValue()) + "\n"));
 								
 							}
+						}
+						
+						double highestDistance = 0.0;
+						Map<RDFNode, float[]> tempApprovedURIs = new HashMap<RDFNode, float[]>();
+						
+						for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
+							if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) > highestDistance && 
+									WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
+							{
+								highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+								tempApprovedURIs.clear();
+								tempApprovedURIs.put(pair.getKey(), pair.getValue());
+							}	
+							else if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
+									WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
+							{
+								highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+								tempApprovedURIs.put(pair.getKey(), pair.getValue());
+							}	
+							else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]) > highestDistance && 
+									SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
+							{
+								highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+								tempApprovedURIs.clear();
+								tempApprovedURIs.put(pair.getKey(), pair.getValue());
+							}	
+							else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
+									SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
+							{
+								highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+								tempApprovedURIs.put(pair.getKey(), pair.getValue());
+							}	
+						}
+						
+						for (Entry<RDFNode, float[]> pair : tempApprovedURIs.entrySet()) {
+							approvedURIs.put(pair.getKey(), pair.getValue());
+							
 						}
 					}
 				}

@@ -279,7 +279,7 @@ public class WeightedSVM {
 		double result = 0.0;
 		
 		double a = (getW().getData()[0][0]);
-		double b = getW().getData()[1][0];
+		double b = (getW().getData()[1][0]);
 		double c = (getB());
 		
 		result = (Math.abs(a*x + b*y + c)) / (Math.sqrt(a*a+b*b));

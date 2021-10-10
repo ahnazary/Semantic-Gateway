@@ -1,15 +1,14 @@
-
 import java.io.BufferedWriter;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
@@ -28,8 +27,10 @@ public class FeatureVector {
 	private String SVMMethod;
 	private static String input;
 	protected final Model model;
+	
 	protected static ArrayList<RDFNode> URIs = new ArrayList<RDFNode>();
 	protected static ArrayList<HashMap<String, Object>> JSONPairs = new ArrayList<HashMap<String,Object>>();
+	protected static Map<RDFNode, float[]> approvedURIs = new HashMap<RDFNode, float[]>();
 	
 	static final double [][][] TRAINING_DATA = {{{0.5555, 0.04175} , {+1}}, 							
 												{{0.4165, 0.06217} , {+1}},
@@ -82,7 +83,9 @@ public class FeatureVector {
 		morphemesQuery.morphemesQuery(SVMMethod);
 		dateTimeQuery.dateTimeQuery(SVMMethod);
 		
-		System.out.println("Total number of URIs is : " + URIs.size());
+		for (Entry<RDFNode, float[]> pair : approvedURIs.entrySet()) {
+			System.out.println("Approved URI is: " +  pair.getKey() + " \n    Feature Vector is:  " + Arrays.toString(pair.getValue()));		
+		}
 	}
 	
 	
