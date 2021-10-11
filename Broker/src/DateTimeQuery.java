@@ -17,7 +17,7 @@ public class DateTimeQuery extends FeatureVector{
 	protected void dateTimeQuery(String method) throws FileNotFoundException {
 		
 		for (int i = 0; i < JSONPairs.size(); i++) {
-			String value = (String) JSONPairs.get(i).values().toArray()[0];
+			String value = String.valueOf(JSONPairs.get(i).values().toArray()[0]);
 			
 			if(isValidDate(value)) {
 				String[] words = {"date", "time"};
@@ -76,32 +76,36 @@ public class DateTimeQuery extends FeatureVector{
 						Map<RDFNode, float[]> tempApprovedURIs = new HashMap<RDFNode, float[]>();
 						
 						for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
-							if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) > highestDistance && 
-									WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
-							{
-								highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
-								tempApprovedURIs.clear();
-								tempApprovedURIs.put(pair.getKey(), pair.getValue());
-							}	
-							else if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
-									WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
-							{
-								highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
-								tempApprovedURIs.put(pair.getKey(), pair.getValue());
-							}	
-							else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]) > highestDistance && 
-									SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
-							{
-								highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
-								tempApprovedURIs.clear();
-								tempApprovedURIs.put(pair.getKey(), pair.getValue());
-							}	
-							else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
-									SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
-							{
-								highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
-								tempApprovedURIs.put(pair.getKey(), pair.getValue());
-							}	
+							if(isValidURI(pair.getKey())) {
+								if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) > highestDistance && 
+										WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
+								{
+									highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+									tempApprovedURIs.clear();
+									tempApprovedURIs.put(pair.getKey(), pair.getValue());
+									
+								}	
+								else if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
+										WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
+								{
+									highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+									tempApprovedURIs.put(pair.getKey(), pair.getValue());
+								}	
+								else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]) > highestDistance && 
+										SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
+								{
+									highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+									tempApprovedURIs.clear();
+									tempApprovedURIs.put(pair.getKey(), pair.getValue());
+									
+								}	
+								else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
+										SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
+								{
+									highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+									tempApprovedURIs.put(pair.getKey(), pair.getValue());
+								}	
+							}
 						}
 						
 						for (Entry<RDFNode, float[]> pair : tempApprovedURIs.entrySet()) {
@@ -115,9 +119,9 @@ public class DateTimeQuery extends FeatureVector{
 
 	//this method queries over the model and generates the result array which stores all the URIs and is used to calculate popularity feature
 	protected void generatedateTimeResultsArr() throws FileNotFoundException {
-			
+		
 		for (int i = 0; i < JSONPairs.size(); i++) {
-			String value = (String) JSONPairs.get(i).values().toArray()[0];
+			String value = String.valueOf(JSONPairs.get(i).values().toArray()[0]);
 			
 			if(isValidDate(value)) {
 				String[] words = {"date", "time"};
@@ -146,4 +150,5 @@ public class DateTimeQuery extends FeatureVector{
 				}
 			}
 		}
+	
 }

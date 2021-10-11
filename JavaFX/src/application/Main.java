@@ -142,13 +142,13 @@ public class Main extends Application {
 		stage.setTitle("Support Vector Machines ");
 		stage.show();
 		
-		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-		    @Override
-		    public void handle(WindowEvent e) {
-		     Platform.exit();
-		     System.exit(0);
-		    }
-		  });
+//		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+//		    @Override
+//		    public void handle(WindowEvent e) {
+//		     Platform.exit();
+//		     System.exit(0);
+//		    }
+//		  });
 	}
 	
 	public static void main(String[] args) throws IOException {
