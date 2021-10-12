@@ -1,0 +1,73 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class JSONLDGenerator {
+	
+	String JSONContent; 
+	String JSONLDFilePath;
+	
+	public JSONLDGenerator(String JSONFilepath, String JSONLDFilePath) throws IOException {
+		
+		this.JSONLDFilePath = JSONLDFilePath;
+		JSONContent = readFile(JSONFilepath);
+		System.out.println(countLines(JSONContent));
+	}
+	
+	private void generateJSONLD(String JSONContent) {
+		int i = 0;
+		Scanner scanner = new Scanner(JSONContent);
+		while (scanner.hasNextLine()) {
+			i++;
+			String line = scanner.nextLine();
+			if(i < countLines(JSONContent)-1) {
+				appendStrToFile(JSONLDFilePath, line);
+			}
+
+			if(i == countLines(JSONContent)-1) {
+				
+			}
+		  // process the line
+		}
+		scanner.close();
+		
+	}
+	
+	private static int countLines(String str){
+		   String[] lines = str.split("\r\n|\r|\n");
+		   return  lines.length;
+		}
+	
+	private String readFile(String filePath) throws IOException {
+	    BufferedReader reader = new BufferedReader(new FileReader (filePath));
+	    String         line = null;
+	    StringBuilder  stringBuilder = new StringBuilder();
+	    String         ls = System.getProperty("line.separator");
+
+	    try {
+	        while((line = reader.readLine()) != null) {
+	            stringBuilder.append(line);
+	            stringBuilder.append(ls);
+	        }
+
+	        return stringBuilder.toString();
+	    } finally {
+	        reader.close();
+	    }
+	}
+	
+	private static void appendStrToFile(String filePath, String str) {
+		try (FileWriter fw = new FileWriter("Output", true);
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw)) {
+			out.println(str);
+
+		} catch (IOException e) {
+			System.out.println("Exception Occurred" + e);
+		}
+	}
+}

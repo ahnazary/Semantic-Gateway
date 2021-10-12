@@ -217,5 +217,11 @@ public class FeatureVector {
 	public static void setInput(String input) {
 		FeatureVector.input = input;
 	}
+	public Map<RDFNode, float[]> getApprovedURIs(){
+		return approvedURIs;
+	}
+	public String getInputAddress() {
+		return inputAddress;
+	}
 }
 
