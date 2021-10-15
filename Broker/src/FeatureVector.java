@@ -87,7 +87,10 @@ public class FeatureVector {
 		for (Entry<RDFNode, float[]> pair : approvedURIs.entrySet()) {
 			System.out.println("Approved URI is: " +  pair.getKey() + " \n    Feature Vector is:  " + Arrays.toString(pair.getValue()));	
 			System.out.println("     " + isValidURI(pair.getKey()));
+			System.out.println(" Is Class ? " + typeOfNode(pair.getKey()) + "\n");
 		}
+		
+		
 	}
 	
 	
@@ -188,6 +191,44 @@ public class FeatureVector {
 			}
 			result = true;
 			break;
+		}
+		return result;
+	}
+	
+	protected boolean typeOfNode(RDFNode inputNode) {
+		
+		String inputStr = inputNode.toString();
+		Boolean result = false;
+		
+		String queryStr = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+				+ "PREFIX time: <http://www.w3.org/2006/time#> "
+				+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
+				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
+
+				+ "SELECT ?object \n" + "WHERE\n" + "{\n" + "{"
+				//+ "https://w3id.org/saref#Actuator"
+				+ "?subject rdf:type ?object}"
+				+"filter (contains(str(?subject), \""+inputStr+"\"))"
+				//+ "FILTER regex(?subject, \"" + inputStr + "\", \"i\" ) "
+				+ "}";
+		
+		Query query = QueryFactory.create(queryStr);
+
+		QueryExecution qExe = QueryExecutionFactory.create(query, model);
+		ResultSet resultsOutput = qExe.execSelect();
+		
+		for (; resultsOutput.hasNext();) {
+
+			QuerySolution soln = resultsOutput.nextSolution();
+			RDFNode object = soln.get("object");
+			if(object.toString().equals("http://www.w3.org/2002/07/owl#Class")) {
+				return true;
+			}
 		}
 		return result;
 	}

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=" URIs"/>
+		<item key="selection" value="Measurement"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="measurement"/>
+			<item value="switch"/>
+			<item value="building "/>
+			<item value="building"/>
+			<item value="buili"/>
+			<item value="Output"/>
+			<item value="System.out.println"/>
+			<item value="append"/>
+			<item value="http://www.wurvoc.org/vocabularies/om-1.8/bar"/>
+			<item value="https://w3id.org/saref"/>
 			<item value="https://w3id.org/saref "/>
 			<item value=" URIs"/>
 			<item value="URIs"/>
 			<item value="map"/>
-			<item value="System.out.println"/>
 			<item value="temp"/>
-			<item value="0.0088495575"/>
-			<item value="26666668"/>
-			<item value="https://w3id.org/saref#SmokeSensor"/>
-			<item value="https://w3id.org/saref#hasSensorType"/>
-			<item value="https://w3id.org/saref"/>
-			<item value=" w "/>
-			<item value="w "/>
-			<item value="w"/>
-			<item value="distance"/>
 		</list>
 		<list key="replacehistory">
 			<item value="tempApprovedURIs"/>

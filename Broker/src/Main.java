@@ -6,7 +6,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException, ParseException {
 	
-		FeatureVector FV = new FeatureVector("Floor-example.json","saref.ttl", "SVM"); // 3rd field should be either "WSVM" or "SVM"	
+		FeatureVector FV = new FeatureVector("input","saref.ttl", "SVM"); // 3rd field should be either "WSVM" or "SVM"	
 		FV.start();
 		System.out.println(FV.getURIs().size());
 		
