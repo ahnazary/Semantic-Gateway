@@ -31,6 +31,7 @@ public class FeatureVector {
 	protected static ArrayList<RDFNode> URIs = new ArrayList<RDFNode>();
 	protected static ArrayList<HashMap<String, Object>> JSONPairs = new ArrayList<HashMap<String,Object>>();
 	protected static Map<RDFNode, float[]> approvedURIs = new HashMap<RDFNode, float[]>();
+	protected static Map<RDFNode, float[]> aditionalApprovedURIs = new HashMap<RDFNode, float[]>();
 	protected ArrayList<String> bannedURIs = new ArrayList<String>();
 	
 	static final double [][][] TRAINING_DATA = {{{0.5555, 0.04175} , {+1}}, 							
@@ -83,16 +84,15 @@ public class FeatureVector {
 		dateTimeQuery.generatedateTimeResultsArr();
 		morphemesQuery.morphemesQuery(SVMMethod);
 		dateTimeQuery.dateTimeQuery(SVMMethod);
+		System.out.println("-------------------------------------------------------------------------- \n");
 		
 		for (Entry<RDFNode, float[]> pair : approvedURIs.entrySet()) {
 			System.out.println("Approved URI is: " +  pair.getKey() + " \n    Feature Vector is:  " + Arrays.toString(pair.getValue()));	
-			System.out.println("     " + isValidURI(pair.getKey()));
-			System.out.println(" Is Class ? " + typeOfNode(pair.getKey()) + "\n");
-		}
-		
-		
+			System.out.println(" Is Class ? " + isClassNode(pair.getKey()));
+			if(!isClassNode(pair.getKey()))
+				System.out.println(getClassNode(pair.getKey()));		
+		}	
 	}
-	
 	
 	// all of the URIs generated are stored in this ArrayList
 	protected ArrayList<RDFNode> resultsArr(String inputQuery, Model model) {
@@ -195,10 +195,101 @@ public class FeatureVector {
 		return result;
 	}
 	
-	protected boolean typeOfNode(RDFNode inputNode) {
+	protected boolean isClassNode(RDFNode inputNode) {
 		
 		String inputStr = inputNode.toString();
-		Boolean result = false;
+		
+		String queryStr = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+				+ "PREFIX time: <http://www.w3.org/2006/time#> "
+				+ "PREFIX saref: <https://w3id.org/saref#> " 
+				+ "PREFIX schema: <http://schema.org/> "
+				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
+
+				+ "SELECT ?object \n" + "WHERE\n" + "{\n {" 
+				+ "?subject rdf:type ?object}"
+				//+ prefNodeStr + " rdf:type ?object ."
+				//+"filter (contains(str(?subject), \""+inputStr+"\"))"
+				+ "  FILTER (?subject = <"+ inputStr+ ">) "
+				+ "}";
+		
+		Query query = QueryFactory.create(queryStr);
+		QueryExecution qExe = QueryExecutionFactory.create(query, model);
+		ResultSet resultsOutput = qExe.execSelect();
+		
+		for (; resultsOutput.hasNext();) {
+			QuerySolution soln = resultsOutput.nextSolution();
+			RDFNode object = soln.get("object");
+			if(object.toString().equals("http://www.w3.org/2002/07/owl#Class")) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private String getPrefName(RDFNode inputNode) {
+		
+		String result = "";
+		String inputStr = inputNode.toString();
+		
+		String queryStr = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+				+ "PREFIX time: <http://www.w3.org/2006/time#> "
+				+ "PREFIX saref: <https://w3id.org/saref#>  " 
+				+ "PREFIX schema: <http://schema.org/>  "
+				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
+				+" PREFIX base: <http://def.isotc211.org/iso19150-2/2012/base#> "
+				+"prefix oboe-core: <http://ecoinformatics.org/oboe/oboe.1.0/oboe-core.owl#> "
+				
+				+ "select ?subject (group_concat(?prefixedName ; separator = \"\") as ?prefName) where {\n"
+				+ "  values (?prefix ?ns) { \n"
+				+ "    ( \"saref:\" <https://w3id.org/saref#> )\n"
+				+ "    ( \"xsd:\" <http://www.w3.org/2001/XMLSchema#> )\n"
+				+ "    ( \"rdfs:\" <http://www.w3.org/2000/01/rdf-schema#> )\n"
+				+ "    ( \"owl:\" <http://www.w3.org/2002/07/owl#> )\n"
+				+ "    ( \"foaf:\" <http://xmlns.com/foaf/0.1/> )\n"
+				+ "    ( \"time:\" <http://www.w3.org/2006/time#> )\n"
+				+ "    ( \"schema:\" <http://schema.org/> )\n"
+				+ "    ( \"dcterms:\" <http://purl.org/dc/terms/> )\n"
+				+ "    ( \"om:\" <http://www.wurvoc.org/vocabularies/om-1.8/> )\n"
+				+ "    ( \"rdf:\" <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )\n"
+				+ "  }\n"
+				+ "  ?subject ?predicate ?object .\n"
+				+ "  FILTER (?subject = <"+ inputStr+ ">) "
+				+ "  bind( if( strStarts( str(?subject), str(?ns) ),\n"
+				+ "            concat( ?prefix, strafter( str(?subject), str(?ns) )),\n"
+				+ "            \"\" ) \n"
+				+ "        as ?prefixedName )\n"
+				+ "}\n"
+				+ "group by ?subject\n"
+				+ "order by ?subject";
+			
+		Query query = QueryFactory.create(queryStr);
+		QueryExecution qExe = QueryExecutionFactory.create(query, model);
+		ResultSet resultsOutput = qExe.execSelect();
+		
+		for (; resultsOutput.hasNext();) {
+			QuerySolution soln = resultsOutput.nextSolution();
+			RDFNode prefName = soln.get("prefName");
+			
+			result = maxSubString(prefName.toString());	
+		}
+		qExe.close();
+		return result;
+	}
+
+	protected ArrayList<RDFNode> getClassNode(RDFNode inputNode) {
+			
+		String prefNodeStr = getPrefName(inputNode);
+		ArrayList<RDFNode> result = new ArrayList<RDFNode>();
 		
 		String queryStr = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
@@ -210,30 +301,65 @@ public class FeatureVector {
 				+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
 				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
 
-				+ "SELECT ?object \n" + "WHERE\n" + "{\n" + "{"
-				//+ "https://w3id.org/saref#Actuator"
-				+ "?subject rdf:type ?object}"
-				+"filter (contains(str(?subject), \""+inputStr+"\"))"
-				//+ "FILTER regex(?subject, \"" + inputStr + "\", \"i\" ) "
+				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{"
+				+ "?subject ?a " + prefNodeStr + "}"
+				//+ "filter (contains(str(?object), \""+inputStr+"\"))"
+				//+ "FILTER regex(?object, \"" + inputStr + "\", \"i\" ) " 
+				//+ " FILTER (?subject = <https://w3id.org/saref#Switch>) "
+				+ "}";
+		
+		String queryStrBlankNode = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+				+ "PREFIX time: <http://www.w3.org/2006/time#> "
+				+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
+				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
+
+				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{"
+				+ "?subject ?a [?b "+prefNodeStr+"]}"
+				//+ "?subject ?predicate1 [?predicate2 saref:hasTypicalConsumption}"
+				//+ "filter (contains(str(?object), \""+inputStr+"\"))"
+				//+ "FILTER regex(?object, \"" + inputStr + "\", \"i\" ) " 
+				//+ " FILTER (?subject = <https://w3id.org/saref#Switch>) "
 				+ "}";
 		
 		Query query = QueryFactory.create(queryStr);
-
 		QueryExecution qExe = QueryExecutionFactory.create(query, model);
 		ResultSet resultsOutput = qExe.execSelect();
 		
 		for (; resultsOutput.hasNext();) {
-
 			QuerySolution soln = resultsOutput.nextSolution();
-			RDFNode object = soln.get("object");
-			if(object.toString().equals("http://www.w3.org/2002/07/owl#Class")) {
-				return true;
+			RDFNode subject = soln.get("subject");
+			
+			if(isClassNode(subject) && !subject.isAnon())
+				result.add(subject);
+			
+			else if (subject.isAnon()) {
+				try {
+					Query queryAnon = QueryFactory.create(queryStrBlankNode);
+					QueryExecution qExeAnon = QueryExecutionFactory.create(queryAnon, model);
+					ResultSet resultsOutputAnon = qExeAnon.execSelect();
+					
+					for (; resultsOutputAnon.hasNext();) {
+						
+						QuerySolution soln2 = resultsOutputAnon.nextSolution();
+						RDFNode subject2 = soln2.get("subject");
+						result.add(subject2);					
+					}
+					qExeAnon.close();
+				}
+				catch(Exception e) {
+					System.out.println("Exception occured" + e);
+				}
 			}
 		}
+		qExe.close();
 		return result;
 	}
 
-	
 	protected boolean isValidURI(RDFNode inputRDFNode) {	
 		
 		//URIS which we want to be excluded from the result are added here
@@ -246,6 +372,22 @@ public class FeatureVector {
 		
 		return true;
 	}
+	
+	private static String maxSubString(String inputString){
+        int maxSubStringLength = calculateMaxSubStringLength( inputString);
+        return inputString.substring(0,maxSubStringLength);
+    }
+
+    private static int calculateMaxSubStringLength(String inputString) {
+        int result = 0;
+        for(int i= inputString.length();  i>0 ; i--){
+            if(inputString.length() < i *2)
+                continue;
+            if (inputString.substring(0,i).equals(inputString.substring(i , 2*i)))
+            result = i;
+        }
+        return result;
+    }
 	
 	public ArrayList<RDFNode> getURIs() {
 		return URIs;	

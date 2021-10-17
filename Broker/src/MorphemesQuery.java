@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +16,7 @@ public class MorphemesQuery extends FeatureVector{
 	}
 
 	
-	@SuppressWarnings("unchecked")
+
 	protected void morphemesQuery(String method) throws FileNotFoundException {
 			
 		for (int i = 0; i < JSONPairs.size(); i++) {
@@ -100,6 +101,7 @@ public class MorphemesQuery extends FeatureVector{
 				// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
 				// +"filter (contains(str(?object), \""+word+"\"))"
 				+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
+		
 		String sarefQueryFile = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
 				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
@@ -227,7 +229,12 @@ public class MorphemesQuery extends FeatureVector{
 		
 		for (Entry<RDFNode, float[]> pair : tempApprovedURIs.entrySet()) {
 			approvedURIs.put(pair.getKey(), pair.getValue());
-			
+			if(!isClassNode(pair.getKey())) {
+				ArrayList <RDFNode> temp = getClassNode(pair.getKey());
+				for(int p = 0;p < temp.size(); p++) {
+					approvedURIs.put(temp.get(p), pair.getValue());
+				}							
+			}	
 		}
 		
 	}

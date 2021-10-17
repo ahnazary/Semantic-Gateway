@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -110,7 +111,12 @@ public class DateTimeQuery extends FeatureVector{
 						
 						for (Entry<RDFNode, float[]> pair : tempApprovedURIs.entrySet()) {
 							approvedURIs.put(pair.getKey(), pair.getValue());
-							
+							if(!isClassNode(pair.getKey())) {
+								ArrayList <RDFNode> temp = getClassNode(pair.getKey());
+								for(int p = 0;p < temp.size(); p++) {
+									approvedURIs.put(temp.get(p), pair.getValue());
+								}							
+							}					
 						}
 					}
 				}
