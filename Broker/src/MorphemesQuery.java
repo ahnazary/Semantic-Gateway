@@ -42,8 +42,6 @@ public class MorphemesQuery extends FeatureVector{
 						doQuery(method, word ,morphemes, true);
 					else
 						doQuery(method, word ,morphemes, false);
-
-
 				}
 			}
 			
@@ -72,55 +70,28 @@ public class MorphemesQuery extends FeatureVector{
 								doQuery(method, word ,morphemes, true);
 							else
 								doQuery(method, word ,morphemes, false);
-			
-			
 						}
 					}
 				}
 			}
 		}	
-		//System.out.println("\n total number of Approved URIs is : " + approvedURIs.size());
 	}
 	
 	private void doQuery(String method, String word ,String morphemes, Boolean isFullWord) {
 		
-		String sarefQueryFileExact = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-				+ "PREFIX time: <http://www.w3.org/2006/time#> "
-				+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
-				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-
+		String sarefQueryFileExact = SPARQL_PREFIXES
 				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
-				// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
-				// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-				// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
-				// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-				// +"filter (contains(str(?object), \""+word+"\"))"
 				+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
 		
-		String sarefQueryFile = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-				+ "PREFIX time: <http://www.w3.org/2006/time#> "
-				+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
-				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-
-				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
-
+		String sarefQueryFile = SPARQL_PREFIXES
+				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"			
+				+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
 				// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
 				// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
 				// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
 				// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
 				// +"filter (contains(str(?object), '"+morphemes+"'))"
 				// +"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
-				+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
 				// +"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
 				// +"FILTER regex(?object,'"+morphemes+"') "
 				+ "}";
@@ -258,43 +229,12 @@ public class MorphemesQuery extends FeatureVector{
 						morphemes += wordArr[z];
 					}
 	
-					String sarefQueryFileExact = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-							+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-							+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-							+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-							+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-							+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-							+ "PREFIX time: <http://www.w3.org/2006/time#> "
-							+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
-							+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-	
+					String sarefQueryFileExact = SPARQL_PREFIXES
 							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
-							// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
-							// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-							// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
-							// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							// +"filter (contains(str(?object), \""+word+"\"))"
 							+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
-					String sarefQueryFile = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-							+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-							+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-							+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-							+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-							+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-							+ "PREFIX time: <http://www.w3.org/2006/time#> "
-							+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
-							+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-	
+					String sarefQueryFile = SPARQL_PREFIXES
 							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
-	
-							// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
-							// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-							// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
-							// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							// +"filter (contains(str(?object), '"+morphemes+"'))"
 							+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
-							// +"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
-							// +"FILTER regex(?object,'"+morphemes+"') "
 							+ "}";
 	
 					if (j == 0 && k == word.length() - 1) {

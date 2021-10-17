@@ -25,16 +25,7 @@ public class DateTimeQuery extends FeatureVector{
 				System.out.println(JSONPairs.get(i));
 				
 				for(int j = 0 ; j < words.length ; j++) {
-					String sarefQueryFileExact = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-							+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-							+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-							+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-							+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-							+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-							+ "PREFIX time: <http://www.w3.org/2006/time#> "
-							+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
-							+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-
+					String sarefQueryFileExact = SPARQL_PREFIXES
 							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
 							// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
 							// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
@@ -133,22 +124,8 @@ public class DateTimeQuery extends FeatureVector{
 				String[] words = {"date", "time"};
 				
 				for(int j = 0 ; j < words.length ; j++) {
-					String sarefQueryFileExact = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-							+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-							+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-							+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-							+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-							+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-							+ "PREFIX time: <http://www.w3.org/2006/time#> "
-							+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
-							+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-
+					String sarefQueryFileExact = SPARQL_PREFIXES
 							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
-							// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
-							// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-							// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
-							// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							// +"filter (contains(str(?object), \""+word+"\"))"
 							+ "FILTER regex(?object, \"" + words[j] + "\", \"i\" ) " + "}";
 					
 					URIs = resultsArr(sarefQueryFileExact, model);

@@ -33,7 +33,7 @@ public class FeatureVector {
 	protected static Map<RDFNode, float[]> approvedURIs = new HashMap<RDFNode, float[]>();
 	protected static Map<RDFNode, float[]> aditionalApprovedURIs = new HashMap<RDFNode, float[]>();
 	protected ArrayList<String> bannedURIs = new ArrayList<String>();
-	
+		
 	static final double [][][] TRAINING_DATA = {{{0.5555, 0.04175} , {+1}}, 							
 												{{0.4165, 0.06217} , {+1}},
 												{{0.4154, 0.05565} , {+1}},
@@ -57,7 +57,30 @@ public class FeatureVector {
 												{{0.1954, 0.03238} , {-1}},
 												{{0.6954, 0.00828} , {-1}},
 												};
-
+	
+	public final String SPARQL_PREFIXES = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+			+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
+			+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+			+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+			+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
+			+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
+			+ "PREFIX time: <http://www.w3.org/2006/time#> "
+			+ "PREFIX saref: <https://w3id.org/saref#>  " 
+			+ "PREFIX schema: <http://schema.org/>  "
+			+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
+			+ "PREFIX base: <http://def.isotc211.org/iso19150-2/2012/base#> "
+			+ "PREFIX oboe-core: <http://ecoinformatics.org/oboe/oboe.1.0/oboe-core.owl#> "
+			+ "PREFIX sosa: <http://www.w3.org/ns/sosa/> "
+			+ "PREFIX sosa-om: <http://www.w3.org/ns/sosa/om#> "
+			+ "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n"
+			+ "PREFIX dct: <http://purl.org/dc/terms/> \n"
+			+ "PREFIX iso19156-gfi: <http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#> \n"
+			+ "PREFIX iso19156-om: <http://def.isotc211.org/iso19156/2011/Observation#> \n"
+			+ "PREFIX iso19156-sf: <http://def.isotc211.org/iso19156/2011/SamplingFeature#> \n"
+			+ "PREFIX iso19156-sfs: <http://def.isotc211.org/iso19156/2011/SpatialSamplingFeature#> \n"
+			+ "PREFIX iso19156-sp: <http://def.isotc211.org/iso19156/2011/Specimen#> \n"
+			+ "PREFIX iso19156_gfi: <http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#> \n"
+			+ "PREFIX iso19156_sf: <http://def.isotc211.org/iso19156/2011/SamplingFeature#> ";
 
 	@SuppressWarnings("deprecation")
 	FeatureVector(String inputAddress, String modelAddress,String SVMMethod) throws IOException {
@@ -88,9 +111,10 @@ public class FeatureVector {
 		
 		for (Entry<RDFNode, float[]> pair : approvedURIs.entrySet()) {
 			System.out.println("Approved URI is: " +  pair.getKey() + " \n    Feature Vector is:  " + Arrays.toString(pair.getValue()));	
-			System.out.println(" Is Class ? " + isClassNode(pair.getKey()));
+			System.out.println("        Is Class ? " + isClassNode(pair.getKey()));
 			if(!isClassNode(pair.getKey()))
-				System.out.println(getClassNode(pair.getKey()));		
+				System.out.println(getClassNode(pair.getKey()) +"\n");		
+			System.out.println("\n");
 		}	
 	}
 	
@@ -199,21 +223,9 @@ public class FeatureVector {
 		
 		String inputStr = inputNode.toString();
 		
-		String queryStr = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-				+ "PREFIX time: <http://www.w3.org/2006/time#> "
-				+ "PREFIX saref: <https://w3id.org/saref#> " 
-				+ "PREFIX schema: <http://schema.org/> "
-				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-
+		String queryStr = SPARQL_PREFIXES
 				+ "SELECT ?object \n" + "WHERE\n" + "{\n {" 
 				+ "?subject rdf:type ?object}"
-				//+ prefNodeStr + " rdf:type ?object ."
-				//+"filter (contains(str(?subject), \""+inputStr+"\"))"
 				+ "  FILTER (?subject = <"+ inputStr+ ">) "
 				+ "}";
 		
@@ -236,19 +248,7 @@ public class FeatureVector {
 		String result = "";
 		String inputStr = inputNode.toString();
 		
-		String queryStr = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-				+ "PREFIX time: <http://www.w3.org/2006/time#> "
-				+ "PREFIX saref: <https://w3id.org/saref#>  " 
-				+ "PREFIX schema: <http://schema.org/>  "
-				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-				+" PREFIX base: <http://def.isotc211.org/iso19150-2/2012/base#> "
-				+"prefix oboe-core: <http://ecoinformatics.org/oboe/oboe.1.0/oboe-core.owl#> "
-				
+		String queryStr = SPARQL_PREFIXES	
 				+ "select ?subject (group_concat(?prefixedName ; separator = \"\") as ?prefName) where {\n"
 				+ "  values (?prefix ?ns) { \n"
 				+ "    ( \"saref:\" <https://w3id.org/saref#> )\n"
@@ -261,6 +261,17 @@ public class FeatureVector {
 				+ "    ( \"dcterms:\" <http://purl.org/dc/terms/> )\n"
 				+ "    ( \"om:\" <http://www.wurvoc.org/vocabularies/om-1.8/> )\n"
 				+ "    ( \"rdf:\" <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )\n"
+				+ "    ( \"dc:\" <http://purl.org/dc/elements/1.1/> )\n"
+				+ "    ( \"dct:\" <http://purl.org/dc/terms/> )\n"
+				+ "    ( \"iso19156-gfi:\" <http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#> )\n"
+				+ "    ( \"iso19156-om:\" <http://def.isotc211.org/iso19156/2011/Observation#> )\n"
+				+ "    ( \"iso19156-sf:\" <http://def.isotc211.org/iso19156/2011/SamplingFeature#> )\n"
+				+ "    ( \"iso19156-sfs:\" <http://def.isotc211.org/iso19156/2011/SpatialSamplingFeature#> )\n"
+				+ "    ( \"iso19156-sp:\" <http://def.isotc211.org/iso19156/2011/Specimen#> )\n"
+				+ "    ( \"iso19156_gfi:\" <http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#> )\n"
+				+ "    ( \"iso19156_sf:\" <http://def.isotc211.org/iso19156/2011/SamplingFeature#> )\n"
+				+ "    ( \"sosa-om:\" <http://www.w3.org/ns/sosa/om#> )\n"
+				
 				+ "  }\n"
 				+ "  ?subject ?predicate ?object .\n"
 				+ "  FILTER (?subject = <"+ inputStr+ ">) "
@@ -291,39 +302,18 @@ public class FeatureVector {
 		String prefNodeStr = getPrefName(inputNode);
 		ArrayList<RDFNode> result = new ArrayList<RDFNode>();
 		
-		String queryStr = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-				+ "PREFIX time: <http://www.w3.org/2006/time#> "
-				+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
-				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-
+		String queryStr = SPARQL_PREFIXES
 				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{"
-				+ "?subject ?a " + prefNodeStr + "}"
-				//+ "filter (contains(str(?object), \""+inputStr+"\"))"
-				//+ "FILTER regex(?object, \"" + inputStr + "\", \"i\" ) " 
-				//+ " FILTER (?subject = <https://w3id.org/saref#Switch>) "
+				+ "?subject ?predicate ?object}"
+				+ "  FILTER (?object ="+ prefNodeStr + ") "
+				//+ "?subject ?a " + prefNodeStr + "}"
 				+ "}";
 		
-		String queryStrBlankNode = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-				+ "PREFIX om: <http://www.wurvoc.org/vocabularies/om-1.8/> "
-				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-				+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
-				+ "PREFIX time: <http://www.w3.org/2006/time#> "
-				+ "PREFIX saref: <https://w3id.org/saref#>  " + "PREFIX schema: <http://schema.org/>  "
-				+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
-
+		String queryStrBlankNode = SPARQL_PREFIXES
 				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{"
-				+ "?subject ?a [?b "+prefNodeStr+"]}"
-				//+ "?subject ?predicate1 [?predicate2 saref:hasTypicalConsumption}"
-				//+ "filter (contains(str(?object), \""+inputStr+"\"))"
-				//+ "FILTER regex(?object, \"" + inputStr + "\", \"i\" ) " 
-				//+ " FILTER (?subject = <https://w3id.org/saref#Switch>) "
+				//+ "?subject ?a [?b "+prefNodeStr+"]}"
+				+ "?subject ?a [?b ?object]}"
+				+ "  FILTER (?object ="+ prefNodeStr + ") "
 				+ "}";
 		
 		Query query = QueryFactory.create(queryStr);

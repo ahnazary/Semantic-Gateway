@@ -97,9 +97,9 @@
     "supportedProtocols": {
         "type": "Property",
         "value": {
-            "HTTP",
-            "HTTPS",
-            "FTP"
+            "HTTP":"",
+            "HTTPS":"",
+            "FTP":""
         },
         "observedAt": "2017-05-04T12:30:00Z"
     },

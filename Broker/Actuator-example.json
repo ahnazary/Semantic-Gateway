@@ -1,5 +1,5 @@
 {
-  "id": "Actuator:valve1”,
+  "id": "Actuator:valve1",
   "type": "Actuator",
   "locatedIn":{
         "type": "Relationship",
