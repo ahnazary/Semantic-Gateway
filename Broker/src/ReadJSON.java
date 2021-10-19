@@ -37,6 +37,7 @@ public class ReadJSON {
             if( x.get(current_key).getClass().getName().equals("org.json.JSONObject"))
             {
                 keylist.add(current_key);
+                
                 myfunction((JSONObject) x.get(current_key));
                
             } 
@@ -54,14 +55,10 @@ public class ReadJSON {
             }
             else 
             {     
-            	
-            	HashMap<String, Object> tempMap = new HashMap<String, Object>();
+            	HashMap<String, Object> tempMap = new HashMap<String, Object>(); 	
             	tempMap.put(current_key, x.get(current_key));
             	JSONPairs.add(tempMap);
-            	
-            	keylist.add(current_key);
-            	
-            	
+           	
             	//String s1=Boolean.toString(x.getBoolean(current_key));
 //            	try {
 //            		if(x.get(current_key) instanceof Boolean)

@@ -8,30 +8,32 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="exception"/>
+			<item value="http://www.w3.org/ns/sosa/om"/>
+			<item value="&#x09;&#x09;Query query = QueryFactory.create(queryStr);"/>
+			<item value="prefixesStr"/>
+			<item value="oboe-core"/>
+			<item value="https://w3id.org/saref#makesMeasurement "/>
+			<item value="results output has next"/>
+			<item value="ffffffffffFF"/>
+			<item value="Is Class"/>
+			<item value="https://w3id.org/saref#TemperatureSensor"/>
+			<item value="typeOfNode"/>
 			<item value="degree_Fahrenheit "/>
 			<item value="class"/>
 			<item value="measurement"/>
 			<item value="switch"/>
-			<item value="building "/>
-			<item value="building"/>
-			<item value="buili"/>
-			<item value="Output"/>
-			<item value="System.out.println"/>
-			<item value="append"/>
-			<item value="http://www.wurvoc.org/vocabularies/om-1.8/bar"/>
-			<item value="https://w3id.org/saref"/>
-			<item value="https://w3id.org/saref "/>
-			<item value=" URIs"/>
-			<item value="URIs"/>
 		</list>
 		<list key="replacehistory">
+			<item value="SPARQL_PREFIXES"/>
+			<item value="isClassNode"/>
 			<item value="tempApprovedURIs"/>
 			<item value="approved"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="1098"/>
-		<item key="DIALOG_Y_ORIGIN" value="251"/>
+		<item key="DIALOG_Y_ORIGIN" value="252"/>
 		<item key="DIALOG_WIDTH" value="348"/>
 		<item key="DIALOG_HEIGHT" value="437"/>
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>

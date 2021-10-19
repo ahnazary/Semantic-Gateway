@@ -101,7 +101,8 @@ public class DateTimeQuery extends FeatureVector{
 						}
 						
 						for (Entry<RDFNode, float[]> pair : tempApprovedURIs.entrySet()) {
-							approvedURIs.put(pair.getKey(), pair.getValue());
+							if(isClassNode(pair.getKey()))
+								approvedURIs.put(pair.getKey(), pair.getValue());
 							if(!isClassNode(pair.getKey())) {
 								ArrayList <RDFNode> temp = getClassNode(pair.getKey());
 								for(int p = 0;p < temp.size(); p++) {
@@ -124,14 +125,13 @@ public class DateTimeQuery extends FeatureVector{
 				String[] words = {"date", "time"};
 				
 				for(int j = 0 ; j < words.length ; j++) {
-					String sarefQueryFileExact = SPARQL_PREFIXES
-							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
-							+ "FILTER regex(?object, \"" + words[j] + "\", \"i\" ) " + "}";
-					
-					URIs = resultsArr(sarefQueryFileExact, model);
-					}
+				String sarefQueryFileExact = SPARQL_PREFIXES
+						+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
+						+ "FILTER regex(?object, \"" + words[j] + "\", \"i\" ) " + "}";
+				
+				URIs = resultsArr(sarefQueryFileExact, model);
 				}
 			}
 		}
-	
+	}
 }

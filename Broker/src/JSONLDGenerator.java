@@ -53,6 +53,7 @@ public class JSONLDGenerator {
 
 			if(i == countLines(JSONContent)) {
 				appendStrToFile(JSONLDFilePath, "  \"@context\": [");
+				
 				for (Entry<RDFNode, float[]> pair : approvedURIs.entrySet()) {
 					j++;
 					if(j < approvedURIs.size()-1) {
@@ -61,16 +62,19 @@ public class JSONLDGenerator {
 					}
 					
 					
-					else if(j == approvedURIs.size()-1) {
+					else if(j == approvedURIs.size()-1 ) {
 						tempStr = "    " +'"' + pair.getKey().toString() +'"'+ "\n  ]"+"\n}";
 						appendStrToFile(JSONLDFilePath, tempStr);
 
 					}									
-				}			
+				}	
+				if(approvedURIs.size() == 0) {
+					tempStr = "    " + "  ]"+"\n}";
+					appendStrToFile(JSONLDFilePath, tempStr);
+				}
 			}
 		}
 		scanner.close();
-		
 	}
 	
 	private static int countLines(String str){

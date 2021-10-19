@@ -30,6 +30,8 @@ public class FeatureVector {
 	
 	protected static ArrayList<RDFNode> URIs = new ArrayList<RDFNode>();
 	protected static ArrayList<HashMap<String, Object>> JSONPairs = new ArrayList<HashMap<String,Object>>();
+	protected static ArrayList<String> keylist = new ArrayList<String>();
+	
 	protected static Map<RDFNode, float[]> approvedURIs = new HashMap<RDFNode, float[]>();
 	protected static Map<RDFNode, float[]> aditionalApprovedURIs = new HashMap<RDFNode, float[]>();
 	protected ArrayList<String> bannedURIs = new ArrayList<String>();
@@ -97,23 +99,29 @@ public class FeatureVector {
 		
 		ReadJSON rs = new ReadJSON(inputAddress);
 		JSONPairs = rs.getJSONPairs();
-		final SVM svm = new SVM(TRAINING_DATA);
+		keylist = rs.getKeys();
+;		final SVM svm = new SVM(TRAINING_DATA);
 		final WeightedSVM wsvm = new WeightedSVM(TRAINING_DATA);
-		
-		
+
+		FirstLayerQuery firstLayerQuery = new FirstLayerQuery(inputAddress, modelAddress, SVMMethod); 
 		MorphemesQuery morphemesQuery = new MorphemesQuery(inputAddress, modelAddress, SVMMethod); 
 		DateTimeQuery dateTimeQuery = new DateTimeQuery(inputAddress, modelAddress, SVMMethod); 
+		
+		firstLayerQuery.generateFirstLayerResultsArr();
 		morphemesQuery.generateMorphemesResultsArr();
 		dateTimeQuery.generatedateTimeResultsArr();
+		
+		firstLayerQuery.firstLayerQuery(SVMMethod);
 		morphemesQuery.morphemesQuery(SVMMethod);
 		dateTimeQuery.dateTimeQuery(SVMMethod);
+		
 		System.out.println("-------------------------------------------------------------------------- \n");
 		
 		for (Entry<RDFNode, float[]> pair : approvedURIs.entrySet()) {
-			System.out.println("Approved URI is: " +  pair.getKey() + " \n    Feature Vector is:  " + Arrays.toString(pair.getValue()));	
+			System.out.println("Approved URI is: " +  pair.getKey() + "   (" + getPrefName(pair.getKey())+")" +" \n    Feature Vector is:  " + Arrays.toString(pair.getValue()));	
 			System.out.println("        Is Class ? " + isClassNode(pair.getKey()));
 			if(!isClassNode(pair.getKey()))
-				System.out.println(getClassNode(pair.getKey()) +"\n");		
+				System.out.println("Parent Class Nodes are : "+ getClassNode(pair.getKey()) +"\n");		
 			System.out.println("\n");
 		}	
 	}
@@ -271,6 +279,7 @@ public class FeatureVector {
 				+ "    ( \"iso19156_gfi:\" <http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#> )\n"
 				+ "    ( \"iso19156_sf:\" <http://def.isotc211.org/iso19156/2011/SamplingFeature#> )\n"
 				+ "    ( \"sosa-om:\" <http://www.w3.org/ns/sosa/om#> )\n"
+				+ "    ( \"oboe-core:\" <http://ecoinformatics.org/oboe/oboe.1.0/oboe-core.owl#> )\n"
 				
 				+ "  }\n"
 				+ "  ?subject ?predicate ?object .\n"
@@ -316,11 +325,26 @@ public class FeatureVector {
 				+ "  FILTER (?object ="+ prefNodeStr + ") "
 				+ "}";
 		
+		String queryStrSARGONError = SPARQL_PREFIXES
+				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{"
+				+ "?subject ?predicate ?object}"
+				+ "  FILTER (?subject =<"+ inputNode.toString() + ">) "
+				//+ "?subject ?a " + prefNodeStr + "}"
+				+ "}";
+		
+		String queryStrBlankNodeSARGONError = SPARQL_PREFIXES
+				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{"
+				//+ "?subject ?a [?b "+prefNodeStr+"]}"
+				+ "?subject ?a [?b ?object]}"
+				+ "  FILTER (?object =<"+ inputNode.toString() + ">) "
+				+ "}";
+		
+		try {
 		Query query = QueryFactory.create(queryStr);
 		QueryExecution qExe = QueryExecutionFactory.create(query, model);
 		ResultSet resultsOutput = qExe.execSelect();
 		
-		for (; resultsOutput.hasNext();) {
+		while( resultsOutput.hasNext()) {
 			QuerySolution soln = resultsOutput.nextSolution();
 			RDFNode subject = soln.get("subject");
 			
@@ -342,18 +366,55 @@ public class FeatureVector {
 					qExeAnon.close();
 				}
 				catch(Exception e) {
-					System.out.println("Exception occured" + e);
+					System.out.println("Exception occured inner" + e);
 				}
 			}
 		}
 		qExe.close();
+		}
+		catch(Exception e) {
+			System.out.println("Exception Occured");
+			Query query2 = QueryFactory.create(queryStrSARGONError);
+			QueryExecution qExe2 = QueryExecutionFactory.create(query2, model);
+			ResultSet resultsOutput2 = qExe2.execSelect();
+			
+			while( resultsOutput2.hasNext()) {
+				QuerySolution soln2 = resultsOutput2.nextSolution();
+				RDFNode subject = soln2.get("subject");
+				
+				if(isClassNode(subject)) 
+					result.add(subject);					
+							
+				else  {	
+					try {
+						Query queryAnon2 = QueryFactory.create(queryStrBlankNodeSARGONError);
+						QueryExecution qExeAnon2 = QueryExecutionFactory.create(queryAnon2, model);
+						ResultSet resultsOutputAnon2 = qExeAnon2.execSelect();
+						
+						for (; resultsOutputAnon2.hasNext();) {
+							
+							QuerySolution soln3 = resultsOutputAnon2.nextSolution();
+							RDFNode subject3 = soln3.get("subject");
+							result.add(subject3);					
+						}
+						qExeAnon2.close();
+					}
+					catch(Exception E) {
+						System.out.println("Exception occured inner Error" + E);
+					}
+				}
+			}
+			qExe2.close();
+		}
 		return result;
+		
 	}
 
 	protected boolean isValidURI(RDFNode inputRDFNode) {	
 		
 		//URIS which we want to be excluded from the result are added here
 		bannedURIs.add("https://w3id.org/saref"); 
+		bannedURIs.add("http://www.w3.org/ns/sosa/om"); 
 				
 		for(int i = 0; i < bannedURIs.size(); i++) {
 			if(bannedURIs.get(i).equals(inputRDFNode.toString())) 
