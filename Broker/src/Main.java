@@ -6,7 +6,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException, ParseException {
 	
-		FeatureVector FV = new FeatureVector("Floor-example.json","saref.ttl", "SVM"); // 3rd field should be either "WSVM" or "SVM"	
+		FeatureVector FV = new FeatureVector("Floor-example.json","Sargon.ttl", "SVM"); // 3rd field should be either "WSVM" or "SVM"	
 		FV.start();
 		System.out.println(FV.getURIs().size());
 		
@@ -15,14 +15,5 @@ public class Main {
 		File file = new File(Test.getJSONLDFilePath()); 
 		file.delete();
 		Test.Start();
-			
-//		WriteJSON Sensors = new WriteJSON();
-//		Sensors.writeJSONFile();
-		
-//		WeightedSVM wsvm = new WeightedSVM(TRAINING_DATA);
-//		wsvm.displayInfoTables();
-//		wsvm.handleCommandLine();
-
-
 	}			
 }

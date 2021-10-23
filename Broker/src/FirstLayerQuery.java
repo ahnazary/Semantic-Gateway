@@ -27,7 +27,7 @@ public class FirstLayerQuery extends FeatureVector{
 				keyWordArr[j] = word.charAt(j);
 			}
 
-			for (int j = 0; j < word.length(); j++) {
+			for (int j = 0; j < word.length() && isValidStr(word); j++) {
 				for (int k = j + 3; k < word.length(); k++) {
 					String morphemes = "";
 
@@ -43,6 +43,33 @@ public class FirstLayerQuery extends FeatureVector{
 			}
 		}
 		
+		for (int i = 0; i < ArrayValuesList.size(); i++) {				
+			String word = ArrayValuesList.get(i);
+			System.out.println(word);
+			
+			char keyWordArr[] = new char[word.length()];
+
+			for (int j = 0; j < word.length(); j++) {
+				keyWordArr[j] = word.charAt(j);
+			}
+
+			for (int j = 0; j < word.length() && isValidStr(word); j++) {
+				for (int k = j + 3; k < word.length(); k++) {
+					String morphemes = "";
+
+					for (int z = j; z <= k; z++) {
+						morphemes += keyWordArr[z];
+					}
+					
+					if (j == 0 && k == word.length() - 1)
+						doQuery(method, word ,morphemes, true);
+					else
+						doQuery(method, word ,morphemes, false);
+				}
+			}
+		}
+
+		
 		for (int i = 0; i < JSONPairs.size(); i++) {
 			
 			String word = (String) JSONPairs.get(i).keySet().toArray()[0];
@@ -54,7 +81,7 @@ public class FirstLayerQuery extends FeatureVector{
 				keyWordArr[j] = word.charAt(j);
 			}
 
-			for (int j = 0; j < word.length(); j++) {
+			for (int j = 0; j < word.length() && isValidStr(word); j++) {
 				for (int k = j + 3; k < word.length(); k++) {
 					String morphemes = "";
 
@@ -82,7 +109,7 @@ public class FirstLayerQuery extends FeatureVector{
 						valueWordArr[j] = word.charAt(j);
 					}
 			
-					for (int j = 0; j < word.length(); j++) {
+					for (int j = 0; j < word.length() && isValidStr(word); j++) {
 						for (int k = j + 3; k < word.length(); k++) {
 							String morphemes = "";
 			
@@ -239,6 +266,39 @@ public class FirstLayerQuery extends FeatureVector{
 		
 		for (int i = 0; i < keylist.size(); i++) {
 			String word = keylist.get(i);
+			char wordArr[] = new char[word.length()];
+	
+			for (int j = 0; j < word.length(); j++) {
+				wordArr[j] = word.charAt(j);
+			}
+	
+			for (int j = 0; j < word.length(); j++) {
+				for (int k = j + 3; k < word.length(); k++) {
+					String morphemes = "";
+	
+					for (int z = j; z <= k; z++) {
+						morphemes += wordArr[z];
+					}
+	
+					String QueryFileExact = SPARQL_PREFIXES
+							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:label ?object}"
+							+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
+					String morphemesQueryFile = SPARQL_PREFIXES
+							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:label ?object}"
+							+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
+							+ "}";
+	
+					if (j == 0 && k == word.length() - 1) {
+						URIs = resultsArr(QueryFileExact, model);
+					} else {
+						URIs = resultsArr(morphemesQueryFile, model);
+					}
+				}
+			}
+		}
+		
+		for (int i = 0; i < ArrayValuesList.size(); i++) {
+			String word = ArrayValuesList.get(i);
 			char wordArr[] = new char[word.length()];
 	
 			for (int j = 0; j < word.length(); j++) {

@@ -1,9 +1,10 @@
 {
-    "Platform":"ArduinoBase1",
-    "Observation":"TemperatureObservation",
-    "Sensor":"TMP102",
-    "ObservationValue":"22",
-    "asdfasdf":"19-10-2021",
-    "ObservationUnit":"Celsius",
-    "Energy":"E"
+    
+    "asdasd": {
+         "type": "Relationship",
+        "value": [
+            "Room:01",
+            "Room:02"
+        ]
+    }
 }

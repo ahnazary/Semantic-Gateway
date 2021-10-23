@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;MorphemesQuery&apos; to &apos;SecondLayerQuery&apos;&#x0A;- Original project: &apos;Broker&apos;&#x0A;- Original element: &apos;MorphemesQuery&apos;&#x0A;- Renamed element: &apos;SecondLayerQuery&apos;&#x0A;- Update references to refactored element&#x0A;- Rename similarly named elements&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MorphemesQuery&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{MorphemesQuery.java[MorphemesQuery" matchStrategy="1" name="SecondLayerQuery" qualified="false" references="true" similarDeclarations="true" stamp="1634988432800" textual="false" version="1.0"/>
+</session>

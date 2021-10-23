@@ -31,10 +31,12 @@ public class FeatureVector {
 	protected static ArrayList<RDFNode> URIs = new ArrayList<RDFNode>();
 	protected static ArrayList<HashMap<String, Object>> JSONPairs = new ArrayList<HashMap<String,Object>>();
 	protected static ArrayList<String> keylist = new ArrayList<String>();
+	protected static ArrayList<String> ArrayValuesList = new ArrayList<String>();
 	
 	protected static Map<RDFNode, float[]> approvedURIs = new HashMap<RDFNode, float[]>();
 	protected static Map<RDFNode, float[]> aditionalApprovedURIs = new HashMap<RDFNode, float[]>();
 	protected ArrayList<String> bannedURIs = new ArrayList<String>();
+	public static ArrayList<String> bannedStrs = new ArrayList<String>();
 		
 	static final double [][][] TRAINING_DATA = {{{0.5555, 0.04175} , {+1}}, 							
 												{{0.4165, 0.06217} , {+1}},
@@ -82,7 +84,11 @@ public class FeatureVector {
 			+ "PREFIX iso19156-sfs: <http://def.isotc211.org/iso19156/2011/SpatialSamplingFeature#> \n"
 			+ "PREFIX iso19156-sp: <http://def.isotc211.org/iso19156/2011/Specimen#> \n"
 			+ "PREFIX iso19156_gfi: <http://def.isotc211.org/iso19156/2011/GeneralFeatureInstance#> \n"
-			+ "PREFIX iso19156_sf: <http://def.isotc211.org/iso19156/2011/SamplingFeature#> ";
+			+ "PREFIX iso19156_sf: <http://def.isotc211.org/iso19156/2011/SamplingFeature#> "
+			+ "PREFIX xml: <http://www.w3.org/XML/1998/namespace> "
+			+ "PREFIX skos: <http://www.w3.org/2004/02/skos/core#> "
+			+ "PREFIX terms: <http://purl.org/dc/terms/> "
+			+ "PREFIX webprotege: <http://webprotege.stanford.edu/> ";
 
 	@SuppressWarnings("deprecation")
 	FeatureVector(String inputAddress, String modelAddress,String SVMMethod) throws IOException {
@@ -100,19 +106,21 @@ public class FeatureVector {
 		ReadJSON rs = new ReadJSON(inputAddress);
 		JSONPairs = rs.getJSONPairs();
 		keylist = rs.getKeys();
-;		final SVM svm = new SVM(TRAINING_DATA);
+		ArrayValuesList = rs.getArrayValues();
+		
+		final SVM svm = new SVM(TRAINING_DATA);
 		final WeightedSVM wsvm = new WeightedSVM(TRAINING_DATA);
 
 		FirstLayerQuery firstLayerQuery = new FirstLayerQuery(inputAddress, modelAddress, SVMMethod); 
-		MorphemesQuery morphemesQuery = new MorphemesQuery(inputAddress, modelAddress, SVMMethod); 
+		SecondLayerQuery secondLayerQuery = new SecondLayerQuery(inputAddress, modelAddress, SVMMethod); 
 		DateTimeQuery dateTimeQuery = new DateTimeQuery(inputAddress, modelAddress, SVMMethod); 
 		
 		firstLayerQuery.generateFirstLayerResultsArr();
-		morphemesQuery.generateMorphemesResultsArr();
+		secondLayerQuery.generateMorphemesResultsArr();
 		dateTimeQuery.generatedateTimeResultsArr();
 		
 		firstLayerQuery.firstLayerQuery(SVMMethod);
-		morphemesQuery.morphemesQuery(SVMMethod);
+		secondLayerQuery.morphemesQuery(SVMMethod);
 		dateTimeQuery.dateTimeQuery(SVMMethod);
 		
 		System.out.println("-------------------------------------------------------------------------- \n");
@@ -280,6 +288,10 @@ public class FeatureVector {
 				+ "    ( \"iso19156_sf:\" <http://def.isotc211.org/iso19156/2011/SamplingFeature#> )\n"
 				+ "    ( \"sosa-om:\" <http://www.w3.org/ns/sosa/om#> )\n"
 				+ "    ( \"oboe-core:\" <http://ecoinformatics.org/oboe/oboe.1.0/oboe-core.owl#> )\n"
+				+ "    ( \"webprotege:\" <http://webprotege.stanford.edu/> )\n"
+				+ "    ( \"terms:\" <http://purl.org/dc/terms/> )\n"
+				+ "    ( \"skos:\" <http://www.w3.org/2004/02/skos/core#> )\n"
+				+ "    ( \"xml:\" <http://www.w3.org/XML/1998/namespace> )\n"
 				
 				+ "  }\n"
 				+ "  ?subject ?predicate ?object .\n"
@@ -339,7 +351,7 @@ public class FeatureVector {
 				+ "  FILTER (?object =<"+ inputNode.toString() + ">) "
 				+ "}";
 		
-		try {
+		//try {
 		Query query = QueryFactory.create(queryStr);
 		QueryExecution qExe = QueryExecutionFactory.create(query, model);
 		ResultSet resultsOutput = qExe.execSelect();
@@ -371,41 +383,41 @@ public class FeatureVector {
 			}
 		}
 		qExe.close();
-		}
-		catch(Exception e) {
-			System.out.println("Exception Occured");
-			Query query2 = QueryFactory.create(queryStrSARGONError);
-			QueryExecution qExe2 = QueryExecutionFactory.create(query2, model);
-			ResultSet resultsOutput2 = qExe2.execSelect();
-			
-			while( resultsOutput2.hasNext()) {
-				QuerySolution soln2 = resultsOutput2.nextSolution();
-				RDFNode subject = soln2.get("subject");
-				
-				if(isClassNode(subject)) 
-					result.add(subject);					
-							
-				else  {	
-					try {
-						Query queryAnon2 = QueryFactory.create(queryStrBlankNodeSARGONError);
-						QueryExecution qExeAnon2 = QueryExecutionFactory.create(queryAnon2, model);
-						ResultSet resultsOutputAnon2 = qExeAnon2.execSelect();
-						
-						for (; resultsOutputAnon2.hasNext();) {
-							
-							QuerySolution soln3 = resultsOutputAnon2.nextSolution();
-							RDFNode subject3 = soln3.get("subject");
-							result.add(subject3);					
-						}
-						qExeAnon2.close();
-					}
-					catch(Exception E) {
-						System.out.println("Exception occured inner Error" + E);
-					}
-				}
-			}
-			qExe2.close();
-		}
+//		}
+//		catch(Exception e) {
+//			System.out.println("Exception Occured");
+//			Query query2 = QueryFactory.create(queryStrSARGONError);
+//			QueryExecution qExe2 = QueryExecutionFactory.create(query2, model);
+//			ResultSet resultsOutput2 = qExe2.execSelect();
+//			
+//			while( resultsOutput2.hasNext()) {
+//				QuerySolution soln2 = resultsOutput2.nextSolution();
+//				RDFNode subject = soln2.get("subject");
+//				
+//				if(isClassNode(subject)) 
+//					result.add(subject);					
+//							
+//				else  {	
+//					try {
+//						Query queryAnon2 = QueryFactory.create(queryStrBlankNodeSARGONError);
+//						QueryExecution qExeAnon2 = QueryExecutionFactory.create(queryAnon2, model);
+//						ResultSet resultsOutputAnon2 = qExeAnon2.execSelect();
+//						
+//						for (; resultsOutputAnon2.hasNext();) {
+//							
+//							QuerySolution soln3 = resultsOutputAnon2.nextSolution();
+//							RDFNode subject3 = soln3.get("subject");
+//							result.add(subject3);					
+//						}
+//						qExeAnon2.close();
+//					}
+//					catch(Exception E) {
+//						System.out.println("Exception occured inner Error" + E);
+//					}
+//				}
+//			}
+//			qExe2.close();
+//		}
 		return result;
 		
 	}
@@ -421,6 +433,20 @@ public class FeatureVector {
 				return false;	
 		}	
 		
+		return true;
+	}
+	
+	public static boolean isValidStr(String input) {
+		bannedStrs.add("type");
+		bannedStrs.add("unit");
+		bannedStrs.add("measure");
+		bannedStrs.add("relation");
+		bannedStrs.add("value");
+		
+		for(int i = 0; i < bannedStrs.size(); i++) {
+			if (input.equalsIgnoreCase(bannedStrs.get(i)))
+				return false;
+		}
 		return true;
 	}
 	

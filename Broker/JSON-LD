@@ -21,11 +21,10 @@
         ]
     },
   "@context": [
-    "https://w3id.org/saref#SensingFunction",
-    "https://w3id.org/saref#MeteringFunction",
-    "https://w3id.org/saref#Measurement",
+    "http://webprotege.stanford.edu/Zone",
+    "http://webprotege.stanford.edu/Room",
     "https://w3id.org/saref#Device",
-    "https://w3id.org/saref#GetCurrentMeterValueCommand",
-    "https://w3id.org/saref#Switch"
+    "https://w3id.org/saref#Measurement",
+    "https://w3id.org/saref#BuildingRelated"
   ]
 }

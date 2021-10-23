@@ -16,13 +16,15 @@ public class ReadJSON {
 	String fileAddress;
 	String input;
 	private static ArrayList<String> keylist = new ArrayList<String>();
-
+	private static ArrayList<String> ArrayValuesList = new ArrayList<String>();
 	private static ArrayList<HashMap<String, Object>> JSONPairs = new ArrayList<HashMap<String,Object>>();
 	
 	public ReadJSON(String fileAddress) throws IOException {
 		
 		this.fileAddress = fileAddress;
 		input = readFile(fileAddress);
+		JSONObject jsonObject = new JSONObject(input);
+		myfunction(jsonObject);	
 	}
 	
 	private static void myfunction(JSONObject x) throws JSONException
@@ -45,11 +47,14 @@ public class ReadJSON {
             {
                 for(int j=0;j<((JSONArray) x.get(current_key)).length();j++)
                 {
+                	if(((JSONArray) x.get(current_key)).get(j) instanceof String) {      		
+                		ArrayValuesList.add((String) ((JSONArray) x.get(current_key)).get(j));
+                	}
+
                     if(((JSONArray) x.get(current_key)).get(j).getClass().getName().equals("org.json.JSONObject"))
-                    {
-                        keylist.add(current_key);
-                        myfunction((JSONObject)((JSONArray) x.get(current_key)).get(j));
-                        
+                    {	
+                    	keylist.add(current_key);
+                        myfunction((JSONObject)((JSONArray) x.get(current_key)).get(j));                      
                     }
                 }
             }
@@ -57,47 +62,30 @@ public class ReadJSON {
             {     
             	HashMap<String, Object> tempMap = new HashMap<String, Object>(); 	
             	tempMap.put(current_key, x.get(current_key));
-            	JSONPairs.add(tempMap);
-           	
-            	//String s1=Boolean.toString(x.getBoolean(current_key));
-//            	try {
-//            		if(x.get(current_key) instanceof Boolean)
-//            			System.out.println(x.getBoolean(current_key));
-//            		
-//            		if(x.get(current_key) instanceof String)
-//            			System.out.println(x.getString(current_key));
-//            		
-//            		if(x.get(current_key) instanceof Integer)
-//            			System.out.println(x.getInt(current_key));           		
-//            	}
-//            	
-//            	catch (Exception e) {
-//            		System.out.println( e );
-//            	}               
+            	JSONPairs.add(tempMap); 
             }
         }
     }
 
 	public ArrayList<HashMap<String, Object>> getJSONPairs() {		
-		JSONObject jsonObject = new JSONObject(input);
-		myfunction(jsonObject);	
+//		JSONObject jsonObject = new JSONObject(input);
+//		myfunction(jsonObject);	
 		return JSONPairs;        
 	}
 	
-	public void printOutKeys() throws IOException, ParseException {
-		
-		JSONObject jsonObject = new JSONObject(input);
-		myfunction(jsonObject);
-		System.out.println(keylist);
-        
+	public ArrayList<String> getArrayValues() {		
+//		JSONObject jsonObject = new JSONObject(input);
+//		myfunction(jsonObject);	
+		return ArrayValuesList;        
 	}
 	
 	public ArrayList<String> getKeys(){
 		
-		JSONObject jsonObject = new JSONObject(input);
-		myfunction(jsonObject);
+//		JSONObject jsonObject = new JSONObject(input);
+//		myfunction(jsonObject);
 		return keylist;		
 	}
+	
 	
 	private String readFile(String filePath) throws IOException {
 	    BufferedReader reader = new BufferedReader(new FileReader (filePath));

@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="room"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="exception"/>
-			<item value="http://www.w3.org/ns/sosa/om"/>
-			<item value="&#x09;&#x09;Query query = QueryFactory.create(queryStr);"/>
-			<item value="prefixesStr"/>
-			<item value="oboe-core"/>
-			<item value="https://w3id.org/saref#makesMeasurement "/>
-			<item value="results output has next"/>
-			<item value="ffffffffffFF"/>
-			<item value="Is Class"/>
-			<item value="https://w3id.org/saref#TemperatureSensor"/>
-			<item value="typeOfNode"/>
-			<item value="degree_Fahrenheit "/>
-			<item value="class"/>
-			<item value="measurement"/>
-			<item value="switch"/>
+			<item value="RB8kVin94KMOdCqBXQfzoBq"/>
+			<item value="room"/>
+			<item value="Room"/>
+			<item value="asdasd"/>
+			<item value="hasroom"/>
+			<item value="haszone"/>
+			<item value="https://w3id.org/saref#Switch"/>
+			<item value="floor"/>
+			<item value="R9WkTMS4WuSoGsUmGQnBfGb"/>
+			<item value=""/>
+			<item value="hasfloor"/>
+			<item value="RBMny9KQYAtx7wC9trPLa8G"/>
+			<item value="hazzone"/>
+			<item value="&#x09;&#x09;&#x09;System.out.println(subject);"/>
+			<item value="isclassnode"/>
 		</list>
 		<list key="replacehistory">
+			<item value="morphemesQueryFile"/>
+			<item value="QueryFileExact"/>
 			<item value="SPARQL_PREFIXES"/>
 			<item value="isClassNode"/>
 			<item value="tempApprovedURIs"/>
@@ -33,9 +35,9 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="1098"/>
-		<item key="DIALOG_Y_ORIGIN" value="252"/>
+		<item key="DIALOG_Y_ORIGIN" value="253"/>
 		<item key="DIALOG_WIDTH" value="348"/>
-		<item key="DIALOG_HEIGHT" value="437"/>
+		<item key="DIALOG_HEIGHT" value="436"/>
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
 	</section>
 </section>
