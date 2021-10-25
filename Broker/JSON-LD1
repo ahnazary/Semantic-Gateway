@@ -1,0 +1,29 @@
+
+{
+  "id": "asd:01",
+    "type": "asd",
+    "inBuilding": {
+        "type": "Relationship",
+        "value": "Building:01"
+    },
+   "hasRoom": {
+         "type": "Relationship",
+        "value": [
+            "Room:01",
+            "Room:02"
+        ]
+    },
+   "hasZone": {
+         "type": "Relationship",
+        "value": [
+            "Zone:01",
+            "Zone:02"
+        ]
+    },
+  "@context": [
+    "http://webprotege.stanford.edu/Zone",
+    "http://webprotege.stanford.edu/Room",
+    "http://webprotege.stanford.edu/Floor",
+    "https://w3id.org/saref#BuildingRelated"
+  ]
+}

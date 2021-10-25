@@ -23,8 +23,7 @@
   "@context": [
     "http://webprotege.stanford.edu/Zone",
     "http://webprotege.stanford.edu/Room",
-    "https://w3id.org/saref#Device",
-    "https://w3id.org/saref#Measurement",
+    "http://webprotege.stanford.edu/Floor",
     "https://w3id.org/saref#BuildingRelated"
   ]
 }

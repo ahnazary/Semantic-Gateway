@@ -6,14 +6,19 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException, ParseException {
 	
-		FeatureVector FV = new FeatureVector("Floor-example.json","Sargon.ttl", "SVM"); // 3rd field should be either "WSVM" or "SVM"	
+		long startTime = System.nanoTime();
+		
+		FeatureVector FV = new FeatureVector("Floor-example2.json","Sargon.ttl", "WSVM"); // 3rd field should be either "WSVM" or "SVM"	
 		FV.start();
-		System.out.println(FV.getURIs().size());
+		System.out.println("Total number of processed Nodes : " + FV.getURIs().size());
 		
 		
-		JSONLDGenerator Test = new JSONLDGenerator(FV.getInputAddress(), "JSON-LD", FV.getApprovedURIs());
+		JSONLDGenerator Test = new JSONLDGenerator(FV.getInputAddress(), "JSON-LD2", FV.getApprovedURIs());
 		File file = new File(Test.getJSONLDFilePath()); 
 		file.delete();
 		Test.Start();
+		
+		long endTime = System.nanoTime();
+		System.out.println("Total Runtime : " + (endTime - startTime)/1000000 + " milliseconds");
 	}			
 }

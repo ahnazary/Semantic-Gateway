@@ -16,7 +16,6 @@ INDEX VERSION 1.131+/home/amirhossein/Documents/GitHub/Semantic-Gateway/.metadat
 920957344.index
 3391689071.index
 531256149.index
-3185763542.index
 622768784.index
 2865441730.index
 952148278.index

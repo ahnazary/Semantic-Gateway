@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="room"/>
+		<item key="selection" value="Profile"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="RB8kVin94KMOdCqBXQfzoBq"/>
+			<item value="profile"/>
+			<item value="parent"/>
+			<item value="owner"/>
+			<item value="@type"/>
+			<item value="https://w3id.org/saref#Time"/>
+			<item value="Parent Class Nodes are"/>
+			<item value="time"/>
+			<item value="airflowsensor"/>
+			<item value="valve"/>
+			<item value="Profile"/>
+			<item value="buildingrelated"/>
+			<item value="type"/>
+			<item value="catch"/>
+			<item value="sensingfunction"/>
 			<item value="room"/>
-			<item value="Room"/>
-			<item value="asdasd"/>
-			<item value="hasroom"/>
-			<item value="haszone"/>
-			<item value="https://w3id.org/saref#Switch"/>
-			<item value="floor"/>
-			<item value="R9WkTMS4WuSoGsUmGQnBfGb"/>
-			<item value=""/>
-			<item value="hasfloor"/>
-			<item value="RBMny9KQYAtx7wC9trPLa8G"/>
-			<item value="hazzone"/>
-			<item value="&#x09;&#x09;&#x09;System.out.println(subject);"/>
-			<item value="isclassnode"/>
 		</list>
 		<list key="replacehistory">
 			<item value="morphemesQueryFile"/>

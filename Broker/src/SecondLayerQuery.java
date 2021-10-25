@@ -105,11 +105,11 @@ public class SecondLayerQuery extends FeatureVector{
 	
 	private void doQuery(String method, String word ,String morphemes, Boolean isFullWord) {
 		
-		String sarefQueryFileExact = SPARQL_PREFIXES
+		String QueryFileExact = SPARQL_PREFIXES
 				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
 				+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
 		
-		String sarefQueryFile = SPARQL_PREFIXES
+		String morphemesQueryFile = SPARQL_PREFIXES
 				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"			
 				+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
 				// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
@@ -125,7 +125,7 @@ public class SecondLayerQuery extends FeatureVector{
 		Map<RDFNode, float[]> singleWordMap = new HashMap<RDFNode, float[]>();
 		if (isFullWord) {
 
-			singleWordMap = resultsMap(sarefQueryFileExact, model, 1f);
+			singleWordMap = resultsMap(QueryFileExact, model, 1f);
 			System.out.println(morphemes);
 
 			for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
@@ -160,7 +160,7 @@ public class SecondLayerQuery extends FeatureVector{
 		} 
 		else {
 
-			singleWordMap = resultsMap(sarefQueryFile, model, surfaceSimilarity(word, morphemes));
+			singleWordMap = resultsMap(morphemesQueryFile, model, surfaceSimilarity(word, morphemes));
 			System.out.println(morphemes);
 			for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
 				
@@ -229,6 +229,9 @@ public class SecondLayerQuery extends FeatureVector{
 				approvedURIs.put(pair.getKey(), pair.getValue());
 			if(!isClassNode(pair.getKey())) {
 				ArrayList <RDFNode> temp = getClassNode(pair.getKey());
+				System.out.println(pair.getKey() + " is approved but not Class Node. ");
+				System.out.println( "      Parent Nodes are :  " + temp);
+				
 				for(int p = 0;p < temp.size(); p++) {
 					approvedURIs.put(temp.get(p), pair.getValue());
 				}							
@@ -256,18 +259,74 @@ public class SecondLayerQuery extends FeatureVector{
 						morphemes += wordArr[z];
 					}
 	
-					String sarefQueryFileExact = SPARQL_PREFIXES
+					String QueryFileExact = SPARQL_PREFIXES
 							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
 							+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
-					String sarefQueryFile = SPARQL_PREFIXES
-							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
+					
+					String morphemesQueryFile = SPARQL_PREFIXES
+							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"			
 							+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
+							// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
+							// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
+							// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
+							// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
+							// +"filter (contains(str(?object), '"+morphemes+"'))"
+							// +"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
+							// +"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
+							// +"FILTER regex(?object,'"+morphemes+"') "
 							+ "}";
 	
 					if (j == 0 && k == word.length() - 1) {
-						URIs = resultsArr(sarefQueryFileExact, model);
+						URIs = resultsArr(QueryFileExact, model);
 					} else {
-						URIs = resultsArr(sarefQueryFile, model);
+						URIs = resultsArr(morphemesQueryFile, model);
+					}
+				}
+			}
+			for ( Map.Entry<String, Object> pair : ((Map<String, Object>) JSONPairs.get(i)).entrySet()) {
+				
+				if(pair.getValue() instanceof String) {
+				
+					word = (String) pair.getValue();
+					
+					char valueWordArr[] = new char[word.length()];
+			
+					for (int j = 0; j < word.length(); j++) {
+						valueWordArr[j] = word.charAt(j);
+					}
+			
+					for (int j = 0; j < word.length() && isValidStr(word); j++) {
+						for (int k = j + 3; k < word.length(); k++) {
+							String morphemes = "";
+			
+							for (int z = j; z <= k; z++) {
+								morphemes += valueWordArr[z];
+							}
+							
+							String QueryFileExact = SPARQL_PREFIXES
+									+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
+									+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
+							
+							String morphemesQueryFile = SPARQL_PREFIXES
+									+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"			
+									+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
+									// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
+									// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
+									// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
+									// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
+									// +"filter (contains(str(?object), '"+morphemes+"'))"
+									// +"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
+									// +"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
+									// +"FILTER regex(?object,'"+morphemes+"') "
+									+ "}";
+			
+							if (j == 0 && k == word.length() - 1) {
+								URIs = resultsArr(QueryFileExact, model);
+							} else {
+								URIs = resultsArr(morphemesQueryFile, model);
+							}
+							
+						}
 					}
 				}
 			}
@@ -290,11 +349,20 @@ public class SecondLayerQuery extends FeatureVector{
 					}
 	
 					String QueryFileExact = SPARQL_PREFIXES
-							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:label ?object}"
+							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
 							+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
+					
 					String morphemesQueryFile = SPARQL_PREFIXES
-							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:label ?object}"
+							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"			
 							+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
+							// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
+							// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
+							// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
+							// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
+							// +"filter (contains(str(?object), '"+morphemes+"'))"
+							// +"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
+							// +"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
+							// +"FILTER regex(?object,'"+morphemes+"') "
 							+ "}";
 	
 					if (j == 0 && k == word.length() - 1) {

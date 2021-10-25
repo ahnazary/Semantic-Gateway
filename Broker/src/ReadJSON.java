@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,8 +22,8 @@ public class ReadJSON {
 		
 		this.fileAddress = fileAddress;
 		input = readFile(fileAddress);
-		JSONObject jsonObject = new JSONObject(input);
-		myfunction(jsonObject);	
+//		JSONObject jsonObject = new JSONObject(input);
+//		myfunction(jsonObject);	
 	}
 	
 	private static void myfunction(JSONObject x) throws JSONException
@@ -68,21 +67,21 @@ public class ReadJSON {
     }
 
 	public ArrayList<HashMap<String, Object>> getJSONPairs() {		
-//		JSONObject jsonObject = new JSONObject(input);
-//		myfunction(jsonObject);	
+		JSONObject jsonObject = new JSONObject(input);
+		myfunction(jsonObject);	
 		return JSONPairs;        
 	}
 	
 	public ArrayList<String> getArrayValues() {		
-//		JSONObject jsonObject = new JSONObject(input);
-//		myfunction(jsonObject);	
+		JSONObject jsonObject = new JSONObject(input);
+		myfunction(jsonObject);	
 		return ArrayValuesList;        
 	}
 	
 	public ArrayList<String> getKeys(){
 		
-//		JSONObject jsonObject = new JSONObject(input);
-//		myfunction(jsonObject);
+		JSONObject jsonObject = new JSONObject(input);
+		myfunction(jsonObject);
 		return keylist;		
 	}
 	
