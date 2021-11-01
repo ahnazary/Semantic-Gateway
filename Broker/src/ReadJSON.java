@@ -22,8 +22,8 @@ public class ReadJSON {
 		
 		this.fileAddress = fileAddress;
 		input = readFile(fileAddress);
-//		JSONObject jsonObject = new JSONObject(input);
-//		myfunction(jsonObject);	
+		JSONObject jsonObject = new JSONObject(input);
+		myfunction(jsonObject);	
 	}
 	
 	private static void myfunction(JSONObject x) throws JSONException
@@ -37,8 +37,7 @@ public class ReadJSON {
             String current_key = keys.get(i).toString();   
             if( x.get(current_key).getClass().getName().equals("org.json.JSONObject"))
             {
-                keylist.add(current_key);
-                
+                keylist.add(current_key);        
                 myfunction((JSONObject) x.get(current_key));
                
             } 
@@ -50,11 +49,11 @@ public class ReadJSON {
                 		ArrayValuesList.add((String) ((JSONArray) x.get(current_key)).get(j));
                 	}
 
-                    if(((JSONArray) x.get(current_key)).get(j).getClass().getName().equals("org.json.JSONObject"))
-                    {	
-                    	keylist.add(current_key);
-                        myfunction((JSONObject)((JSONArray) x.get(current_key)).get(j));                      
-                    }
+//                    if(((JSONArray) x.get(current_key)).get(j).getClass().getName().equals("org.json.JSONObject"))
+//                    {	
+//                    	keylist.add(current_key);
+//                        myfunction((JSONObject)((JSONArray) x.get(current_key)).get(j));                      
+//                    }
                 }
             }
             else 
@@ -67,21 +66,21 @@ public class ReadJSON {
     }
 
 	public ArrayList<HashMap<String, Object>> getJSONPairs() {		
-		JSONObject jsonObject = new JSONObject(input);
-		myfunction(jsonObject);	
+		//JSONObject jsonObject = new JSONObject(input);
+		//myfunction(jsonObject);	
 		return JSONPairs;        
 	}
 	
 	public ArrayList<String> getArrayValues() {		
-		JSONObject jsonObject = new JSONObject(input);
-		myfunction(jsonObject);	
+		//JSONObject jsonObject = new JSONObject(input);
+		//myfunction(jsonObject);	
 		return ArrayValuesList;        
 	}
 	
 	public ArrayList<String> getKeys(){
 		
-		JSONObject jsonObject = new JSONObject(input);
-		myfunction(jsonObject);
+		//JSONObject jsonObject = new JSONObject(input);
+		//myfunction(jsonObject);
 		return keylist;		
 	}
 	

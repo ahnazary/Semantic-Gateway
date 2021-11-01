@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Profile"/>
+		<item key="selection" value="RVK"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="profile"/>
-			<item value="parent"/>
-			<item value="owner"/>
-			<item value="@type"/>
-			<item value="https://w3id.org/saref#Time"/>
-			<item value="Parent Class Nodes are"/>
-			<item value="time"/>
-			<item value="airflowsensor"/>
-			<item value="valve"/>
-			<item value="Profile"/>
-			<item value="buildingrelated"/>
-			<item value="type"/>
-			<item value="catch"/>
-			<item value="sensingfunction"/>
-			<item value="room"/>
+			<item value="RV"/>
+			<item value="RVK"/>
+			<item value="http://webprotege.stanford.edu/RVK"/>
+			<item value="hasTenant"/>
+			<item value="rvk"/>
+			<item value="Switch"/>
+			<item value="https://w3id.org/saref#Switch "/>
+			<item value="ac-dc"/>
+			<item value="https://w3id.org/saref#SensingFunction"/>
+			<item value="SensingFunction "/>
+			<item value="sensor"/>
+			<item value="Sensing"/>
+			<item value="http://webprotege.stanford.edu/BuildingRelated"/>
+			<item value="getclassnode"/>
+			<item value="mostCommonNode"/>
 		</list>
 		<list key="replacehistory">
+			<item value="mostCommonNode"/>
 			<item value="morphemesQueryFile"/>
 			<item value="QueryFileExact"/>
 			<item value="SPARQL_PREFIXES"/>
@@ -34,10 +35,10 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1098"/>
-		<item key="DIALOG_Y_ORIGIN" value="253"/>
+		<item key="DIALOG_X_ORIGIN" value="1213"/>
+		<item key="DIALOG_Y_ORIGIN" value="233"/>
 		<item key="DIALOG_WIDTH" value="348"/>
-		<item key="DIALOG_HEIGHT" value="436"/>
+		<item key="DIALOG_HEIGHT" value="380"/>
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>
 	</section>
 </section>

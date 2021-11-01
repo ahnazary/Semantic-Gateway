@@ -7,9 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
+import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -32,9 +37,10 @@ public class FeatureVector {
 	protected static ArrayList<HashMap<String, Object>> JSONPairs = new ArrayList<HashMap<String,Object>>();
 	protected static ArrayList<String> keylist = new ArrayList<String>();
 	protected static ArrayList<String> ArrayValuesList = new ArrayList<String>();
+	protected static ArrayList<RDFNode> allParentNodes = new ArrayList<RDFNode>();
 	
 	protected static Map<RDFNode, float[]> approvedURIs = new HashMap<RDFNode, float[]>();
-	protected static Map<RDFNode, float[]> aditionalApprovedURIs = new HashMap<RDFNode, float[]>();
+	
 	protected ArrayList<String> bannedURIs = new ArrayList<String>();
 	public static ArrayList<String> bannedStrs = new ArrayList<String>();
 		
@@ -113,17 +119,30 @@ public class FeatureVector {
 
 		FirstLayerQuery firstLayerQuery = new FirstLayerQuery(inputAddress, modelAddress, SVMMethod); 
 		SecondLayerQuery secondLayerQuery = new SecondLayerQuery(inputAddress, modelAddress, SVMMethod); 
-		DateTimeQuery dateTimeQuery = new DateTimeQuery(inputAddress, modelAddress, SVMMethod); 
+		//DateTimeQuery dateTimeQuery = new DateTimeQuery(inputAddress, modelAddress, SVMMethod); 
 		
 		firstLayerQuery.generateFirstLayerResultsArr();
 		secondLayerQuery.generateMorphemesResultsArr();
-		dateTimeQuery.generatedateTimeResultsArr();
+		//dateTimeQuery.generatedateTimeResultsArr();
 		
 		firstLayerQuery.firstLayerQuery(SVMMethod);
 		secondLayerQuery.morphemesQuery(SVMMethod);
-		dateTimeQuery.dateTimeQuery(SVMMethod);
+		//dateTimeQuery.dateTimeQuery(SVMMethod);
 		
 		System.out.println("-------------------------------------------------------------------------- \n");
+		
+		System.out.println(keylist + "\n");
+		System.out.println(JSONPairs + "\n");
+		System.out.println(ArrayValuesList + "\n");
+		
+		if(allParentNodes != null) {
+			try {
+			approvedURIs.put(mostCommonNode(allParentNodes), null);
+			}
+			catch(Exception e) {
+				System.out.println("No related Node or URI found to annotate !");
+			}
+		}
 		
 		for (Entry<RDFNode, float[]> pair : approvedURIs.entrySet()) {
 			System.out.println("Approved URI is: " +  pair.getKey() + "   (" + getPrefName(pair.getKey())+")" +" \n    Feature Vector is:  " + Arrays.toString(pair.getValue()));	
@@ -133,6 +152,8 @@ public class FeatureVector {
 			System.out.println("\n");
 		}	
 	}
+	
+	
 	
 	// all of the URIs generated are stored in this ArrayList
 	protected ArrayList<RDFNode> resultsArr(String inputQuery, Model model) {
@@ -159,7 +180,7 @@ public class FeatureVector {
 
 		Map<RDFNode, float[]> map = new HashMap<RDFNode, float[]>();
 
-		for (; resultsOutput.hasNext();) {
+		while( resultsOutput.hasNext()) {
 
 			QuerySolution soln = resultsOutput.nextSolution();
 			RDFNode subject = soln.get("subject");
@@ -169,9 +190,108 @@ public class FeatureVector {
 			float[] floatArray = { similarityFeature, popularity };
 			map.put(subject, floatArray);
 		}
+		qExe.close();
 		return map;
 	}
+	
+	protected Map<RDFNode, float[]> getBestNodes(String method, Map<RDFNode, float[]> singleWordMap){
+		double highestDistance = 0.0;
+		Map<RDFNode, float[]> tempApprovedURIs = new HashMap<RDFNode, float[]>();
+		for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
+			if(isValidURI(pair.getKey())) {
+				if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) > highestDistance && 
+						WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
+				{
+					highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+					tempApprovedURIs.clear();
+					tempApprovedURIs.put(pair.getKey(), pair.getValue());
+				}	
+				else if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
+						WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
+				{
+					highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+					tempApprovedURIs.put(pair.getKey(), pair.getValue());
+				}	
+				else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]) > highestDistance && 
+						SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
+				{
+					highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+					tempApprovedURIs.clear();
+					tempApprovedURIs.put(pair.getKey(), pair.getValue());
+				}	
+				else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
+						SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
+				{
+					highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
+					tempApprovedURIs.put(pair.getKey(), pair.getValue());
+				}	
+			}
+		}
+		return tempApprovedURIs;
+	}
 
+	
+	public static RDFNode mostCommonNode(ArrayList<RDFNode> input) {
+	
+	    Map<RDFNode, Integer> map = new HashMap<>();
+
+	    for (RDFNode t : input) {
+	        Integer val = map.get(t);
+	        map.put(t, val == null ? 1 : val + 1);
+	    }
+	    for (Entry<RDFNode, Integer> e : map.entrySet()) {
+	        System.out.println(e.getKey() + " = " + e.getValue() + "\n");
+	    }
+	    
+	    System.out.println("-------------------------------------------------------------------------- \n");
+
+	    Entry<RDFNode, Integer> max = null;
+
+	    for (Entry<RDFNode, Integer> e : map.entrySet()) {
+	        if (max == null || e.getValue() > max.getValue())
+	            max = e;
+	    }
+	    
+	    return max.getKey();
+	}
+	
+	static RDFNode mostFrequent(ArrayList<RDFNode> input)
+    {
+         
+        // Insert all elements in hash
+        Map<RDFNode, Integer> hp = new HashMap<RDFNode, Integer>();
+         
+        for(int i = 0; i < input.size(); i++)
+        {
+            RDFNode key = input.get(i);
+            if(hp.containsKey(key))
+            {
+                int freq = hp.get(key);
+                freq++;
+                hp.put(key, freq);
+            }
+            else
+            {
+                hp.put(key, 1);
+            }
+        }
+         
+        // find max frequency.
+        int max_count = 0;
+        RDFNode res = null; 
+        
+        for(Entry<RDFNode, Integer> val : hp.entrySet())
+        {
+            if (max_count < val.getValue())
+            {
+                res = val.getKey();
+                max_count = val.getValue();
+            }
+        }
+         
+        return res;
+    }
+	
 	protected float surfaceSimilarity(String word, String morphemes) {
 
 		float z = ((float) morphemes.length()) / ((float) word.length());
@@ -205,35 +325,7 @@ public class FeatureVector {
 		}
 	}
 
-	protected static boolean isValidDate(String inDate) {
-
-		boolean result = false;
-		;
-		ArrayList<String> validFormats = new ArrayList<String>();
-		validFormats.add("HH:mm:ss");
-		validFormats.add("dd-MM-yyyy HH:mm:ss:ms");
-		validFormats.add("dd-MM-yyyy HH:mm:ss");
-		validFormats.add("dd-MM-yyyy HH:mm");
-		validFormats.add("dd-MM-yyyy");
-
-		for (int i = 0; i < validFormats.size(); i++) {
-			SimpleDateFormat dateFormat = new SimpleDateFormat(validFormats.get(i));
-			dateFormat.setLenient(false);
-			try {
-				dateFormat.parse(inDate.trim());
-			} catch (ParseException pe) {
-
-				if (i == validFormats.size())
-					result = false;
-
-				else
-					continue;
-			}
-			result = true;
-			break;
-		}
-		return result;
-	}
+	
 	
 	protected boolean isClassNode(RDFNode inputNode) {
 		
@@ -318,10 +410,11 @@ public class FeatureVector {
 		return result;
 	}
 
-	protected ArrayList<RDFNode> getClassNode(RDFNode inputNode) {
+	protected Set<RDFNode> getClassNode(RDFNode inputNode) {
 			
 		String prefNodeStr = getPrefName(inputNode);
-		ArrayList<RDFNode> result = new ArrayList<RDFNode>();
+		//ArrayList<RDFNode> result = new ArrayList<RDFNode>();
+		Set<RDFNode> result = new HashSet<RDFNode>();
 		
 		String queryStr = SPARQL_PREFIXES
 				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{"
@@ -348,23 +441,18 @@ public class FeatureVector {
 			if(isClassNode(subject) && !subject.isAnon())
 				result.add(subject);
 			
-			else if (subject.isAnon()) {
-				try {
-					Query queryAnon = QueryFactory.create(queryStrBlankNode);
-					QueryExecution qExeAnon = QueryExecutionFactory.create(queryAnon, model);
-					ResultSet resultsOutputAnon = qExeAnon.execSelect();
+			else if (subject.isAnon()) {		
+				Query queryAnon = QueryFactory.create(queryStrBlankNode);
+				QueryExecution qExeAnon = QueryExecutionFactory.create(queryAnon, model);
+				ResultSet resultsOutputAnon = qExeAnon.execSelect();
+				
+				while( resultsOutputAnon.hasNext()) {
 					
-					for (; resultsOutputAnon.hasNext();) {
-						
-						QuerySolution soln2 = resultsOutputAnon.nextSolution();
-						RDFNode subject2 = soln2.get("subject");
-						result.add(subject2);					
-					}
-					qExeAnon.close();
+					QuerySolution soln2 = resultsOutputAnon.nextSolution();
+					RDFNode subject2 = soln2.get("subject");
+					result.add(subject2);					
 				}
-				catch(Exception e) {
-					System.out.println("Exception occured inner" + e);
-				}
+				qExeAnon.close();
 			}
 		}
 		qExe.close();
@@ -386,19 +474,53 @@ public class FeatureVector {
 		return true;
 	}
 	
-	public static boolean isValidStr(String input) {
+	protected static boolean isValidStr(String input) {
 		bannedStrs.add("type"); 
 		bannedStrs.add("unit");
 		bannedStrs.add("measure");
 		bannedStrs.add("relation");
 		bannedStrs.add("value");
 		bannedStrs.add("relationship");
+		bannedStrs.add("property");
+		bannedStrs.add("the");
+		bannedStrs.add("has");
+		bannedStrs.add("and");
 		
 		for(int i = 0; i < bannedStrs.size(); i++) {
 			if (input.equalsIgnoreCase(bannedStrs.get(i)))
 				return false;
 		}
 		return true;
+	}
+	
+	protected static boolean isValidDate(String inDate) {
+
+		boolean result = false;
+		;
+		ArrayList<String> validFormats = new ArrayList<String>();
+		validFormats.add("HH:mm:ss");
+		validFormats.add("dd-MM-yyyy HH:mm:ss:ms");
+		validFormats.add("dd-MM-yyyy HH:mm:ss");
+		validFormats.add("dd-MM-yyyy HH:mm");
+		validFormats.add("dd-MM-yyyy");
+
+		for (int i = 0; i < validFormats.size(); i++) {
+			SimpleDateFormat dateFormat = new SimpleDateFormat(validFormats.get(i));
+			dateFormat.setLenient(false);
+			try {
+				dateFormat.parse(inDate.trim());
+			} catch (ParseException pe) {
+
+				if (i == validFormats.size())
+					result = false;
+
+				else
+					continue;
+			}
+			result = true;
+			break;
+		}
+		return result;
 	}
 	
 	private static String maxSubString(String inputString){
@@ -416,6 +538,8 @@ public class FeatureVector {
         }
         return result;
     }
+    
+    
 	
 	public ArrayList<RDFNode> getURIs() {
 		return URIs;	

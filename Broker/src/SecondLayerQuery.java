@@ -3,8 +3,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.jena.rdf.model.RDFNode;
@@ -22,7 +24,7 @@ public class SecondLayerQuery extends FeatureVector{
 		for (int i = 0; i < JSONPairs.size(); i++) {
 			
 			String word = (String) JSONPairs.get(i).keySet().toArray()[0];
-			System.out.println(JSONPairs.get(i));
+			System.out.println(JSONPairs.get(i)+ "          (Second Layer)");
 			
 			char keyWordArr[] = new char[word.length()];
 
@@ -31,7 +33,7 @@ public class SecondLayerQuery extends FeatureVector{
 			}
 
 			for (int j = 0; j < word.length() && isValidStr(word); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 
 					for (int z = j; z <= k; z++) {
@@ -49,7 +51,7 @@ public class SecondLayerQuery extends FeatureVector{
 				if(pair.getValue() instanceof String) {
 				
 					word = (String) pair.getValue();
-					System.out.println(pair.getValue());
+					System.out.println(pair.getValue()+ "          (Second Layer)");
 					
 					char valueWordArr[] = new char[word.length()];
 			
@@ -58,7 +60,7 @@ public class SecondLayerQuery extends FeatureVector{
 					}
 			
 					for (int j = 0; j < word.length() && isValidStr(word); j++) {
-						for (int k = j + 3; k < word.length(); k++) {
+						for (int k = j + 2; k < word.length(); k++) {
 							String morphemes = "";
 			
 							for (int z = j; z <= k; z++) {
@@ -78,7 +80,7 @@ public class SecondLayerQuery extends FeatureVector{
 		
 		for (int i = 0; i < ArrayValuesList.size(); i++) {				
 			String word = ArrayValuesList.get(i);
-			System.out.println(word);
+			System.out.println(word+ "          (Second Layer)");
 			
 			char keyWordArr[] = new char[word.length()];
 
@@ -87,7 +89,7 @@ public class SecondLayerQuery extends FeatureVector{
 			}
 
 			for (int j = 0; j < word.length() && isValidStr(word); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 
 					for (int z = j; z <= k; z++) {
@@ -106,11 +108,11 @@ public class SecondLayerQuery extends FeatureVector{
 	private void doQuery(String method, String word ,String morphemes, Boolean isFullWord) {
 		
 		String QueryFileExact = SPARQL_PREFIXES
-				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
+				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:comment ?object}"
 				+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
 		
 		String morphemesQueryFile = SPARQL_PREFIXES
-				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"			
+				+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:comment ?object}"			
 				+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
 				// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
 				// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
@@ -190,58 +192,32 @@ public class SecondLayerQuery extends FeatureVector{
 			}
 		}
 		
-		double highestDistance = 0.0;
-		Map<RDFNode, float[]> tempApprovedURIs = new HashMap<RDFNode, float[]>();
 		
-		for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
-			if(isValidURI(pair.getKey())) {
-				if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) > highestDistance && 
-						WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
-				{
-					highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
-					tempApprovedURIs.clear();
-					tempApprovedURIs.put(pair.getKey(), pair.getValue());
-				}	
-				else if(method == "WSVM" && WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
-						WeightedSVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)}})) == 1)
-				{
-					highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
-					tempApprovedURIs.put(pair.getKey(), pair.getValue());
-				}	
-				else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]) > highestDistance && 
-						SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
-				{
-					highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
-					tempApprovedURIs.clear();
-					tempApprovedURIs.put(pair.getKey(), pair.getValue());
-				}	
-				else if(method == "SVM" && SVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA)) == highestDistance && 
-						SVM.classificationResult(MatrixUtils.createRealMatrix(new double[][] {{pair.getValue()[0] , pair.getValue()[1]}})) == 1)
-				{
-					highestDistance = WeightedSVM.distanceToLine(pair.getValue()[0],pair.getValue()[1]*WeightedSVM.multiplier(TRAINING_DATA));
-					tempApprovedURIs.put(pair.getKey(), pair.getValue());
-				}	
-			}
-		}
-		
+		Map<RDFNode, float[]> tempApprovedURIs = getBestNodes(method, singleWordMap);
 		for (Entry<RDFNode, float[]> pair : tempApprovedURIs.entrySet()) {
-			if(isClassNode(pair.getKey()))
+			if(isClassNode(pair.getKey())) {
 				approvedURIs.put(pair.getKey(), pair.getValue());
+				allParentNodes.add(pair.getKey());			
+			}
 			if(!isClassNode(pair.getKey())) {
-				ArrayList <RDFNode> temp = getClassNode(pair.getKey());
+				//ArrayList <RDFNode> temp = getClassNode(pair.getKey());
+				Set <RDFNode> temp = getClassNode(pair.getKey());
+				Iterator<RDFNode> it = temp.iterator();
+				
+				while(it.hasNext()) {
+					allParentNodes.add(it.next());
+				}
 				System.out.println(pair.getKey() + " is approved but not Class Node. ");
 				System.out.println( "      Parent Nodes are :  " + temp);
-				
-				for(int p = 0;p < temp.size(); p++) {
-					approvedURIs.put(temp.get(p), pair.getValue());
-				}							
+//				for(int p = 0;p < temp.size(); p++) {
+//					approvedURIs.put(temp.get(p), pair.getValue());
+//				}							
 			}	
-		}
-		
+		}	
 	}
 	
 	//this method queries over the model and generates the result array which stores all the URIs and is used to calculate popularity feature
-	protected void generateMorphemesResultsArr() throws FileNotFoundException {
+	protected void generateMorphemesResultsArr()  {
 	
 		for (int i = 0; i < JSONPairs.size(); i++) {
 			String word = (String) JSONPairs.get(i).keySet().toArray()[0];
@@ -252,7 +228,7 @@ public class SecondLayerQuery extends FeatureVector{
 			}
 	
 			for (int j = 0; j < word.length(); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 	
 					for (int z = j; z <= k; z++) {
@@ -260,20 +236,12 @@ public class SecondLayerQuery extends FeatureVector{
 					}
 	
 					String QueryFileExact = SPARQL_PREFIXES
-							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
+							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:comment ?object}"
 							+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
 					
 					String morphemesQueryFile = SPARQL_PREFIXES
-							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"			
+							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:comment ?object}"			
 							+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
-							// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
-							// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-							// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
-							// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							// +"filter (contains(str(?object), '"+morphemes+"'))"
-							// +"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
-							// +"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
-							// +"FILTER regex(?object,'"+morphemes+"') "
 							+ "}";
 	
 					if (j == 0 && k == word.length() - 1) {
@@ -296,7 +264,7 @@ public class SecondLayerQuery extends FeatureVector{
 					}
 			
 					for (int j = 0; j < word.length() && isValidStr(word); j++) {
-						for (int k = j + 3; k < word.length(); k++) {
+						for (int k = j + 2; k < word.length(); k++) {
 							String morphemes = "";
 			
 							for (int z = j; z <= k; z++) {
@@ -304,20 +272,12 @@ public class SecondLayerQuery extends FeatureVector{
 							}
 							
 							String QueryFileExact = SPARQL_PREFIXES
-									+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
+									+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:comment ?object}"
 									+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
 							
 							String morphemesQueryFile = SPARQL_PREFIXES
-									+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"			
+									+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:comment ?object}"			
 									+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
-									// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
-									// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-									// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
-									// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-									// +"filter (contains(str(?object), '"+morphemes+"'))"
-									// +"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
-									// +"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
-									// +"FILTER regex(?object,'"+morphemes+"') "
 									+ "}";
 			
 							if (j == 0 && k == word.length() - 1) {
@@ -341,7 +301,7 @@ public class SecondLayerQuery extends FeatureVector{
 			}
 	
 			for (int j = 0; j < word.length(); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 	
 					for (int z = j; z <= k; z++) {
@@ -349,20 +309,12 @@ public class SecondLayerQuery extends FeatureVector{
 					}
 	
 					String QueryFileExact = SPARQL_PREFIXES
-							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"
+							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:comment ?object}"
 							+ "FILTER regex(?object, \"" + morphemes + "\", \"i\" ) " + "}";
 					
 					String morphemesQueryFile = SPARQL_PREFIXES
-							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject ?predicate ?object}"			
+							+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:comment ?object}"			
 							+ "FILTER regex(?object, \" " + morphemes + " \", \"i\" ) "
-							// +"filter (contains(str(?object), \""+word+"\") || contains(str(?subject),
-							// \""+word+"\") || contains(str(?predicate), \""+word+"\"))"
-							// +"FILTER (regex(?object, \""+word+"\", \"i\" ) || regex(?predicate,
-							// \""+word+"\", \"i\" ) || regex(?subject, \""+word+"\", \"i\" )) "
-							// +"filter (contains(str(?object), '"+morphemes+"'))"
-							// +"FILTER regex(?object, \" "+morphemes+" \", \"i\" ) "
-							// +"FILTER regex(?object, \"\\b"+morphemes+"\\b\" ) "
-							// +"FILTER regex(?object,'"+morphemes+"') "
 							+ "}";
 	
 					if (j == 0 && k == word.length() - 1) {

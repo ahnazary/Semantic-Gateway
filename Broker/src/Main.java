@@ -8,12 +8,11 @@ public class Main {
 	
 		long startTime = System.nanoTime();
 		
-		FeatureVector FV = new FeatureVector("Floor-example2.json","Sargon.ttl", "WSVM"); // 3rd field should be either "WSVM" or "SVM"	
+		FeatureVector FV = new FeatureVector("rvk-example.json","Sargon.ttl", "WSVM"); // 3rd field should be either "WSVM" or "SVM"	
 		FV.start();
 		System.out.println("Total number of processed Nodes : " + FV.getURIs().size());
 		
-		
-		JSONLDGenerator Test = new JSONLDGenerator(FV.getInputAddress(), "JSON-LD2", FV.getApprovedURIs());
+		JSONLDGenerator Test = new JSONLDGenerator(FV.getInputAddress(), "/home/amirhossein/Documents/GitHub/semantic-broker/Broker/Results/RVK-example_Sargon_JSON-LD", FV.getApprovedURIs());
 		File file = new File(Test.getJSONLDFilePath()); 
 		file.delete();
 		Test.Start();

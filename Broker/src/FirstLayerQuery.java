@@ -1,10 +1,11 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.jena.rdf.model.RDFNode;
@@ -19,7 +20,7 @@ public class FirstLayerQuery extends FeatureVector{
 		
 		for (int i = 0; i < keylist.size(); i++) {				
 			String word = keylist.get(i);
-			System.out.println(word);
+			System.out.println(word + "          (FirstLayer)");
 			
 			char keyWordArr[] = new char[word.length()];
 
@@ -28,7 +29,7 @@ public class FirstLayerQuery extends FeatureVector{
 			}
 
 			for (int j = 0; j < word.length() && isValidStr(word); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 
 					for (int z = j; z <= k; z++) {
@@ -45,7 +46,7 @@ public class FirstLayerQuery extends FeatureVector{
 		
 		for (int i = 0; i < ArrayValuesList.size(); i++) {				
 			String word = ArrayValuesList.get(i);
-			System.out.println(word);
+			System.out.println(word+ "          (FirstLayer)");
 			
 			char keyWordArr[] = new char[word.length()];
 
@@ -54,7 +55,7 @@ public class FirstLayerQuery extends FeatureVector{
 			}
 
 			for (int j = 0; j < word.length() && isValidStr(word); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 
 					for (int z = j; z <= k; z++) {
@@ -73,7 +74,7 @@ public class FirstLayerQuery extends FeatureVector{
 		for (int i = 0; i < JSONPairs.size(); i++) {
 			
 			String word = (String) JSONPairs.get(i).keySet().toArray()[0];
-			System.out.println(word);
+			System.out.println(word+ "          (FirstLayer)");
 			
 			char keyWordArr[] = new char[word.length()];
 
@@ -82,7 +83,7 @@ public class FirstLayerQuery extends FeatureVector{
 			}
 
 			for (int j = 0; j < word.length() && isValidStr(word); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 
 					for (int z = j; z <= k; z++) {
@@ -101,7 +102,7 @@ public class FirstLayerQuery extends FeatureVector{
 				if(pair.getValue() instanceof String) {
 				
 					word = (String) pair.getValue();
-					System.out.println(pair.getValue());
+					System.out.println(pair.getValue()+ "          (FirstLayer)");
 					
 					char valueWordArr[] = new char[word.length()];
 			
@@ -110,7 +111,7 @@ public class FirstLayerQuery extends FeatureVector{
 					}
 			
 					for (int j = 0; j < word.length() && isValidStr(word); j++) {
-						for (int k = j + 3; k < word.length(); k++) {
+						for (int k = j + 2; k < word.length(); k++) {
 							String morphemes = "";
 			
 							for (int z = j; z <= k; z++) {
@@ -151,7 +152,7 @@ public class FirstLayerQuery extends FeatureVector{
 					// +"FILTER regex(?object,'"+morphemes+"') "
 					+ "}";
 			
-			Map<RDFNode, float[]> singleWordMap = new HashMap<RDFNode, float[]>();
+			Map<RDFNode, float[]> singleWordMap = new HashMap<RDFNode, float[]>(); 
 			if (isFullWord) {
 	
 				singleWordMap = resultsMap(QueryFileExact, model, 1f);
@@ -219,29 +220,28 @@ public class FirstLayerQuery extends FeatureVector{
 				}
 			}
 			
-			Map<RDFNode, float[]> tempApprovedURIs = new HashMap<RDFNode, float[]>();
-			
-			for (Entry<RDFNode, float[]> pair : singleWordMap.entrySet()) {
-				if(isValidURI(pair.getKey())) {
-					tempApprovedURIs.put(pair.getKey(), pair.getValue());	
-				}
-			}
-			
+			Map<RDFNode, float[]> tempApprovedURIs = getBestNodes(method, singleWordMap);
 			for (Entry<RDFNode, float[]> pair : tempApprovedURIs.entrySet()) {
-				if(isClassNode(pair.getKey()))
+				if(isClassNode(pair.getKey())) {
 					approvedURIs.put(pair.getKey(), pair.getValue());
+					allParentNodes.add(pair.getKey());
+				}
 				if(!isClassNode(pair.getKey())) {
-					ArrayList <RDFNode> temp = getClassNode(pair.getKey());
+					//ArrayList <RDFNode> temp = getClassNode(pair.getKey());
+					Set <RDFNode> temp = getClassNode(pair.getKey());
+					Iterator<RDFNode> it = temp.iterator();
+					
 					System.out.println(pair.getKey() + " is approved but not Class Node. ");
 					System.out.println( "      Parent Nodes are :  " + temp);
-					for(int p = 0;p < temp.size(); p++) {
-						approvedURIs.put(temp.get(p), pair.getValue());
-					}							
+					while( it.hasNext() ) {
+						allParentNodes.add(it.next());
+					}						
 				}	
 			}		
 		}
 	
-	protected void generateFirstLayerResultsArr() throws FileNotFoundException {
+	
+	protected void generateFirstLayerResultsArr() {
 		
 		for (int i = 0; i < keylist.size(); i++) {
 			String word = keylist.get(i);
@@ -252,7 +252,7 @@ public class FirstLayerQuery extends FeatureVector{
 			}
 	
 			for (int j = 0; j < word.length(); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 	
 					for (int z = j; z <= k; z++) {
@@ -289,7 +289,7 @@ public class FirstLayerQuery extends FeatureVector{
 			}
 	
 			for (int j = 0; j < word.length(); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 	
 					for (int z = j; z <= k; z++) {
@@ -326,7 +326,7 @@ public class FirstLayerQuery extends FeatureVector{
 			}
 	
 			for (int j = 0; j < word.length(); j++) {
-				for (int k = j + 3; k < word.length(); k++) {
+				for (int k = j + 2; k < word.length(); k++) {
 					String morphemes = "";
 	
 					for (int z = j; z <= k; z++) {
@@ -349,6 +349,44 @@ public class FirstLayerQuery extends FeatureVector{
 						URIs = resultsArr(QueryFileExact, model);
 					} else {
 						URIs = resultsArr(morphemesQueryFile, model);
+					}
+				}
+			}
+			for ( Map.Entry<String, Object> pair : ((Map<String, Object>) JSONPairs.get(i)).entrySet()) {
+				
+				if(pair.getValue() instanceof String) {
+				
+					word = (String) pair.getValue();
+					System.out.println(pair.getValue()+ "          (FirstLayer)");
+					
+					char valueWordArr[] = new char[word.length()];
+			
+					for (int j = 0; j < word.length(); j++) {
+						valueWordArr[j] = word.charAt(j);
+					}
+			
+					for (int j = 0; j < word.length() && isValidStr(word); j++) {
+						for (int k = j + 2; k < word.length(); k++) {
+							String morphemes = "";
+			
+							String QueryFileExact = SPARQL_PREFIXES
+									+ "SELECT ?subject \n" + "WHERE\n" 
+									+ "{\n" 
+									+ "{?subject rdfs:label ?object}"
+									+ "FILTER (regex(?object, \"" + morphemes + "\", \"i\" ) || contains(str(?subject), '"+morphemes+"')) " 
+									+ "}";
+							
+							String morphemesQueryFile = SPARQL_PREFIXES
+									+ "SELECT ?subject \n" + "WHERE\n" + "{\n" + "{?subject rdfs:label ?object}"			
+									+ "filter (contains(str(?object), ' "+morphemes+" ') || contains(str(?subject), ' "+morphemes+" '))"
+									+ "}";
+			
+							if (j == 0 && k == word.length() - 1) {
+								URIs = resultsArr(QueryFileExact, model);
+							} else {
+								URIs = resultsArr(morphemesQueryFile, model);
+							}
+						}
 					}
 				}
 			}

@@ -3,8 +3,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.jena.rdf.model.RDFNode;
@@ -104,10 +106,12 @@ public class DateTimeQuery extends FeatureVector{
 							if(isClassNode(pair.getKey()))
 								approvedURIs.put(pair.getKey(), pair.getValue());
 							if(!isClassNode(pair.getKey())) {
-								ArrayList <RDFNode> temp = getClassNode(pair.getKey());
-								for(int p = 0;p < temp.size(); p++) {
-									approvedURIs.put(temp.get(p), pair.getValue());
-								}							
+								Set <RDFNode> temp = getClassNode(pair.getKey());
+								Iterator<RDFNode> it = temp.iterator();
+								
+								while(it.hasNext()) {
+									allParentNodes.add(it.next());
+								}						
 							}					
 						}
 					}
