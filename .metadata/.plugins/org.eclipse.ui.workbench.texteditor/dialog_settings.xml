@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="RVK"/>
+		<item key="selection" value="https://w3id.org/saref#SensingFunction"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="RV"/>
-			<item value="RVK"/>
-			<item value="http://webprotege.stanford.edu/RVK"/>
-			<item value="hasTenant"/>
-			<item value="rvk"/>
-			<item value="Switch"/>
-			<item value="https://w3id.org/saref#Switch "/>
-			<item value="ac-dc"/>
 			<item value="https://w3id.org/saref#SensingFunction"/>
-			<item value="SensingFunction "/>
 			<item value="sensor"/>
-			<item value="Sensing"/>
-			<item value="http://webprotege.stanford.edu/BuildingRelated"/>
-			<item value="getclassnode"/>
+			<item value="ttp://webprotege.stanford.edu/Controller"/>
+			<item value="notify"/>
+			<item value="Total number of processed Nodes"/>
+			<item value="https://w3id.org/saref#TemperatureSensor"/>
+			<item value="second layer"/>
+			<item value="has"/>
+			<item value="https://w3id.org/saref#Actuator"/>
+			<item value="https://w3id.org/saref#Switch"/>
+			<item value="Switch"/>
+			<item value="mostcomm"/>
+			<item value="allParentNodes"/>
 			<item value="mostCommonNode"/>
+			<item value="RV"/>
 		</list>
 		<list key="replacehistory">
 			<item value="mostCommonNode"/>
@@ -35,8 +35,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1213"/>
-		<item key="DIALOG_Y_ORIGIN" value="233"/>
+		<item key="DIALOG_X_ORIGIN" value="1025"/>
+		<item key="DIALOG_Y_ORIGIN" value="364"/>
 		<item key="DIALOG_WIDTH" value="348"/>
 		<item key="DIALOG_HEIGHT" value="380"/>
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>

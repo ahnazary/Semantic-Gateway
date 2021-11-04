@@ -18,10 +18,8 @@ public class JSONLDGenerator {
 	static String JSONLDFilePath;
 	Map<RDFNode, float[]> approvedURIs = new HashMap<RDFNode, float[]>();
 	
-	@SuppressWarnings("static-access")
 	public JSONLDGenerator(String JSONFilepath, String JSONLDFilePath, Map<RDFNode, float[]> approvedURIs){
-		
-		this.JSONLDFilePath = JSONLDFilePath;
+	
 		this.approvedURIs = approvedURIs;
 		this.JSONFilepath =JSONFilepath;
 		

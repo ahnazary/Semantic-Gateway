@@ -75,8 +75,7 @@ public class FeatureVector {
 			+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
 			+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
 			+ "PREFIX time: <http://www.w3.org/2006/time#> "
-			+ "PREFIX saref: <https://w3id.org/saref#>  "
-			+ "PREFIX saref: <https://saref.etsi.org/core/>  "
+			+ "PREFIX saref: <https://saref.etsi.org/core/>  " 
 			+ "PREFIX schema: <http://schema.org/>  "
 			+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
 			+ "PREFIX base: <http://def.isotc211.org/iso19150-2/2012/base#> "
@@ -361,7 +360,6 @@ public class FeatureVector {
 		String queryStr = SPARQL_PREFIXES	
 				+ "select ?subject (group_concat(?prefixedName ; separator = \"\") as ?prefName) where {\n"
 				+ "  values (?prefix ?ns) { \n"
-				+ "    ( \"saref:\" <https://w3id.org/saref#> )\n"
 				+ "    ( \"saref:\" <https://saref.etsi.org/core/> )\n"
 				+ "    ( \"xsd:\" <http://www.w3.org/2001/XMLSchema#> )\n"
 				+ "    ( \"rdfs:\" <http://www.w3.org/2000/01/rdf-schema#> )\n"

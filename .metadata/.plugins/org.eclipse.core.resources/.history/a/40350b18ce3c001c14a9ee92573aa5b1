@@ -75,8 +75,7 @@ public class FeatureVector {
 			+ "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
 			+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> "
 			+ "PREFIX time: <http://www.w3.org/2006/time#> "
-			+ "PREFIX saref: <https://w3id.org/saref#>  "
-			+ "PREFIX saref: <https://saref.etsi.org/core/>  "
+			+ "PREFIX saref: <https://w3id.org/saref#>  " 
 			+ "PREFIX schema: <http://schema.org/>  "
 			+ "PREFIX dcterms: <http://purl.org/dc/terms/>  "
 			+ "PREFIX base: <http://def.isotc211.org/iso19150-2/2012/base#> "
@@ -95,7 +94,6 @@ public class FeatureVector {
 			+ "PREFIX xml: <http://www.w3.org/XML/1998/namespace> "
 			+ "PREFIX skos: <http://www.w3.org/2004/02/skos/core#> "
 			+ "PREFIX terms: <http://purl.org/dc/terms/> "
-			+ "PREFIX vann: <http://purl.org/vocab/vann/> "
 			+ "PREFIX webprotege: <http://webprotege.stanford.edu/> ";
 
 	@SuppressWarnings("deprecation")
@@ -362,7 +360,6 @@ public class FeatureVector {
 				+ "select ?subject (group_concat(?prefixedName ; separator = \"\") as ?prefName) where {\n"
 				+ "  values (?prefix ?ns) { \n"
 				+ "    ( \"saref:\" <https://w3id.org/saref#> )\n"
-				+ "    ( \"saref:\" <https://saref.etsi.org/core/> )\n"
 				+ "    ( \"xsd:\" <http://www.w3.org/2001/XMLSchema#> )\n"
 				+ "    ( \"rdfs:\" <http://www.w3.org/2000/01/rdf-schema#> )\n"
 				+ "    ( \"owl:\" <http://www.w3.org/2002/07/owl#> )\n"
@@ -386,7 +383,6 @@ public class FeatureVector {
 				+ "    ( \"webprotege:\" <http://webprotege.stanford.edu/> )\n"
 				+ "    ( \"terms:\" <http://purl.org/dc/terms/> )\n"
 				+ "    ( \"skos:\" <http://www.w3.org/2004/02/skos/core#> )\n"
-				+ "    ( \"vann:\" <http://purl.org/vocab/vann/> )\n"
 				+ "    ( \"xml:\" <http://www.w3.org/XML/1998/namespace> )\n"
 				
 				+ "  }\n"
@@ -434,7 +430,6 @@ public class FeatureVector {
 				+ "  FILTER (?object ="+ prefNodeStr + ") "
 				+ "}";
 		
-		System.out.println(prefNodeStr);
 		Query query = QueryFactory.create(queryStr);
 		QueryExecution qExe = QueryExecutionFactory.create(query, model);
 		ResultSet resultsOutput = qExe.execSelect();
@@ -443,12 +438,10 @@ public class FeatureVector {
 			QuerySolution soln = resultsOutput.nextSolution();
 			RDFNode subject = soln.get("subject");
 			
-			
 			if(isClassNode(subject) && !subject.isAnon())
 				result.add(subject);
 			
-			else if (subject.isAnon()) {	
-				
+			else if (subject.isAnon()) {		
 				Query queryAnon = QueryFactory.create(queryStrBlankNode);
 				QueryExecution qExeAnon = QueryExecutionFactory.create(queryAnon, model);
 				ResultSet resultsOutputAnon = qExeAnon.execSelect();

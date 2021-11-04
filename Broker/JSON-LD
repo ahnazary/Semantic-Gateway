@@ -1,27 +1,21 @@
 {
-  "id": "Room:01",
-  "type": "Room",
-  "inBuilding": {
-        "type": "Relationship",
-        "value": "Building:01"
-    },
-   "hasTenant": {
-        "type": "Relationship",
-        "value":"Person:XY"
-    },
-   "inFloor": {
-        "type": "Relationship",
-        "value":"Floor:01"
-    },
-    "inZone": {
-        "type": "Relationship",
-        "value":"Zone:01"
-    },
-    "hasSensor": {
-        "type": "Relationship",
-        "value":"Sensor:01"
-    },
+  "id": "RVK:df72dc57-1eb9-42a3-88a9-8647ecc954b6",
+  "type": "RVK",
+  "createdAt": "2017-01-01T01:20:00Z",
+  "T01_Sp01": {
+    "type": "Property",
+    "value": 1
+  },
+  "address": {
+    "type": "Property",
+    "value": {
+      "type": "https://schema.org/PostalAddress",
+      "addressLocality": "London",
+      "addressCountry": "UK",
+      "postalCode": "EC4N 8AF",
+      "streetAddress": "25 Walbrook"
+    }
+  },
   "@context": [
-    "http://webprotege.stanford.edu/Room"
-  ]
+      ]
 }
