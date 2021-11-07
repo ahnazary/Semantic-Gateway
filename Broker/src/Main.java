@@ -8,7 +8,7 @@ public class Main {
 	
 		long startTime = System.nanoTime();
 		
-		FeatureVector FV = new FeatureVector("rvk-example.json","saref.ttl", "WSVM"); // 3rd field should be either "WSVM" or "SVM"	
+		FeatureVector FV = new FeatureVector("/home/amirhossein/Documents/GitHub/semantic-broker/Broker/Samples/Actuator.json","saref_Old.ttl", "WSVM"); // 3rd field should be either "WSVM" or "SVM"	
 		FV.start();
 		System.out.println("Total number of processed Nodes : " + FV.getURIs().size());
 		

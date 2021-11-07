@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="https://w3id.org/saref#SensingFunction"/>
+		<item key="selection" value="hasSensorType"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="https://w3id.org/saref#SensingFunction"/>
+			<item value="hassensorType"/>
 			<item value="sensor"/>
+			<item value="ttps://saref.etsi.org/core/SensingFunction"/>
+			<item value="https://saref.etsi.org/core/LevelControlFunction"/>
+			<item value="https://w3id.org/saref#TemperatureSensor"/>
+			<item value="http://webprotege.stanford.edu/Controller"/>
+			<item value="prefnode"/>
+			<item value="https://w3id.org/saref#SensingFunction"/>
 			<item value="ttp://webprotege.stanford.edu/Controller"/>
 			<item value="notify"/>
 			<item value="Total number of processed Nodes"/>
-			<item value="https://w3id.org/saref#TemperatureSensor"/>
 			<item value="second layer"/>
 			<item value="has"/>
 			<item value="https://w3id.org/saref#Actuator"/>
 			<item value="https://w3id.org/saref#Switch"/>
-			<item value="Switch"/>
-			<item value="mostcomm"/>
-			<item value="allParentNodes"/>
-			<item value="mostCommonNode"/>
-			<item value="RV"/>
 		</list>
 		<list key="replacehistory">
 			<item value="mostCommonNode"/>
