@@ -4,4 +4,9 @@
 	</section>
 	<section name="ImportExportAction">
 	</section>
+	<section name="EditorSelectionDialog">
+		<item key="EditorSelectionDialog.STORE_ID_FILE_EXTENSION" value=".ttl"/>
+		<item key="EditorSelectionDialog.STORE_ID_INTERNAL_EXTERNAL" value="true"/>
+		<item key="EditorSelectionDialog.STORE_ID_DESCR" value="Eclipse IDE for Java Developers - 2021-06"/>
+	</section>
 </section>

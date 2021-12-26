@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="hasSensorType"/>
+		<item key="selection" value="calculateMaxSubStringLength"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="calculateMaxSubStringLength"/>
+			<item value="getprefname"/>
+			<item value="bannedURI"/>
+			<item value="banned"/>
+			<item value="H"/>
+			<item value="TRAINING_DATA"/>
+			<item value="http://webprotege.stanford.edu/Zone"/>
+			<item value="popularity"/>
+			<item value="popularrity"/>
+			<item value="https://saref.etsi.org/core/LightSwitch"/>
+			<item value="washingmachine"/>
+			<item value="https://w3id.org/saref#GetCurrentMeterValue"/>
+			<item value="hasMeterReading"/>
+			<item value="hasmeterreading"/>
 			<item value="hassensorType"/>
-			<item value="sensor"/>
-			<item value="ttps://saref.etsi.org/core/SensingFunction"/>
-			<item value="https://saref.etsi.org/core/LevelControlFunction"/>
-			<item value="https://w3id.org/saref#TemperatureSensor"/>
-			<item value="http://webprotege.stanford.edu/Controller"/>
-			<item value="prefnode"/>
-			<item value="https://w3id.org/saref#SensingFunction"/>
-			<item value="ttp://webprotege.stanford.edu/Controller"/>
-			<item value="notify"/>
-			<item value="Total number of processed Nodes"/>
-			<item value="second layer"/>
-			<item value="has"/>
-			<item value="https://w3id.org/saref#Actuator"/>
-			<item value="https://w3id.org/saref#Switch"/>
 		</list>
 		<list key="replacehistory">
+			<item value="G"/>
 			<item value="mostCommonNode"/>
 			<item value="morphemesQueryFile"/>
 			<item value="QueryFileExact"/>
@@ -35,8 +36,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1025"/>
-		<item key="DIALOG_Y_ORIGIN" value="364"/>
+		<item key="DIALOG_X_ORIGIN" value="1453"/>
+		<item key="DIALOG_Y_ORIGIN" value="235"/>
 		<item key="DIALOG_WIDTH" value="348"/>
 		<item key="DIALOG_HEIGHT" value="380"/>
 		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|11.0|0|GTK|1|"/>

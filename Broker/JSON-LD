@@ -28,7 +28,6 @@
     ,
   "@context": [
     "https://w3id.org/saref#SensingFunction",
-    "https://w3id.org/saref#Device",
     "https://w3id.org/saref#Actuator",
     "https://w3id.org/saref#Switch"
   ]
